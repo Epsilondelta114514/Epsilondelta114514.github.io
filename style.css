@@ -522,3 +522,14 @@ main:not(.content-main) {
 .answer-part {
     background-color: #eef7ff; /* 薄い青色 */
 }
+
+/* --- ここから追記 --- */
+
+/* 質問ページの送信ボタン専用スタイル */
+.question-submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
