@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeX Code - My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" class="header-link">My Portfolio</a></h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="tex.html">TeX Code</a></li>
+            <li><a href="tutor.html">家庭教師テキスト</a></li>
+            <li><a href="exam_questions.html">院試問題集</a></li>
+                  <li><a href="zatsuroku.html">雑記</a></li>
+        </ul>
+    </nav>
+    <main class="content-main">
+        <section>
+            <h2>TeX Code Snippets</h2>
+            <p>よく使うLaTeXのコード、特にTikZやPGFPlotsを用いた図のコードをまとめています。</p>
+
+            <input type="text" id="texSearchInput" class="search-input-style" placeholder="表示中のタブ内を検索...">
+
+            <div class="tab-container">
+                 <button class="tab-button active" data-target="math">数学</button>
+                <button class="tab-button" data-target="science">理科</button>
+                <button class="tab-button " data-target="general">文書全般</button>
+            </div>
+
+            <div id="general" class="tab-content active">
+                <div class="code-snippet" data-search-terms="pgfplots グラフ作成 数式 プロット">
+                    <h3>PGFPlotsを使ったグラフ作成</h3>
+                    <p>PGFPlotsパッケージを利用して、コンパイル時に数式から直接グラフをプロットする基本的な例です。</p>
+                    <div class="code-block-wrapper">
+                        <button class="copy-button">コピー</button>
+                        <pre><code>...</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div id="math" class="tab-content">
+                <div class="code-snippet" data-search-terms="区分求積法 イメージ図 tikz">
+                    <h3>区分求積法のイメージ図 (TikZ)</h3>
+                    <p></p>
+                    <div class="code-block-wrapper">
+                        <button class="copy-button">コピー</button>
+                        <pre><code>...</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div id="science" class="tab-content">
+                <h3 data-category-heading>芳香族化合物</h3>
+                <div class="chem-snippet" data-search-terms="芳香族化合物 ベンゼン 炭化水素">
+                    <div class="chem-info"><h4>ベンゼン</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{[:-30]*6(-=-=-=)}</code></pre></div></div>
+                </div>
+
+            <div class="chem-snippet" data-search-terms="芳香族化合物 安息香酸 カルボン酸 芳香族カルボン酸">
+                    <div class="chem-info"><h4>安息香酸</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{[:-30]*6(-=-(-C(=[6]O)-O-H)=-=)}</code></pre></div></div>
+                </div>
+
+            <div class="chem-snippet" data-search-terms="芳香族化合物 フェノール アルコール 芳香族アルコール">
+                    <div class="chem-info"><h4>フェノール</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{[:-30]*6(-=-(-OH)=-=)}</code></pre></div></div>
+                </div>
+
+                    <div class="chem-snippet" data-search-terms="芳香族化合物 ベンジルアルコール アルコール 芳香族アルコール">
+                    <div class="chem-info"><h4>ベンジルアルコール</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{[:-30]*6(-=-(-CH2-OH)=-=)}</code></pre></div></div>
+                </div>
+
+
+
+
+                <h3 data-category-heading>脂肪族化合物</h3>
+                <div class="chem-snippet" data-search-terms="脂肪族化合物 マレイン酸 ジカルボン酸 カルボン酸">
+                    <div class="chem-info"><h4>マレイン酸</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{C(-[::240]HOOC)(-[::120]H)=C(-[::60]H)(-[::-60]COOH)}</code></pre></div></div>
+                </div>
+
+                   <div class="chem-snippet" data-search-terms="脂肪族化合物 フマル酸 ジカルボン酸 カルボン酸">
+                    <div class="chem-info"><h4>フマル酸</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{C(-[::240]HOOC)(-[::120]H)=C(-[::60]COOH)(-[::-60]H)}</code></pre></div></div>
+                </div>
+ <div class="chem-snippet" data-search-terms="芳香族化合物 無水マレイン酸 不飽和ジカルボン酸 無水 Diels-Alder">
+                    <div class="chem-info"><h4>無水マレイン酸</h4><p></p></div>
+                    <div class="chem-code"><div class="code-block-wrapper"><button class="copy-button">コピー</button><pre><code>\chemfig{C(-[::150]H)(=[::-90]C(-[::-60]H)(-[::60]C(=[::-60]O)(-[::70])))(-[::30]C(=[::60]O)(-[::-70,1.5]O))}</code></pre></div></div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <p>&copy; 2025 Seigo Sasaki</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('texSearchInput');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // タブ切り替え機能
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(button.dataset.target).classList.add('active');
+                    // タブを切り替えたら検索もリセット
+                    searchInput.value = '';
+                    filterContent();
+                });
+            });
+
+            // コピーボタン機能
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const code = e.target.closest('.code-block-wrapper').querySelector('code').innerText;
+                    navigator.clipboard.writeText(code).then(() => {
+                        e.target.textContent = 'Copied!';
+                        setTimeout(() => { e.target.textContent = 'コピー'; }, 2000);
+                    });
+                });
+            });
+            
+            // 検索機能
+            function filterContent() {
+                const query = searchInput.value.toLowerCase().trim();
+                const activeContent = document.querySelector('.tab-content.active');
+                
+                // スニペット自体の表示を切り替え
+                const snippets = activeContent.querySelectorAll('.code-snippet, .chem-snippet');
+                snippets.forEach(snippet => {
+                    const terms = snippet.dataset.searchTerms.toLowerCase();
+                    if (terms.includes(query)) {
+                        snippet.style.display = ''; // blockやflexだとレイアウトが崩れる可能性があるため空文字に
+                    } else {
+                        snippet.style.display = 'none';
+                    }
+                });
+
+                // カテゴリ見出し（h3）の表示を切り替え
+                const headings = activeContent.querySelectorAll('[data-category-heading]');
+                headings.forEach(heading => {
+                    let nextElement = heading.nextElementSibling;
+                    let hasVisibleSnippet = false;
+                    while(nextElement && !nextElement.hasAttribute('data-category-heading')) {
+                        if (nextElement.style.display !== 'none') {
+                            hasVisibleSnippet = true;
+                            break;
+                        }
+                        nextElement = nextElement.nextElementSibling;
+                    }
+                    heading.style.display = hasVisibleSnippet ? '' : 'none';
+                });
+            }
+
+            searchInput.addEventListener('input', filterContent);
+        });
+    </script>
+</body>
+</html>

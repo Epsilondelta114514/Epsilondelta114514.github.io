@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>化学テキスト - My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" class="header-link">My Portfolio</a></h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="tex.html">TeX Code</a></li>
+            <li><a href="tutor.html">家庭教師テキスト</a></li>
+            <li><a href="exam_questions.html">院試問題集</a></li>
+            <li><a href="zatsuroku.html">雑記</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-container">
+        <div class="left-column">
+            <h2>化学テキスト</h2>
+            
+            <div class="update-info">
+                <h4>更新情報</h4>
+                <p>2025/07/29: 8月テキスト(有機化学)を追加．</p>
+                <p>2025/07/29: ページ作成．</p>
+            </div>
+
+            <div id="text-list-container">
+                <h3>最新のアップロード</h3>
+                <div class="exam-year-item-container">
+                    <div class="exam-year-header">
+                        <h4>8月テキスト：有機化学</h4>
+                        <div>
+                            <a href="家庭教師テキスト/chem/chem_organic_text.pdf" class="exam-button file-link">表示</a>
+                            <a href="家庭教師テキスト/chem/chem_organic_text.pdf" class="exam-button file-link" download>DL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="exam-year-item-container">
+                    <div class="exam-year-header">
+                        <h4>テキスト解答</h4>
+                        <div>
+                            <a href="家庭教師テキスト/chem/chem_organic_tezt_ans.pdf" class="exam-button file-link">表示</a>
+                            <a href="家庭教師テキスト/chem/chem_organic_tezt_ans.pdf" class="exam-button file-link" download>DL</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>以前のテキスト</h3>
+                <div class="exam-year-item-container">
+                    <div class="exam-year-header">
+                        <h4>演習問題：化学平衡</h4>
+                        <div>
+                            <a href="家庭教師テキスト/chem/0720text.pdf" class="exam-button file-link">表示</a>
+                            <a href="家庭教師テキスト/chem/0720text.pdf" class="exam-button file-link" download>DL</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exam-year-item-container">
+                    <div class="exam-year-header">
+                        <h4>演習問題：無機化学(発展)</h4>
+                        <div>
+                            <a href="家庭教師テキスト/chem/Inorganic Chemistry Exercises.pdf" class="exam-button file-link">表示</a>
+                            <a href="家庭教師テキスト/chem/Inorganic Chemistry Exercises.pdf" class="exam-button file-link" download>DL</a>
+                        </div>
+                    </div>
+                </div>
+
+  <div class="exam-year-item-container">
+                    <div class="exam-year-header">
+                        <h4>演習問題：無機と酸化還元</h4>
+                        <div>
+                            <a href="家庭教師テキスト/chem/Exercise Problems 7-6.pdf" class="exam-button file-link">表示</a>
+                            <a href="家庭教師テキスト/chem/Exercise Problems 7-6.pdf" class="exam-button file-link" download>DL</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="right-column">
+            <div id="pdf-placeholder">
+                <p>「表示」ボタンをクリックすると、ここにPDFが表示されます。</p>
+            </div>
+            <iframe id="pdf-viewer" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const listContainer = document.getElementById('text-list-container');
+            const pdfViewer = document.getElementById('pdf-viewer');
+            const pdfPlaceholder = document.getElementById('pdf-placeholder');
+
+            listContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('file-link')) {
+                    if (event.target.hasAttribute('download')) {
+                        return;
+                    }
+                    
+                    event.preventDefault();
+                    
+                    const clickedItem = event.target.closest('.exam-year-item-container');
+                    if (!clickedItem) return;
+
+                    document.querySelectorAll('.exam-year-item-container.active').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    clickedItem.classList.add('active');
+
+                    const pdfUrl = event.target.href;
+                    pdfPlaceholder.style.display = 'none';
+                    pdfViewer.style.display = 'block';
+                    pdfViewer.src = pdfUrl;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

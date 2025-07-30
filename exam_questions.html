@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>院試問題集 - My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" class="header-link">My Portfolio</a></h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="tex.html">TeX Code</a></li>
+            <li><a href="tutor.html">家庭教師テキスト</a></li>
+            <li><a href="exam_questions.html">院試問題集</a></li>
+            <li><a href="zatsuroku.html">雑記</a></li>
+        </ul>
+    </nav>
+    <div class="page-container">
+        <div class="left-column">
+            <h2>院試問題集</h2>
+            <p>リストから年度を選んでください。</p>
+            <input type="text" id="yearSearchInput" class="search-input-style" placeholder="年度で検索 (例: 2021)">
+            <div id="exam-year-list">
+                </div>
+        </div>
+        <div class="right-column">
+            <div id="pdf-placeholder">
+                <p>問題ファイルまたは解答のリンクをクリックすると、ここにPDFが表示されます。</p>
+            </div>
+            <iframe id="pdf-viewer" frameborder="0"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const listContainer = document.getElementById('exam-year-list');
+            const pdfViewer = document.getElementById('pdf-viewer');
+            const pdfPlaceholder = document.getElementById('pdf-placeholder');
+            const searchInput = document.getElementById('yearSearchInput');
+            const startYear = 1999;
+            const endYear = 2023;
+
+            const allYears = Array.from({length: endYear - startYear + 1}, (_, i) => endYear - i);
+
+            function renderList(years) {
+                listContainer.innerHTML = '';
+                years.forEach(year => {
+                    const yearDiv = document.createElement('div');
+                    yearDiv.className = 'exam-year-item-container';
+                    yearDiv.dataset.year = year;
+                    yearDiv.innerHTML = `
+                        <div class="exam-year-header">
+                            <h3>${year}年度</h3>
+                            <a href="exam_pdfs/${year}.pdf" class="exam-button file-link">問題表示</a>
+                        </div>
+                        <div class="exam-details">
+                            <div class="solution-section">
+                                <h4>午前</h4>
+                                <ul>
+                                    <li>問1:  (<a href="exams_ans/${year}_am_1.pdf" class="solution-pdf-link">解答</a>)</li>
+                                    <li>問2:  (<a href="exams_ans/${year}_am_2.pdf" class="solution-pdf-link">解答</a>)</li>
+                                     <li>問3:  (<a href="exams_ans/${year}_am_3.pdf" class="solution-pdf-link">解答</a>)</li>
+                                      <li>問4:  (<a href="exams_ans/${year}_am_4.pdf" class="solution-pdf-link">解答</a>)</li>
+                                       <li>問5: (<a href="exams_ans/${year}_am_5.pdf" class="solution-pdf-link">解答</a>)</li>
+                                </ul>
+                            </div>
+                            <div class="solution-section">
+                                <h4>午後</h4>
+                                <ul>
+                                    <li>問1:  (<a href="exams_ans/${year}_pm_1.pdf" class="solution-pdf-link">解答</a>)</li>
+                                      <li>問2:  (<a href="exams_ans/${year}_pm_2.pdf" class="solution-pdf-link">解答</a>)</li>
+                                        <li>問3:  (<a href="exams_ans/${year}_pm_3.pdf" class="solution-pdf-link">解答</a>)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    listContainer.appendChild(yearDiv);
+                });
+            }
+
+            renderList(allYears);
+            
+            // ★★★ 全角数字を半角に変換する関数を追加 ★★★
+            function toHalfWidth(str) {
+                return str.replace(/[０-９]/g, function(s) {
+                    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                });
+            }
+
+            searchInput.addEventListener('input', function() {
+                // ★★★ ここで変換関数を呼び出す ★★★
+                const query = toHalfWidth(searchInput.value);
+                const filteredYears = allYears.filter(year => {
+                    return String(year).includes(query);
+                });
+                renderList(filteredYears);
+            });
+
+            listContainer.addEventListener('click', function(event) {
+                const container = event.target.closest('.exam-year-item-container');
+                if (!container) return;
+
+                document.querySelectorAll('.exam-year-item-container.active').forEach(item => {
+                    item.classList.remove('active');
+                });
+                container.classList.add('active');
+
+                if (event.target.classList.contains('file-link') || event.target.classList.contains('solution-pdf-link')) {
+                    event.preventDefault();
+                    const pdfUrl = event.target.href;
+                    pdfPlaceholder.style.display = 'none';
+                    pdfViewer.style.display = 'block';
+                    pdfViewer.src = pdfUrl;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

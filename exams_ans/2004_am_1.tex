@@ -1,0 +1,57 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\begin{document}
+\begin{ascolorbox17}{2004年AM問1} 
+ $n$は2以上の整数とし，$A\in M_n(\C)$とする．いま，次の条件$(\ast)$を満たす$A$を決定することを考える：
+            \begin{equation}
+          \forall X,Y\in M_n(\C)~に対し，~XY=A\Rightarrow YX=A~\tag{$\ast$}
+        \end{equation}
+    以下，$n$次単位行列を$E_n$と表す．
+    \begin{itemize}
+        \item [(1)]任意の$a\in\C\backslash\{0\}$に対し，$A=aE_n$は条件$(\ast)$を満たすことを示せ．
+        \item [(2)]$M\in M_n(\C)$とする．$MX=XM$が任意の$GL_n(\C)$に対して成立するなら，ある$z\in\C$があり$M=zE_n$となることを示せ．
+        \item [(3)]条件$(\ast)$を満たす行列$A$は$(1)$の形に限ることを示せ．
+    \end{itemize}
+  \end{ascolorbox17}
+\noindent (2)：眺めていてもよくわからないので，適当に成分表示してみるとよい．\\
+(3)：(2)を使えるように，任意の正則行列$X$に対して$AX=XA$を示す．
+\ans
+\begin{itemize}
+    \item [(1)]$XY=aE_n$と仮定すると，$\dfrac{X}{a}Y=E_n$である．よって，$Y=\left(\dfrac{X}{a}\right)^{-1}$であるから，$YX=aE_n$を得る．\\[3pt]
+\item[(2)]$M=(a_{ij}),X=(x_{ij})$とおく．$MX=XM$を行列の成分で表すと$\sum_{k=1}^na_{ik}x_{kj}=\sum_{k=1}^nx_{ik}a_{kj}$であるから，左辺にすべて寄せて次の等式を得る．
+\begin{equation}\label{2004}
+    a_{i1}x_{1j}+a_{i2}x_{2j}+\cdots+a_{in}x_{nj}-a_{1j}x_{i1}-a_{2j}x_{i2}\cdots-a_{nj}x_{in}=0 \tag{$\dag$}
+\end{equation}
+以下，等式\eqref{2004}を用いて$M$の各成分を決定する．\\
+　まず，$i=j$の場合を考えると，\eqref{2004}は次のように整理できる：
+\begin{equation}\label{2004-1}
+    (a_{i1}x_{1i}-a_{1i}x_{i1})+(a_{i2}x_{2i}-a_{2i}x_{i2})+\cdots+(a_{in}x_{ni}-a_{ni}x_{in})=0 \tag{$\dag\dag$}
+\end{equation}$k\neq i$を1つ固定し，$X$を$E_n$の$i$行目と$k$行目を入れ替えた行列とすると，\eqref{2004-1}から$a_{ik}=a_{ki}$がわかる．次に，$E_n$の$i$行目と$k$行目を入れ替えた行列において$x_{ik}=-1$に置き換えたものを$X$とすると，\eqref{2004-1}から$a_{ik}+a_{ki}=0$がわかる．これら2つの式から$a_{ik}=a_{ki}=0$を得るので，$i=1,2,\ldots,n$と$k\neq i$を動かすことにより$M$の対角成分以外はすべて$0$であることがわかる．\\[3pt]
+次に，対角成分を決定する．$M$の対角成分以外は0になっているので，\eqref{2004}において$i=1$として\[a_{11}x_{1j}-a_{1j}x_{1j}=(a_{11}-a_{jj})x_{1j}=0\]
+を得る．$X$は正則行列なので，適当に行基本変形をして$x_{1j}\neq0$なるものを取ってこれる．よって，$a_{11}=a_{jj}~;~j=2,\ldots,n$である．以上より，$A=a_{11}E_n$である．\\[3pt]
+\item[(3)]任意の正則行列$X$に対して$(AX)X^{-1}=A$であるので，$A$が条件($\ast$)を満たすことから$X^{-1}(AX)=A$，つまり$AX=XA$である．よって，$(2)$の結果より$A=aE_n~;~a\in\C$と表せる．あとは$a\neq0$を示せばよいが，$X,Y$を
+\[
+X=
+\begin{pmatrix}
+    1 & -1&0 &\cdots&0\\
+    0 & 0&0 &\cdots&0\\
+    0&0&0 &\cdots&0\\
+    \vdots&\vdots&\vdots &\ddots&0\\
+    0&0&0 &\cdots&0\\
+    \end{pmatrix} ,~Y=
+\begin{pmatrix}
+1 & 0&0 &\cdots&0\\
+1 & 0&0 &\cdots&0\\
+0&0&0 &\cdots&0\\
+\vdots&\vdots&\vdots &\ddots&0\\
+0&0&0 &\cdots&0\\
+\end{pmatrix} 
+\]
+で定めると$XY=O$だが$YX\neq O$なので$a=0$のときは条件$(\ast)$を満たさない．\\
+　結局，条件($\ast$)を満たすならば$A=aE_n~;~a\in\C\backslash\{0\}$である．(1)と合わせて，条件$(\ast)$を満たす$A$はこの形に限ることがわかった．
+\end{itemize}
+\end{document}
+

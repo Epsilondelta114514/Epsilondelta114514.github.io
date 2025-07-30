@@ -1,0 +1,412 @@
+\documentclass[a4paper,12pt]{ltjsreport}
+\usepackage{base}
+\setchemfig{atom sep=2em}
+\title{}
+\author{}
+\date{}
+\begin{document}
+\chapter{脂肪族化合物}
+\section{アルコールとエーテル}
+アルコールは炭化水素の水素をヒドロキシ基(\ce{-OH})で置換した化合物である．エーテルは分子内にエーテル結合(\ce{-O-})をもつ化合物でアルコールとは構造異性体の関係にある．\\
+　アルコールは脂肪族化合物では基本的な化合物であり，ここから様々な有機化合物を作ることができる．例えば，アルコールを酸化することにより，順にアルデヒドorケトン，カルボン酸が，カルボン酸とアルコールの脱水によってエステルが得られる．
+
+\subsection{アルコール}
+炭化水素の水素原子をヒドロキシ基(\ce{-OH})で置換した化合物を，\textbf{アルコール}という．\\
+\noindent 
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{CH3-CH2-OH}
+\caption{エタノール}
+\end{figure}
+
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{*6(-=-(-OH)=-=)}
+\caption{フェノール}
+\end{figure}
+
+\end{minipage}
+アルコールは，ヒドロキシ基がつく炭素に結合する水素の数で3つに分類される．アルコールの級数によって酸化反応が異なるので，この分類は頭に入れておく必要がある．
+\begin{table}[H]
+    \centering
+  \begin{tabular}{|c|c|c|}
+   \hline
+    分類名&構造&例\\
+    \hline
+    第1級アルコール&\chemfig{R-CH2-OH}&\ce{CH3-OH}：メタノール\\
+    &&\chemfig{*6(-=-(-CH2-OH)=-=)}：ベンジルアルコール\\
+     &&\\
+    \hline
+    &&\\
+    第2級アルコール&\chemfig{R-CH(-[6]OH)-R'}&\chemfig{CH3-CH(-[6]OH)-CH3}：2-プロパノール\\
+    &&\\
+       \hline
+       &&\\
+    第3級アルコール&\chemfig{R-C(-[2]R')(-[6]OH)-R''}&\chemfig{CH3-C(-[2]CH3)(-[6]OH)-CH3}：2-メチル-2-プロパノール\\
+    &&\\
+       \hline
+
+    \end{tabular}
+\end{table}
+\subsubsection*{アルコールの性質}
+\begin{itemize}
+    \item\textbf{ 炭素数が少ないもの(低級アルコール)は水によく溶ける．}\\
+    特に，メタノールとエタノールの溶解度は$\infty$である．一方で，炭素数が多い高級アルコールは水に溶けにくい．これは，ヒドロキシ基が水に溶けやすいが，炭化水素基は水に溶けにくいことが原因である．「ヒドロキシ基1個に対して炭素2,3個までならよく溶けるが，炭素が多い場合には溶かしきれない」というイメージ．
+    \item\textbf{単体のナトリウムと反応する．}\\
+    アルコールは次の反応で単体ナトリウムの反応し，ナトリウムアルコキシドを生ずる．
+    {\centerline{\ce{2R-OH + 2Na -> 2R-ONa + H2}}}
+    ナトリウムアルコキシドの命名規則はやや面倒なので，次の2つだけを覚えておけばOK．\\\noindent
+    \begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{CH3-Na}
+\caption{ナトリウムメトキシド}
+\end{figure}
+
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{CH3-CH2-Na}
+\caption{ナトリウムエトキシド}
+\end{figure}
+
+\end{minipage}
+\item \textbf{脱水反応}\\
+濃硫酸と加熱することで脱水反応が起こる．温度によって脱水の位置が変わるので注意．
+\begin{itemize}
+    \item 高温(160C$^\circ$〜170C$^\circ$)：分子内脱水でアルケンを生ずる．\\[5pt]
+    \centerline{
+    \chemfig{R-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]OH)-R'}~~~$\longrightarrow$~~~ \chemfig{C(-[::240]R)(-[::120]H)=C(-[::60]H)(-[::-60]R')}~~~+~~~\ce{H2O}}\\
+    \item  低温(120C$^\circ$〜120C$^\circ$)：分子間脱水でエーテルを生ずる．\\
+    \centerline{
+    \chemfig{R-OH}~~~+~~~\chemfig{HO-R'}~~~$\longrightarrow$~~~ \chemfig{R-O-R'}~~~+~~~\ce{H2O}}
+\end{itemize}
+\end{itemize}
+\newpage
+
+\subsection*{練習問題}
+\begin{que}
+次のアルコールの名称を答えよ．また，級数でアルコールを分類せよ．\\[5pt]
+\begin{minipage}{0.5\linewidth}
+    \begin{itemize}
+        \item [(1)]\chemfig{CH3-CH2-CH2-CH2-OH}\\
+        \item [(3)]\chemfig{CH3-CH(-[6]OH)-CH3}\\[5pt]
+        \item [(5)]\chemfig{CH3-C(-[2]CH3)(-[6]OH)-CH3}
+    \end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]\chemfig{CH3-CH2-OH}\\
+    \item [(4)]\chemfig{CH3-CH(-[6]OH)-CH(-[6]OH)-CH3}\\[5pt]
+    \item [(6)]\chemfig{CH3-C(-[2]H)(-[6]OH)-C(-[2]CH3)(-[6]H)-CH2-OH}
+\end{itemize}
+\end{minipage}
+\end{que}
+\ans
+\begin{itemize}
+    \item [(1)]　\\
+    \item [(2)]　\\
+     \item [(3)]　\\
+      \item [(4)]　\\
+       \item [(5)]　\\
+        \item [(6)]　\\
+\end{itemize}
+    第1級アルコール：　\\[7pt]
+
+   \noindent  第2級アルコール：　\\[7pt]
+
+    \noindent 第3級アルコール：\newpage
+    \begin{que}
+        この問題では，\ce{H}$=$1.0，\ce{C}$=$12，\ce{O}$=$16，\ce{Na}$=$23とする．
+    \begin{itemize}
+        \item [(1)]エタノールと単体ナトリウムの反応を化学反応式で示せ．また，ナトリウムを含む生成物の名称を答えよ．
+    \end{itemize}
+            あるアルコール\ce{C}$_{x}$\ce{H}$_{y}$\ce{OH}1.5gを十分な量のナトリウムと反応させたところ，標準状態で280mLの気体が発生した．
+            \begin{itemize}
+                \item [(2)]$x,y$を決定せよ．
+                \item [(3)]アルコールの構造の候補をすべて構造式で記せ．
+            \end{itemize}
+    \end{que}
+    \ans
+    \begin{itemize}
+        \item [(1)]反応式：\\[15pt]
+        　名称：\\[10pt]
+        \item[(2)]計算：\\[70pt]$　　　　　　　　　　　　　　　　　　　　　　　　\underline{x=~~~~~~~~~~~~~~~y=~~~~~~~~~~~~}$\\[10pt]
+        \item[(3)] 
+    \end{itemize}
+    \newpage
+    \begin{que}
+      2-ペンタノールを濃硫酸で160C$^\circ$まで加熱し，脱水させた．
+      \begin{itemize}
+        \item [(1)]2-ペンタノールの構造式を示せ．
+        \item [(2)]この脱水反応の反応式を示し，生成した炭化水素の構造式と名称を答えよ．
+      \end{itemize}
+    \end{que}
+    \ans
+    \begin{itemize}
+        \item [(1)]　\\[70pt]
+        \item [(2)]反応式：\\[30pt]
+        　名称：\\[30pt]
+        構造式：
+    \end{itemize}
+            \newpage
+        \subsection{エーテル}
+        エーテル結合\ce{-O-}を持つ化合物をエーテルという．アルコールとは構造異性体の関係にある．例えば，エタノールとジメチルエーテルはともに分子式\ce{C2H6O}であり，構造異性体である．\\\noindent 
+        \begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-OH}
+\caption{エタノール}
+\end{figure}
+
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{H-C(-[2]H)(-[6]H)-O-C(-[2]H)(-[6]H)-H}
+\caption{ジメチルエーテル}
+
+\end{figure}
+
+\end{minipage}
+\subsubsection*{命名法}
+エーテル\ce{R1-O-R2}は，「(炭化水素基R$_1$)$+$(炭化水素基R$_2$)$+$エーテル」と命名される．ただし，炭化水素基の順番はアルファベット順とし，２つの炭化水素基が同一の場合は「ジ$+$(炭化水素基R$_1$)$+$エーテル」とする．例を見たほうが早い．
+\begin{table}[H]
+    \centering
+  \begin{tabular}{|c|c|c|}
+   \hline
+    構造と名称&R$_1$&R$_2$\\
+\hline    \chemfig{CH3-CH2-O-CH3}
+    &\ce{CH3CH2 -}
+    &\ce{CH3 -}\\
+    エチルメチルエーテル &エチル(ethyl)基&メチル(methyl)基\\
+    \hline
+    　&　&　\\
+\chemfig{CH3-CH2-CH2-O-(*6(-=-=-=))}
+    &\ce{CH3CH2CH2 -}
+    &\chemfig{[:-30]*6(-=-(-)=-=)}\\
+    フェニルプロピルエーテル &プロピル(propyl)基&フェニル (phenyl )基\\
+    \hline
+    \chemfig{CH3-CH2-O-CH2-CH3}
+    &\ce{CH3CH2 -}
+    &\ce{CH3CH2 -}\\
+ジエチルエーテル &エチル(ethyl)基&エチル(ethyl)基\\
+    \hline
+    \end{tabular}
+\end{table}
+\subsubsection*{エーテルの性質}
+特筆すべき点はないので，アルコールとの違いを抑えておけば十分．
+\begin{itemize}
+    \item \textbf{水に溶けにくい}\\
+    アルコールと異なり，親水性のヒドロキシ基がないので，炭素数が少ないものでも水に溶けにくい．
+    \item \textbf{単体ナトリウムの反応しない}\\
+    こちらもアルコールと異なる点であり，識別の際によく使われる．
+        \item \textbf{揮発性がある}\\
+    使うかは知らんが一応知っておいたほうがいい．
+\end{itemize}
+\newpage
+        \begin{que}
+        \begin{itemize}
+            \item [(1)]次のエーテルの名称を答えよ．\\
+            
+            \noindent(a)~\chemfig{([:-30]*6(-=-(-O-(*6(-=-=-=)))=-=))}~~~~~~~(b)~\chemfig{H-C(-[2]H)(-[6]H)-O-C(-[2]H)(-[6]H)-H}\\[5pt]
+            (c)~\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-O-C(-[2]H)(-[6]H)-H}\\
+            \item [(2)]次の化合物の構造式を描け．\\
+            (a)~エチルブチルエーテル~~~~~~~~~~(b)~ジプロピルエーテル~~\\
+            (c)~エチルヘキシルエーテル
+        \end{itemize}
+        \end{que}
+        \ans
+        \begin{itemize}
+            \item [(1)](a)~　　　　　　　~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~(b)~~~~~~~~~~~~~~~~~\\[15pt]
+            (c)\\[10pt]
+            \item[(2)](a)\\[70pt]
+            (b)\\[70pt]
+
+            (c)
+        \end{itemize}
+        \newpage
+        \begin{que}
+        アルコール\ce{C}$_{x}$\ce{H}$_{2x+1}$\ce{OH}を54.76g用意し，濃硫酸で130C$^\circ$程度に加熱して脱水させたところ，$6.66$gの水が生じた．
+      \begin{itemize}
+        \item [(1)]この脱水反応の反応式を示せ．
+        \item [(2)]$x$を求めよ．
+        \item [(3)]\ce{C}$_{x}$\ce{H}$_{2x+1}$および生成した有機化合物の名称を答えよ．
+      \end{itemize}
+        \end{que}
+        \ans
+        \begin{itemize}
+            \item [(1)]　\\[15pt]
+            \item [(2)]計算：\\[100pt]
+            \rightline{\underline{$x=$　　　　　　　　}}\\
+            \item [(3)]　\ce{C}$_{x}$\ce{H}$_{2x+1}$　の　名　称：\\[35pt]
+        生成した有機化合物の名称：
+        \end{itemize}
+        \newpage
+        \section{アルデヒドとケトン，カルボン酸}
+        アルデヒドはホルミル基(\ce{-CHO})を，ケトンはケトン基(\ce{-CO-})を持つ化合物で，アルコールの酸化によって得られる．同じ炭素数であれば両者は構造異性体の関係にある．\\
+　カルボン酸はカルボキシ基(\ce{-COOH})を持つ化合物で，アルデヒドの酸化により得られる．中学以来よく出てくる酢酸はカルボン酸である．\\
+\begin{minipage}{0.25\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{-C(=[6]O)-H}
+\caption{ホルミル基}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{R1-C(=[6]O)-R2}
+\caption{ケトン基(両端は炭素数1以上)}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{-C(=[6]O)-O-H}
+\caption{カルボキシ基} 
+\end{figure}
+\end{minipage}
+\subsection{アルデヒド}
+\noindent \textbf{アルデヒドの例}\\
+名前を覚える必要があるのは次の3つ．\\
+\begin{minipage}{0.33\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{H-C(=[6]O)-H}
+\caption{ホルムアルデヒド} 
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-C(=[6]O)-H}
+\caption{アセトアルデヒド} 
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-CH2-C(=[6]O)-H}
+\caption{プロピオンアルデヒド} 
+\end{figure}
+\end{minipage}
+\noindent \textbf{アルデヒドの製法}\\
+第1級アルコールの酸化で得られる．\\[4pt]
+\centerline{\chemfig{R-C(-[2]H)(-[6]H)-OH}~~~~$\longrightarrow$~~~~\chemfig{R-C(=[6]O)-H}}
+\noindent \textbf{アルデヒドの性質}
+\begin{itemize}
+    \item\textbf{還元性}\\
+    アルデヒドの一番重要な特徴は還元性．これを利用して次の検出法が使われる．
+    \item \textbf{銀鏡反応}\\
+    アンモニア性硝酸銀水溶液にアルデヒドを加えて加熱すると，銀が還元されて析出する．試験官の側面に銀が付着して鏡みたいになるので銀鏡反応と呼ばれる．
+    \item \textbf{フェーリング反応}\\
+    フェーリング液(酒石酸カリウムナトリウム，水酸化ナトリウム，硫酸銅五水和物の混合溶液)にアルデヒドを加えて加熱すると，\ce{Cu2O}の赤色沈殿を生ずる．フェーリング液の中身は覚えないでよい．
+\end{itemize}
+\subsection{ケトン}
+\noindent \textbf{ケトンの例}\\
+命名法はエーテルと同じ．ジエチルケトンはアセトンと呼ぶので注意．\\
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-C(=[6]O)-CH3}
+\caption{アセトン} 
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-C(=[6]O)-CH2-CH3}
+\caption{エチルメチルケトン} 
+\end{figure}
+\end{minipage}
+\noindent \textbf{ケトンの製法}\\
+第2級アルコールの酸化で得られる．\\[5pt]
+\centerline{\chemfig{R1-C(-[2]H)(-[6]OH)-R2}~~~~$\longrightarrow$~~~~\chemfig{R1-C(=[6]O)-R2}}
+\noindent \textbf{ケトンの性質}
+\begin{itemize}
+    \item\textbf{還元性なし}\\
+    アルデヒドと異なり，還元性をもたない．したがって銀鏡反応とフェーリング反応は示さない．
+    \item \textbf{ヨードホルム反応}\\
+    アセチル基\ce{CH3CO -}を持つ化合物に\ce{NaOH}と\ce{I2}を加えるとヨードホルム\ce{CHI3}の黄色沈殿を生ずる．よって，任意のケトンはヨードホルム反応を示す．\\[5pt]
+    (上級)\textbf{酢酸\ce{CH3COOH}はアセチル基を持つが，ヨードホルム反応を示さない．}また，酸化によりアセチル基を生ずる\ce{CH3-CH(OH)-C -}を持つアルコールもヨードホルム反応を示す．
+    \item \textbf{補足：アセトン}\\
+    アセトンは水にいくらでも溶けるほか，無極性溶媒として需要が高い．クメン法によるフェノール製造の副産物として得られる．\\
+    →フェノールを作りながら有用な副産物を得られるクメン法は最強ぶっ壊れ．
+\end{itemize}
+\newpage
+\subsection{カルボン酸}
+\noindent \textbf{カルボン酸の例}\\
+色々出てくるので少しずつ覚えればいい．\\
+\begin{minipage}{0.33\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{H-C(=[6]O)-O-H}
+\caption{ギ酸} 
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-C(=[6]O)-O-H}
+\caption{酢酸} 
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-CH2-C(=[6]O)-O-H}
+\caption{プロピオン酸} 
+\end{figure}
+\end{minipage}
+
+
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{CH3-CH2-CH2-C(=[6]O)-O-H}
+\caption{酪酸} 
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+    \centering
+   \chemfig{[:-30]*6(-=-(-C(=[6]O)-O-H)=-=)}
+\caption{安息香酸} 
+\end{figure}
+\end{minipage}
+\noindent \textbf{フマル酸とマレイン酸}\\
+トランス体とシス体で名称が変わるものがある．「\textbf{虎に踏まれて稀に死す}」と覚えよう．
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{C(-[::240]HOOC)(-[::120]H)=C(-[::60]COOH)(-[::-60]H)}
+\caption{フマル酸}
+\end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{figure}[H]
+\centering
+\chemfig{C(-[::240]HOOC)(-[::120]H)=C(-[::60]H)(-[::-60]COOH)}
+\caption{マレイン酸}
+\end{figure}
+\end{minipage}
+マレイン酸は2つのカルボキシ基が近く，加熱により脱水して無水マレイン酸が生じる．
+\begin{figure}[H]
+\centering
+\chemfig{C(-[::150]H)(=[::-90]C(-[::-60]H)(-[::60]C(=[::-60]O)(-[::70])))(-[::30]C(=[::60]O)(-[::-70,1.5]O))}
+\caption{無水マレイン酸}
+\end{figure}
+\noindent \textbf{カルボン酸の製法}\\
+アルデヒドの酸化で得られる．したがって第1級アルコールから酸化で生成できる．\\[4pt]
+\centerline{\chemfig{R-C(-[2]H)(-[6]H)-OH}~~~~$\longrightarrow$~~~~\chemfig{R-C(=[6]O)-H}~~~~$\longrightarrow$~~~~\chemfig{R-C(=[6]O)-O-H}}
+\noindent\textbf{カルボン酸の性質}
+\begin{itemize}
+    \item [(1)]\textbf{弱酸性}
+\end{itemize}
+        \section{エステル}
+\end{document}

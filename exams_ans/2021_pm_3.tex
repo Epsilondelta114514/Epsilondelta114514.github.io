@@ -1,0 +1,69 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\begin{document}
+\begin{ascolorbox17}{2021年PM問3}
+体の拡大 $\Q(\sqrt[6]{2})/\Q$ の中間体をすべて求めよ．
+\end{ascolorbox17}
+\ascboxF{\textbf{方針}}
+体 $K = \Q(\sqrt[6]{2})$ は $\Q$ 上のガロア拡大ではない，なぜなら，$\alpha = \sqrt[6]{2}$ の最小多項式 $x^6-2$ は，$K$ に含まれない虚数根を持つため，正規拡大ではないからである．
+
+そこで，$\alpha$ の最小分解体（ガロア閉包）$L = \Q(\sqrt[6]{2}, \zeta_6)$に埋め込んで$G = \text{Gal}(L/\Q)$ に対するガロア対応を利用する方針を取る．
+
+$\Q(\sqrt[6]{2})$ の中間体 $F$ ($\Q \subseteq F \subseteq \Q(\sqrt[6]{2})$) は，$L$ の中間体でもある．ガロア理論の基本定理より，体の包含関係は群の包含関係に逆転して対応する．
+\[
+F \subseteq \Q(\sqrt[6]{2}) \quad \Longleftrightarrow \quad \text{Gal}(L/F) \supseteq \text{Gal}(L/\Q(\sqrt[6]{2}))
+\]
+したがって，$\text{Gal}(L/\Q(\sqrt[6]{2}))$ を部分群として含むような $\text{Gal}(L/\Q)$ の部分群をすべて求め，それらに対応する固定体を決定することが目標となる．\\[5pt]
+\ans
+\begin{itemize}
+\item[(1)]ガロア群 $\mathrm{Gal}(L/\Q)$ の構造\\
+$L = \Q(\sqrt[6]{2}, \zeta_6)$ とする．
+体の拡大次数を計算すると，
+\[
+[L:\Q] = [L:\Q(\zeta_6)][\Q(\zeta_6):Q] = 6 \cdot 2 = 12
+\]
+となるので，$|G|=12$ である．
+
+$G$ の自己同型写像は生成元の行き先で決まるから，
+\begin{align*}
+\sigma &: \sqrt[6]{2} \mapsto \zeta_6 \sqrt[6]{2}, \quad \zeta_6 \mapsto \zeta_6 \\
+\tau &: \sqrt[6]{2} \mapsto \sqrt[6]{2}, \quad \zeta_6 \mapsto \zeta_6^{-1} \quad (\text{複素共役})
+\end{align*}
+を考える．これらの生成元は $\sigma^6 = \tau^2 = \text{id}$, $\tau\sigma = \sigma^{-1}\tau$ の関係を満たすから，$\langle \tau,\sigma\rangle$は位数12の二面体群 $D_6$ である．よって $\mathrm{Gal}(L/\Q) \cong D_6$．
+\item[(2)]$H = \mathrm{Gal}(L/\Q(\sqrt[6]{2}))$ の特定\\
+$\Q(\sqrt[6]{2})$ を固定する部分群は，$H = \{\text{id}, \tau\}$ である．
+\item[(3)]$H$ を含む部分群のリストアップ\\
+$\mathrm{Gal}(L/\Q) \cong D_6$ の部分群 $S$ で，$H$ を含むものを探す．$|S|$ は12の約数かつ2の倍数なので，候補は位数 2, 4, 6, 12．
+\begin{itemize}
+    \item 位数 2: $S_1 = H = \{\text{id}, \tau\}$
+    \item 位数 4: $S_2 = \langle \sigma^3, \tau \rangle = \{\text{id}, \sigma^3, \tau, \sigma^3\tau\}$
+    \item 位数 6: $S_3 = \langle \sigma^2, \tau \rangle = \{\text{id}, \sigma^2, \sigma^4, \tau, \sigma^2\tau, \sigma^4\tau\}$
+    \item 位数 12: $S_4 = G$
+\end{itemize}
+$H$ を含む部分群は以上の4つのみである．
+\item[(4)]対応する固定体\\
+\item[] ガロア対応により，これら4つの部分群が求める中間体のすべてに対応する．
+\begin{description}
+    \item[$S_1=H$] 固定体は $L^H = \Q(\sqrt[6]{2})$．次数は $12/2=6$．
+    \item[$S_4=G$] 固定体は $L^G = \Q$．次数は $12/12=1$．
+    \item[$S_2=\langle \sigma^3, \tau \rangle$] 対応する固定体の次数は $12/4=3$．
+    この体の元は $\tau$ と $\sigma^3$ の両方で固定される．
+    $x = (\sqrt[6]{2})^2 = \sqrt[3]{2}$ を考えると，
+    $\tau(x) = x$ (実数なので)．
+    $\sigma^3(x) = \sigma^3((\sqrt[6]{2})^2) = (\sigma^3(\sqrt[6]{2}))^2 = (-\sqrt[6]{2})^2 = \sqrt[3]{2}$．
+    よって $\Q(\sqrt[3]{2})$ はこの固定体に含まれる．次数が一致するため，固定体は $\Q(\sqrt[3]{2})$．
+
+    \item[$S_3=\langle \sigma^2, \tau \rangle$] 対応する固定体の次数は $12/6=2$．
+    この体の元は $\tau$ と $\sigma^2$ の両方で固定される．
+    $y = (\sqrt[6]{2})^3 = \sqrt{2}$ を考えると，
+    $\tau(y) = y$ (実数なので)．
+    $\sigma^2(y) = \sigma^2((\sqrt[6]{2})^3) = (\sigma^2(\sqrt[6]{2}))^3 = (\zeta_6^2 \sqrt[6]{2})^3 = \zeta_6^6 (\sqrt[6]{2})^3 = \sqrt{2}$．
+    よって $\Q(\sqrt{2})$ はこの固定体に含まれる．次数が一致するため，固定体は $\Q(\sqrt{2})$．
+\end{description}
+\end{itemize}
+以上より，$\Q(\sqrt[6]{2})$ の中間体は，$\Q, \Q(\sqrt{2}), \Q(\sqrt[3]{2}), \Q(\sqrt[6]{2})$ の4つである\footnote{固定体を求めるのは面倒なので，個数がわかったら後は具体的に構成してしまってもOK.}．
+
+\end{document}

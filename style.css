@@ -1,0 +1,447 @@
+/* =================================== */
+/* 1. 全ページ共通の基本スタイル       */
+/* =================================== */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav {
+    background: #444;
+    color: #fff;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* 院試問題ページ以外で使用 */
+main.content-main {
+    padding: 20px;
+    margin: 15px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+footer, .site-footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    margin-top: 20px;
+}
+
+
+/* =================================== */
+/* 2. 院試問題ページの2カラムレイアウト  */
+/* =================================== */
+.page-container {
+    display: flex;
+    height: calc(100vh - 120px); /* header/navの高さを仮に120pxとして計算 */
+}
+
+.left-column {
+    flex: 0 0 400px;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fdfdfd;
+    border-right: 1px solid #ddd;
+}
+.left-column h2, .left-column p {
+    margin-top: 0;
+}
+
+.right-column {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e9e9e9;
+}
+
+#pdf-placeholder {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+#pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: none;
+}
+
+/* 院試問題ページ用のmainタグのリセット */
+main:not(.content-main) {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* =================================== */
+/* 3. コンポーネント（部品）のスタイル  */
+/* =================================== */
+
+/* --- 共通の検索ボックス --- */
+.search-input-style {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* --- 家庭教師ページ：サブメニューボタン --- */
+.submenu-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1.2rem;
+}
+
+.submenu-button:hover {
+    background-color: #007BFF;
+}
+
+/* --- 家庭教師ページ：教材リスト --- */
+#latest-upload {
+    background-color: #eef7ff;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.resource-item {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* --- TeXページ：タブ --- */
+.tab-container {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.1rem;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-button.active, .tab-button:hover {
+    color: #007BFF;
+    border-bottom: 3px solid #007BFF;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- TeXページ：コードスニペット --- */
+.code-snippet, .chem-snippet {
+    margin-bottom: 30px;
+}
+
+.code-block-wrapper {
+    position: relative;
+}
+
+.code-block-wrapper pre {
+    background-color: #2d2d2d;
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.copy-button:hover {
+    opacity: 1;
+}
+
+/* --- TeXページ：化学スニペット（左右分割） --- */
+.chem-snippet {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.chem-info {
+    flex: 0 0 30%;
+}
+
+.chem-code {
+    flex: 1;
+}
+
+
+/* --- 院試問題ページ：年度リスト --- */
+.exam-year-item-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.exam-year-item-container.active {
+    border-color: #007BFF;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.exam-year-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.exam-year-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.exam-button.file-link {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: #28a745;
+    transition: background-color 0.2s;
+}
+.exam-button.file-link:hover {
+    background-color: #218838;
+}
+
+.exam-details {
+    padding: 10px 20px 15px 20px;
+    background: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.solution-section h4 {
+    margin: 15px 0 5px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+.solution-section ul {
+    list-style-type: none;
+    padding-left: 10px;
+    margin: 0;
+}
+/* --- ここから追記 --- */
+
+/* 雑記ページの投稿コンテナ */
+.post-container {
+    margin-top: 40px;
+}
+
+/* 各投稿のエントリ */
+.post-entry {
+    background-color: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.post-header {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.post-header h3 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.post-date {
+    margin: 5px 0 0 0;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.post-content p {
+    margin: 0 0 1em 0;
+    line-height: 1.8;
+}
+
+.post-content p:last-child {
+    margin-bottom: 0;
+}
+/* --- ここから追記 --- */
+
+/* 解答状況のリストアイテム */
+.solution-section li {
+    padding: 4px 0;
+    transition: color 0.2s;
+}
+
+/* 「済」の場合のスタイル */
+.solution-section li[data-status="✅ 済"] {
+    color: #28a745; /* 緑色 */
+    font-weight: bold;
+}
+
+/* --- ここから追記 --- */
+
+/* 家庭教師テキストページのPDFリンク */
+.text-pdf-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.text-pdf-link:hover {
+    background-color: #0056b3;
+}
+
+/* --- ここから追記 --- */
+
+/* 更新情報欄のスタイル */
+.update-info {
+    padding: 15px;
+    background-color: #fffbe6;
+    border: 1px solid #ffe58f;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.update-info h4 {
+    margin: 0 0 5px 0;
+    color: #d46b08;
+}
+.update-info p {
+    margin: 0;
+}
+
+/* テキストリストのセクション見出し */
+#text-list-container h3 {
+    font-size: 1.2rem;
+    margin: 30px 0 15px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #eee;
+}
+#text-list-container h3:first-of-type {
+    margin-top: 0;
+}
+
+/* ダウンロード(DL)ボタンのスタイル調整 */
+.exam-button[download] {
+    background-color: #1890ff; /* 青色 */
+    margin-right: 5px;
+}
+.exam-button[download]:hover {
+    background-color: #096dd9;
+}
+
+/* 解答リンクのスタイル */
+.solution-pdf-link {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #999; /* 未訪問（デフォルト）の色を灰色に */
+    transition: color 0.2s;
+}
+
+/* 訪問済みの解答リンクの色を青色に */
+.solution-pdf-link:visited {
+    color: #007BFF;
+}
+
+/* マウスを乗せたときの色 */
+.solution-pdf-link:hover {
+    color: #0056b3;
+}
