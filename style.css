@@ -136,22 +136,48 @@ main:not(.content-main) {
 }
 
 /* --- 家庭教師ページ：サブメニューボタン --- */
+/* --- .submenu-button関連のスタイルを以下に置き換え --- */
+
+/* ボタンの共通スタイル */
 .submenu-button {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 15px 35px;
     margin: 10px;
-    background-color: #555;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 1.2rem;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
 }
 
 .submenu-button:hover {
-    background-color: #007BFF;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+.submenu-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 数学ボタンの色 */
+.science-button {
+    background-color: #28a745; /* 緑色 */
+}
+.science-button:hover {
+    background-color: #218838; /* 濃い緑色 */
+}
+
+/* 理科ボタンの色 */
+.math-button {
+    background-color: #007BFF; /* 青色 */
+}
+.math-button:hover {
+    background-color: #0056b3; /* 濃い青色 */
+}
 /* --- 家庭教師ページ：教材リスト --- */
 #latest-upload {
     background-color: #eef7ff;
@@ -444,4 +470,55 @@ main:not(.content-main) {
 /* マウスを乗せたときの色 */
 .solution-pdf-link:hover {
     color: #0056b3;
+}
+#question-text {
+    width: 100%;
+    height: 200px; /* 高さを200pxに指定 */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    resize: vertical; /* 縦方向のみリサイズ可能にする */
+}
+
+/* --- ここから追記 --- */
+
+/* セクションの区切り線 */
+.section-divider {
+    border: none;
+    border-top: 2px solid #eee;
+    margin: 40px 0;
+}
+
+/* 質疑応答コンテナ */
+.qa-container {
+    margin-top: 20px;
+}
+
+.qa-entry {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    overflow: hidden; /* 角丸を維持するため */
+}
+
+.qa-entry h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.question-part, .answer-part {
+    padding: 20px;
+}
+
+/* 質問部分のスタイル */
+.question-part {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 解答部分のスタイル */
+.answer-part {
+    background-color: #eef7ff; /* 薄い青色 */
 }

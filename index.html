@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Tutor Text Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>My Portfolio</h1>
+        <h1>Tutor Text Portal</h1>
     </header>
     <nav>
         <ul>
-            <li><a href="tex.html">TeX Code</a></li>
-            <li><a href="tutor.html">家庭教師テキスト</a></li>
-            <li><a href="exam_questions.html">院試問題集</a></li>
-            <li><a href="zatsuroku.html">雑記</a></li>
+            <li><a href="math.html">数学</a></li>
+            <li><a href="science.html">理科</a></li>
+            <li><a href="questions.html">質問</a></li>
         </ul>
     </nav>
     <main class="content-main">
-        <section>
-            <h2>Welcome!</h2>
-            <p>このサイトは、私のポートフォリオです。メニューから各コンテンツをご覧ください。</p>
+        <section style="text-align: center;">
+            <h2>ようこそ</h2>
+            <p>家庭教師用のテキスト配布サイトです．下のボタンから各教科のページへお進みください．</p>
+            <div class="submenu">
+                <a href="math.html" class="submenu-button math-button">数学テキスト</a>
+                <a href="science.html" class="submenu-button science-button">理科テキスト</a>
+            </div>
         </section>
-    </main>
+
+        <hr class="section-divider">
+        <section>
+            <h2>更新情報</h2>
+            <div class="update-info">
+                <p><b>2025/07/31:</b> サイトデザインを更新し，トップページに更新情報欄を追加．</p>
+                <p><b>2025/07/29:</b> 化学・数学テキストのページフォーマットを更新．</p>
+            </div>
+        </section>
+        </main>
     <footer class="site-footer">
-        <p>&copy; 2025 Your Name</p>
+        <p>&copy; 2025 Seigo Sasaki</p>
     </footer>
 </body>
 </html>
