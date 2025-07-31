@@ -533,3 +533,38 @@ main:not(.content-main) {
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+/* --- ここから追記 --- */
+
+/* =================================== */
+/* 4. スマホ用レスポンシブスタイル     */
+/* (画面幅が768px以下の時に適用)       */
+/* =================================== */
+@media (max-width: 768px) {
+
+    /* 2カラムレイアウトを解除 */
+    .page-container {
+        display: block; /* 横並びをやめる */
+        height: auto;
+    }
+
+    /* 右カラム（PDFビューア）を非表示に */
+    .right-column {
+        display: none;
+    }
+
+    /* 左カラムを画面幅いっぱいに広げる */
+    .left-column {
+        width: 100%;
+        flex: none; /* flexの指定を解除 */
+        border-right: none;
+        padding: 10px; /* 余白を少し調整 */
+    }
+
+    /* トップページのボタンを調整 */
+    .submenu-button {
+        display: block;
+        width: 90%;
+        margin: 15px auto;
+    }
+}
