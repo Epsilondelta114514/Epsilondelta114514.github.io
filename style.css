@@ -81,8 +81,9 @@ footer, .site-footer {
 /* 2. 院試問題ページの2カラムレイアウト  */
 /* =================================== */
 .page-container {
+    display: -webkit-flex; /* Safari用の記述を追加 */
     display: flex;
-    height: calc(100vh - 120px); /* header/navの高さを仮に120pxとして計算 */
+    height: calc(100vh - 120px);
 }
 
 .left-column {
@@ -98,6 +99,7 @@ footer, .site-footer {
 
 .right-column {
     flex: 1;
+    min-width: 0; /* Safariの表示崩れを防ぐ記述を追加 */
     padding: 0;
     display: flex;
     justify-content: center;
