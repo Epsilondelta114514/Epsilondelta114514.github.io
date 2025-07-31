@@ -102,35 +102,43 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const listContainer = document.getElementById('text-list-container');
-            const pdfViewer = document.getElementById('pdf-viewer');
-            const pdfPlaceholder = document.getElementById('pdf-placeholder');
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const listContainer = document.getElementById('text-list-container');
+        const pdfViewer = document.getElementById('pdf-viewer');
+        const pdfPlaceholder = document.getElementById('pdf-placeholder');
 
-            listContainer.addEventListener('click', function(event) {
-                if (event.target.classList.contains('file-link')) {
-                    if (event.target.hasAttribute('download')) {
-                        return;
-                    }
-                    
-                    event.preventDefault();
+        listContainer.addEventListener('click', function(event) {
+            // 「表示」ボタン(file-linkクラスを持つ要素)がクリックされたかチェック
+            if (event.target.classList.contains('file-link')) {
+
+                // ★★★ ここからが変更部分 ★★★
+                // 画面幅が768pxより大きい（PC）場合のみ、プレビュー機能を動かす
+                if (window.innerWidth > 768) {
+                    event.preventDefault(); // リンクの通常動作をキャンセル
                     
                     const clickedItem = event.target.closest('.exam-year-item-container');
                     if (!clickedItem) return;
 
+                    // すべての項目のアクティブ状態を解除
                     document.querySelectorAll('.exam-year-item-container.active').forEach(item => {
                         item.classList.remove('active');
                     });
+                    // クリックされた項目をアクティブにする
                     clickedItem.classList.add('active');
 
+                    // PDFを表示
                     const pdfUrl = event.target.href;
                     pdfPlaceholder.style.display = 'none';
                     pdfViewer.style.display = 'block';
                     pdfViewer.src = pdfUrl;
                 }
-            });
+                // ★★★ 変更部分ここまで ★★★
+                // スマホの場合は event.preventDefault() が実行されないため、
+                // リンクは通常の動作（新しいタブでPDFを開く）をします。
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
