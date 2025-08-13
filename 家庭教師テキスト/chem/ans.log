@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2024.2.24)  9 AUG 2025 09:50
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2024.2.24)  13 AUG 2025 20:51
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem/ans
@@ -1396,22 +1396,22 @@ Overfull \hbox (13.76051pt too wide) in paragraph at lines 185--208
 [][]$[]$[] []$[]$[] 
  []
 
-[9] [10] [11] [12] [13] [14] [15] [16] (./ans.aux))
+[9] [10] [11] [12] [13] [14] [15] [16] [17] (./ans.aux))
 
 Here is how much of LuaTeX's memory you used:
- 38320 strings out of 478285
- 382285,2373549 words of node,token memory allocated
+ 38325 strings out of 478285
+ 382280,2373549 words of node,token memory allocated
  1257 words of node memory still in use:
    12 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 262 attribute, 63 glue_spec, 37 attribute_list, 2 write, 15 user_defined nodes
-   avail lists: 1:45,2:100680,3:5069,4:3378,5:654,6:72,7:7452,8:63,9:3711,10:18,11:8,12:5
- 57034 multiletter control sequences out of 65536+600000
+   avail lists: 1:45,2:100680,3:5069,4:3378,5:664,6:72,7:7464,8:63,9:3711,10:18,11:8,12:5
+ 57038 multiletter control sequences out of 65536+600000
  60 fonts using 63645079 bytes
  130i,18n,124p,1847b,1545s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on ans.pdf (16 pages, 199243 bytes).
+Output written on ans.pdf (17 pages, 205389 bytes).
 
-PDF statistics: 157 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 131072)
+PDF statistics: 161 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
