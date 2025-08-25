@@ -5,29 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小ボス練習用</title>
     <style>
-        /* CSSに変更はありません */
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; color: #333; text-align: center; }
-        #game-wrapper { background-color: white; padding: 20px 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 400px; min-height: 620px; display: flex; flex-direction: column; justify-content: space-between; }
-        #game-header { min-height: 50px; }
+        * {
+            box-sizing: border-box;
+        }
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            margin: 0; 
+            background-color: #f0f2f5; 
+            color: #333; 
+            text-align: center;
+            padding: 10px;
+        }
+        
+        #game-wrapper { 
+            background-color: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+            width: 100%;
+            max-width: 420px;
+            min-height: 620px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+
+        #game-header { 
+            min-height: 50px; 
+            position: relative;
+        }
         #progress-indicator { font-size: 1.2rem; font-weight: bold; color: #555; }
-        #mode-selector { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+        
+        #mute-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #mute-btn.muted {
+            background-color: #ffc107;
+        }
+
+        /* ▼▼▼【ここが変更点】▼▼▼ */
+        #mode-selector { 
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+            margin-top: 10px;
+            padding: 15px 0; /* 上下に15pxの余白を追加 */
+        }
+        /* ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ */
+
         .mode-btn { padding: 8px 12px; font-size: 0.9rem; border: 2px solid #ddd; background-color: #f8f9fa; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
         .mode-btn:hover { background-color: #e9ecef; }
         .mode-btn.active { background-color: #007bff; color: white; border-color: #0056b3; font-weight: bold; }
         .mode-btn:disabled { background-color: #e9ecef; cursor: not-allowed; opacity: 0.7; }
+        
         #display-area { font-weight: bold; height: 70px; display: flex; justify-content: center; align-items: center; transition: all 0.2s ease; }
-        #display-area.instruction-text { font-size: 2.2rem; color: #007bff; }
+        #display-area.instruction-text { font-size: 2.2rem; color: #007bff; line-height: 1; }
         #display-area.countdown-text { font-size: 5rem; color: #333; }
         #display-area.result-text { font-size: 2.5rem; color: #dc3545; }
-        #button-container { display: grid; grid-template-columns: 100px 100px 100px; grid-template-rows: 100px 100px 100px; gap: 10px; width: 320px; height: 320px; margin: 20px auto; }
+        
+        #button-container { 
+            display: grid; 
+            grid-template-columns: 100px 100px 100px; 
+            grid-template-rows: 100px 100px 100px; 
+            gap: 10px; 
+            width: 320px; 
+            height: 320px; 
+            margin: 20px auto; /* 上下の余白を調整 */
+        }
         .control-button { border: 2px solid #ccc; border-radius: 8px; background-color: #fff; cursor: pointer; transition: all 0.2s ease; background-size: contain; background-repeat: no-repeat; background-position: center; }
         .control-button.selected { border-color: #007bff; box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); transform: scale(1.05); }
         #up { grid-row: 1; grid-column: 2; }
         #left { grid-row: 2; grid-column: 1; }
         #right { grid-row: 2; grid-column: 3; }
         #down { grid-row: 3; grid-column: 2; }
+        
         #timer-container { width: 100%; height: 10px; background-color: #e9ecef; border-radius: 5px; margin-top: 10px; overflow: hidden; visibility: hidden; }
         #timer-gauge { width: 100%; height: 100%; background-color: #28a745; border-radius: 5px; }
+        
         #feedback-area { min-height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         #feedback { font-size: 1.5rem; font-weight: bold; margin: 0; height: 30px; }
         .correct { color: #28a745; }
@@ -42,6 +108,7 @@
     <div id="game-wrapper">
         <div id="game-header">
             <div id="progress-indicator"></div>
+            <button id="mute-btn">サウンドON</button>
             <div id="mode-selector">
                 <button class="mode-btn active" data-mode="1">① 指示通り</button>
                 <button class="mode-btn" data-mode="2">② 2箇所</button>
@@ -66,6 +133,8 @@
     </div>
 
     <script>
+    // --- JavaScriptに変更はありません ---
+    
     // --- 要素の取得 ---
     const displayArea = document.getElementById('display-area');
     const feedbackEl = document.getElementById('feedback');
@@ -76,6 +145,7 @@
     const submitBtn = document.getElementById('submit-btn');
     const timerContainer = document.getElementById('timer-container');
     const timerGauge = document.getElementById('timer-gauge');
+    const muteBtn = document.getElementById('mute-btn');
 
     // --- ゲーム設定 ---
     const TOTAL_QUESTIONS = 5;
@@ -91,19 +161,18 @@
         ['ライト', 'ダウン'],
     ];
     
-    // ▼▼▼【変更点 1/3】▼▼▼
-    // 音声ファイルを読み込んで準備
     const seikaiSound = new Audio('seikai.mp3');
     const huseikaiSound = new Audio('huseikai.mp3');
     const daiseikouSound = new Audio('daiseikou.mp3');
     const sippaiSound = new Audio('sippai.mp3');
     
-    // サウンドを再生する関数（再生位置をリセットしてから再生）
+    let isMuted = false;
+    
     function playSound(sound) {
+        if (isMuted) return;
         sound.currentTime = 0;
         sound.play();
     }
-    // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
     // --- ゲームの状態管理 ---
     let gameState = 'waiting';
@@ -156,7 +225,7 @@
         else if (currentMode === 2) {
             const pairIndex = Math.floor(Math.random() * directionPairs.length);
             const selectedPair = directionPairs[pairIndex];
-            displayArea.textContent = `${selectedPair[0]} & ${selectedPair[1]}`;
+            displayArea.innerHTML = `${selectedPair[0]}<br>&<br>${selectedPair[1]}`;
             correctDirections.push(directionMap[selectedPair[0]]);
             correctDirections.push(directionMap[selectedPair[1]]);
         }
@@ -221,51 +290,45 @@
         showFeedback(isCorrect);
     }
     
-    // ▼▼▼【変更点 2/3】▼▼▼
     function showFeedback(isCorrect, message = null) {
         displayArea.textContent = '';
         submitBtn.classList.add('hidden');
         timerContainer.style.visibility = 'hidden';
-
         if (message) {
             feedbackEl.textContent = message;
             feedbackEl.className = 'incorrect';
-            playSound(huseikaiSound); // 時間切れは不正解音
+            playSound(huseikaiSound);
         } else if (isCorrect) {
             feedbackEl.textContent = '正解！';
             feedbackEl.className = 'correct';
-            playSound(seikaiSound); // 正解音
+            playSound(seikaiSound);
         } else {
             feedbackEl.textContent = '不正解！';
             feedbackEl.className = 'incorrect';
-            playSound(huseikaiSound); // 不正解音
+            playSound(huseikaiSound);
         }
-
         setTimeout(() => {
             if (questionCount < TOTAL_QUESTIONS) { startGameSequence(); }
             else { showResults(); }
         }, 1200);
     }
     
-    // ▼▼▼【変更点 3/3】▼▼▼
     function showResults() {
         gameState = 'waiting';
         setModeButtonsDisabled(false);
         feedbackEl.textContent = '';
-
         let resultMessage = '';
         if (score === TOTAL_QUESTIONS-1) {
             resultMessage = "いい感じ！負けたら火力の責任だね";
-            playSound(daiseikouSound); // 全問正解音
+            playSound(daiseikouSound);
         } else {
-            playSound(sippaiSound); // それ以外の結果音
+            playSound(sippaiSound);
             if (score >= 3) {
                 resultMessage = "ちゃんとやれあほ";
             } else {
                 resultMessage = "ころしますよーwww";
             }
         }
-        
         progressIndicator.textContent = resultMessage;
         displayArea.textContent = `${TOTAL_QUESTIONS}問中 ${score}問 正解！`;
         displayArea.className = 'result-text';
@@ -289,6 +352,12 @@
         });
     });
 
+    muteBtn.addEventListener('click', () => {
+        isMuted = !isMuted;
+        muteBtn.textContent = isMuted ? 'ミュート中' : 'サウンドON';
+        muteBtn.classList.toggle('muted', isMuted);
+    });
+    
     initialize();
     </script>
 </body>
