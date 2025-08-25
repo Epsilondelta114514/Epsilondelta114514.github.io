@@ -1,51 +1,295 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>小ボス練習用</title>
+    <style>
+        /* CSSに変更はありません */
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; color: #333; text-align: center; }
+        #game-wrapper { background-color: white; padding: 20px 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 400px; min-height: 620px; display: flex; flex-direction: column; justify-content: space-between; }
+        #game-header { min-height: 50px; }
+        #progress-indicator { font-size: 1.2rem; font-weight: bold; color: #555; }
+        #mode-selector { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+        .mode-btn { padding: 8px 12px; font-size: 0.9rem; border: 2px solid #ddd; background-color: #f8f9fa; border-radius: 6px; cursor: pointer; transition: all 0.2s ease; }
+        .mode-btn:hover { background-color: #e9ecef; }
+        .mode-btn.active { background-color: #007bff; color: white; border-color: #0056b3; font-weight: bold; }
+        .mode-btn:disabled { background-color: #e9ecef; cursor: not-allowed; opacity: 0.7; }
+        #display-area { font-weight: bold; height: 70px; display: flex; justify-content: center; align-items: center; transition: all 0.2s ease; }
+        #display-area.instruction-text { font-size: 2.2rem; color: #007bff; }
+        #display-area.countdown-text { font-size: 5rem; color: #333; }
+        #display-area.result-text { font-size: 2.5rem; color: #dc3545; }
+        #button-container { display: grid; grid-template-columns: 100px 100px 100px; grid-template-rows: 100px 100px 100px; gap: 10px; width: 320px; height: 320px; margin: 20px auto; }
+        .control-button { border: 2px solid #ccc; border-radius: 8px; background-color: #fff; cursor: pointer; transition: all 0.2s ease; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .control-button.selected { border-color: #007bff; box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); transform: scale(1.05); }
+        #up { grid-row: 1; grid-column: 2; }
+        #left { grid-row: 2; grid-column: 1; }
+        #right { grid-row: 2; grid-column: 3; }
+        #down { grid-row: 3; grid-column: 2; }
+        #timer-container { width: 100%; height: 10px; background-color: #e9ecef; border-radius: 5px; margin-top: 10px; overflow: hidden; visibility: hidden; }
+        #timer-gauge { width: 100%; height: 100%; background-color: #28a745; border-radius: 5px; }
+        #feedback-area { min-height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        #feedback { font-size: 1.5rem; font-weight: bold; margin: 0; height: 30px; }
+        .correct { color: #28a745; }
+        .incorrect { color: #dc3545; }
+        .action-btn { width: 80%; padding: 12px 20px; font-size: 1.2rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; transition: background-color 0.2s; }
+        #start-btn    { background-color: #28a745; color: white; }
+        #submit-btn   { background-color: #007bff; color: white; }
+        .hidden { display: none; }
+    </style>
 </head>
-
 <body>
-    <header>
-        <h1>Text Portal</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="math.html">数学</a></li>
-            <li><a href="science.html">理科</a></li>
-            <li><a href="questions.html">質問</a></li>
-        </ul>
-    </nav>
-    <main class="content-main">
-        <section style="text-align: center;">
-            <h2>ようこそ</h2>
-            <p>家庭教師用のテキスト配布サイトです．下のボタンから各教科のページへお進みください．</p>
-            <div class="submenu">
-                <a href="math.html" class="submenu-button math-button">数学テキスト</a>
-                <a href="science.html" class="submenu-button science-button">理科テキスト</a>
+    <div id="game-wrapper">
+        <div id="game-header">
+            <div id="progress-indicator"></div>
+            <div id="mode-selector">
+                <button class="mode-btn active" data-mode="1">① 指示通り</button>
+                <button class="mode-btn" data-mode="2">② 2箇所</button>
+                <button class="mode-btn" data-mode="3">③ 逆</button>
             </div>
-        </section>
+        </div>
+        <div id="display-area"></div>
+        <div id="button-container">
+            <button id="up" class="control-button"></button>
+            <button id="left" class="control-button"></button>
+            <button id="right" class="control-button"></button>
+            <button id="down" class="control-button"></button>
+        </div>
+        <div id="timer-container">
+            <div id="timer-gauge"></div>
+        </div>
+        <div id="feedback-area">
+            <p id="feedback"></p>
+            <button id="start-btn" class="action-btn">スタート</button>
+            <button id="submit-btn" class="action-btn hidden">OK</button>
+        </div>
+    </div>
 
-        <hr class="section-divider">
-        <section>
-            <h2>更新情報</h2>
-            <div class="update-info">
-                      <p><b>2025/08/13:</b> フェノール類まで追加しました．意外に量が多かったので多分ここまでになります．芳香族アミンなどは授業で．．．</p>
-                  <p><b>2025/08/12:</b> ごめんなさい，院試が意外にまずいのでとりあえずフェノールまでになります．解答は明日にでも付けます．．．</p>
-                <p><b>2025/08/09:</b> エステルまで解答付けました．</p>
-                <p><b>2025/08/08:</b> フェノール類まで追加しました．思ったよりいそがしかったので遅れました...</p>
-                <p><b>2025/08/04:</b> 脂肪族の確認テストを追加しました．これが確実に埋められれば知識はOK.</p>
-                <p><b>2025/07/31:</b> サイトデザインを更新し，トップページに更新情報欄を追加．</p>
-                <p><b>2025/07/29:</b> 化学・数学テキストのページフォーマットを更新．</p>
-            </div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <p>&copy; 2025 Seigo Sasaki</p>
-    </footer>
+    <script>
+    // --- 要素の取得 ---
+    const displayArea = document.getElementById('display-area');
+    const feedbackEl = document.getElementById('feedback');
+    const progressIndicator = document.getElementById('progress-indicator');
+    const controlButtons = document.querySelectorAll('.control-button');
+    const modeButtons = document.querySelectorAll('.mode-btn');
+    const startBtn = document.getElementById('start-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const timerContainer = document.getElementById('timer-container');
+    const timerGauge = document.getElementById('timer-gauge');
+
+    // --- ゲーム設定 ---
+    const TOTAL_QUESTIONS = 5;
+    const COUNTDOWN_SECONDS = 2;
+    const ANSWER_TIME_LIMIT = 3;
+    const directions = ['アップ', 'ダウン', 'レフト', 'ライト'];
+    const directionMap = { 'アップ': 'up', 'ダウン': 'down', 'レフト': 'left', 'ライト': 'right' };
+    const oppositeMap = { 'up': 'down', 'down': 'up', 'left': 'right', 'right': 'left' };
+    const directionPairs = [
+        ['アップ', 'ライト'], ['アップ', 'レフト'],
+        ['アップ', 'ダウン'], 
+        ['レフト', 'ライト'], ['ダウン', 'レフト'],
+        ['ライト', 'ダウン'],
+    ];
+    
+    // ▼▼▼【変更点 1/3】▼▼▼
+    // 音声ファイルを読み込んで準備
+    const seikaiSound = new Audio('seikai.mp3');
+    const huseikaiSound = new Audio('huseikai.mp3');
+    const daiseikouSound = new Audio('daiseikou.mp3');
+    const sippaiSound = new Audio('sippai.mp3');
+    
+    // サウンドを再生する関数（再生位置をリセットしてから再生）
+    function playSound(sound) {
+        sound.currentTime = 0;
+        sound.play();
+    }
+    // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+    // --- ゲームの状態管理 ---
+    let gameState = 'waiting';
+    let currentMode = 1;
+    let correctDirections = [];
+    let selectedAnswers = [];
+    let questionCount = 0;
+    let score = 0;
+    let answerTimer = null;
+
+    function initialize() {
+        controlButtons.forEach(btn => btn.style.backgroundImage = `url('material.PNG')`);
+        displayArea.textContent = 'モードを選んでスタート';
+        displayArea.className = 'instruction-text';
+    }
+
+    function startNewSet() {
+        questionCount = 0; score = 0;
+        startBtn.textContent = 'スタート';
+        startGameSequence();
+    }
+
+    function startGameSequence() {
+        questionCount++;
+        gameState = 'countdown';
+        feedbackEl.textContent = '';
+        timerContainer.style.visibility = 'hidden';
+        progressIndicator.textContent = `${questionCount} / ${TOTAL_QUESTIONS} 問目`;
+        selectedAnswers = [];
+        controlButtons.forEach(btn => btn.classList.remove('selected'));
+        setModeButtonsDisabled(true);
+        startBtn.classList.add('hidden'); submitBtn.classList.add('hidden');
+        displayArea.className = 'countdown-text';
+        let count = 3;
+        displayArea.textContent = count;
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) { displayArea.textContent = count; } 
+            else { clearInterval(countdownInterval); generateAndShowInstruction(); }
+        }, (COUNTDOWN_SECONDS * 1000) / 3);
+    }
+
+    function generateAndShowInstruction() {
+        correctDirections = [];
+        if (currentMode === 1 || currentMode === 3) {
+            const dir = directions[Math.floor(Math.random() * directions.length)];
+            displayArea.textContent = `${dir}`;
+            correctDirections.push(directionMap[dir]);
+        } 
+        else if (currentMode === 2) {
+            const pairIndex = Math.floor(Math.random() * directionPairs.length);
+            const selectedPair = directionPairs[pairIndex];
+            displayArea.textContent = `${selectedPair[0]} & ${selectedPair[1]}`;
+            correctDirections.push(directionMap[selectedPair[0]]);
+            correctDirections.push(directionMap[selectedPair[1]]);
+        }
+        displayArea.className = 'instruction-text';
+        setTimeout(() => {
+            displayArea.textContent = '入力してください';
+            gameState = 'answering';
+            submitBtn.classList.remove('hidden');
+            startAnswerTimer();
+        }, 500);
+    }
+
+    function startAnswerTimer() {
+        timerGauge.style.transition = 'none';
+        timerGauge.style.width = '100%';
+        requestAnimationFrame(() => {
+            timerGauge.style.transition = `width ${ANSWER_TIME_LIMIT}s linear`;
+            timerGauge.style.width = '0%';
+        });
+        timerContainer.style.visibility = 'visible';
+        answerTimer = setTimeout(handleTimeout, ANSWER_TIME_LIMIT * 1000);
+    }
+    
+    function handleTimeout() {
+        if (gameState !== 'answering') return;
+        gameState = 'feedback';
+        showFeedback(false, "時間切れ！");
+    }
+
+    function handleSelection(buttonId) {
+        if (gameState !== 'answering') return;
+        const buttonEl = document.getElementById(buttonId);
+        const maxSelections = (currentMode === 2) ? 2 : 1;
+        if (selectedAnswers.includes(buttonId)) {
+            selectedAnswers = selectedAnswers.filter(id => id !== buttonId);
+            buttonEl.classList.remove('selected');
+        } else {
+            if (selectedAnswers.length < maxSelections) {
+                selectedAnswers.push(buttonId);
+                buttonEl.classList.add('selected');
+            } else if (maxSelections === 1) {
+                document.getElementById(selectedAnswers[0])?.classList.remove('selected');
+                selectedAnswers = [buttonId];
+                buttonEl.classList.add('selected');
+            }
+        }
+    }
+
+    function checkAnswer() {
+        if (gameState !== 'answering') return;
+        gameState = 'feedback';
+        clearTimeout(answerTimer);
+        let isCorrect = false;
+        const sortedSelected = [...selectedAnswers].sort();
+        const sortedCorrect = [...correctDirections].sort();
+        if (sortedSelected.length === sortedCorrect.length) {
+            if (currentMode === 1) { isCorrect = (sortedSelected[0] === sortedCorrect[0]); }
+            else if (currentMode === 2) { isCorrect = (sortedSelected[0] === sortedCorrect[0] && sortedSelected[1] === sortedCorrect[1]); }
+            else if (currentMode === 3) { isCorrect = (selectedAnswers[0] === oppositeMap[correctDirections[0]]); }
+        }
+        if (isCorrect) { score++; }
+        showFeedback(isCorrect);
+    }
+    
+    // ▼▼▼【変更点 2/3】▼▼▼
+    function showFeedback(isCorrect, message = null) {
+        displayArea.textContent = '';
+        submitBtn.classList.add('hidden');
+        timerContainer.style.visibility = 'hidden';
+
+        if (message) {
+            feedbackEl.textContent = message;
+            feedbackEl.className = 'incorrect';
+            playSound(huseikaiSound); // 時間切れは不正解音
+        } else if (isCorrect) {
+            feedbackEl.textContent = '正解！';
+            feedbackEl.className = 'correct';
+            playSound(seikaiSound); // 正解音
+        } else {
+            feedbackEl.textContent = '不正解！';
+            feedbackEl.className = 'incorrect';
+            playSound(huseikaiSound); // 不正解音
+        }
+
+        setTimeout(() => {
+            if (questionCount < TOTAL_QUESTIONS) { startGameSequence(); }
+            else { showResults(); }
+        }, 1200);
+    }
+    
+    // ▼▼▼【変更点 3/3】▼▼▼
+    function showResults() {
+        gameState = 'waiting';
+        setModeButtonsDisabled(false);
+        feedbackEl.textContent = '';
+
+        let resultMessage = '';
+        if (score === TOTAL_QUESTIONS-1) {
+            resultMessage = "いい感じ！負けたら火力の責任だね";
+            playSound(daiseikouSound); // 全問正解音
+        } else {
+            playSound(sippaiSound); // それ以外の結果音
+            if (score >= 3) {
+                resultMessage = "ちゃんとやれあほ";
+            } else {
+                resultMessage = "ころしますよーwww";
+            }
+        }
+        
+        progressIndicator.textContent = resultMessage;
+        displayArea.textContent = `${TOTAL_QUESTIONS}問中 ${score}問 正解！`;
+        displayArea.className = 'result-text';
+        startBtn.textContent = 'もう一度挑戦';
+        startBtn.classList.remove('hidden');
+    }
+
+    function setModeButtonsDisabled(disabled) {
+        modeButtons.forEach(btn => btn.disabled = disabled);
+    }
+    
+    // --- イベントリスナー ---
+    startBtn.addEventListener('click', startNewSet);
+    submitBtn.addEventListener('click', checkAnswer);
+    controlButtons.forEach(button => button.addEventListener('click', () => handleSelection(button.id)));
+    modeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            modeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            currentMode = parseInt(button.dataset.mode);
+        });
+    });
+
+    initialize();
+    </script>
 </body>
-
 </html>
