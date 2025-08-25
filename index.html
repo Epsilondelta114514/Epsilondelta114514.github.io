@@ -318,7 +318,7 @@
         setModeButtonsDisabled(false);
         feedbackEl.textContent = '';
         let resultMessage = '';
-        if (score === TOTAL_QUESTIONS-1) {
+        if (score >=TOTAL_QUESTIONS-1) {
             resultMessage = "いい感じ！負けたら火力の責任だね";
             playSound(daiseikouSound);
         } else {
