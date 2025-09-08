@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>質問 - Text Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" class="header-link">Text Portal</a></h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="math.html">数学</a></li>
+            <li><a href="science.html">理科</a></li>
+            <li><a href="questions.html">質問</a></li>
+        </ul>
+    </nav>
+    <main class="content-main">
+        <section>
+            <h2>質問フォーム</h2>
+            <p>以下のフォームに質問内容を入力し，送信ボタンを押してください．解いた問題の採点を希望する場合は「採点希望」を記入し，pdfか画像を添付してください．<br>送信ボタンを押すとメーラーが起動します．宛先を変更せずに送信してください．</p>
+            
+            
+            <form id="question-form">
+                <div class="form-group">
+                    <label for="question-text">質問内容</label>
+                    <textarea id="question-text" placeholder="ここに質問を書いてください"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <p class="manual-attach-note">※画像がある場合は，メールに手動で添付してください(技術的な問題)．</p>
+                    <button type="submit" class="submit-button question-submit-button">送信</button>
+                </div>
+            </form>
+        </section>
+
+        <hr class="section-divider">
+
+        <section>
+            <h2>質問への解答</h2>
+            <div class="qa-container">
+                <article class="qa-entry">
+                    <div class="question-part">
+                        <h4>Q. Test </h4>
+                        <p>This is a test.</p>
+                    </div>
+                    <div class="answer-part">
+                        <h4>A. 解答</h4>
+                        <p>うああああああああああああああああああああ</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        </main>
+    <footer class="site-footer">
+        <p>&copy; 2025 Seigo Sasaki</p>
+    </footer>
+
+<script>
+    document.getElementById('question-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // フォームの通常の送信をキャンセル
+
+        // 現在の日時を取得してフォーマットする
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const timestamp = `${year}/${month}/${day} ${hours}:${minutes}`;
+
+        const yourEmail = "sasaki.s.tutor@gmail.com"; // ★★★ あなたのメールアドレスに変更 ★★★
+        const subject = `家庭教師の質問 (送信日時：${timestamp})`; // 件名に日時を追加
+        
+        const body = document.getElementById('question-text').value;
+
+        // mailtoリンクを組み立て
+        const mailtoLink = `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // メーラーを立ち上げ
+        window.location.href = mailtoLink;
+    });
+</script>
+</body>
+</html>
