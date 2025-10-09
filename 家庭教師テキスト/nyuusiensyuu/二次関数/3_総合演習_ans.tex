@@ -1,0 +1,217 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　2次関数③}{総合演習(解答)}
+\begin{toi}
+$f(x)=-x^2+2ax-a^2-1~(-1\leqq x\leqq 1)$の最大値を求めよ．
+\end{toi}
+\ans 
+$f(x)=-x^2+2ax-a^2-1 = -(x^2-2ax+a^2)-1 = -(x-a)^2-1$
+これは軸が $x=a$、頂点が $(a,-1)$ で上に凸の放物線である．
+定義域は $-1 \leqq x \leqq 1$ であり、軸の位置で場合分けする．
+
+(i) $\boldsymbol{a < -1}$ のとき
+定義域内で関数は単調減少する．よって、$x=-1$ で最大値をとる．
+最大値は $f(-1) = -(-1-a)^2-1 = \boldsymbol{-a^2-2a-2}$．
+
+(ii) $\boldsymbol{-1 \leqq a \leqq 1}$ のとき
+頂点が定義域内にあるため、$x=a$ で最大値をとる．
+最大値は $f(a) = \boldsymbol{-1}$．
+
+(iii) $\boldsymbol{a > 1}$ のとき
+定義域内で関数は単調増加する．よって、$x=1$ で最大値をとる．
+最大値は $f(1) = -(1-a)^2-1 = \boldsymbol{-a^2+2a-2}$．
+\begin{toi}
+$x, y$ を実数とし, $x^2 - xy + y^2 = 1$ を満たすとする．$t = x + y$ とおくとき, 次の問いに答えよ．
+\begin{enumerate}
+    \item[(1)] $xy$ を $t$ を用いて表せ．
+    \item[(2)] $t$ の値の範囲を求めよ．
+    \item[(3)] $2x + 3xy + 2y$ の最大値および最小値と, そのときの $x, y$ の値を求めよ．
+\end{enumerate}
+\hfill (22 滋賀大)
+\end{toi}
+\ans 
+(1) $t = x + y$ の両辺を2乗して $t^2 = (x+y)^2 = x^2+2xy+y^2$．
+与式 $x^2 - xy + y^2 = 1$ より $x^2+y^2=1+xy$ であるから、
+$t^2 = (1+xy)+2xy = 1+3xy$
+これを $xy$ について解くと $\boldsymbol{xy = \dfrac{t^2-1}{3}}$．
+
+(2) $x, y$ は、$u$ についての2次方程式 $u^2 - (x+y)u + xy = 0$ の実数解である．
+(1)の結果を代入すると $u^2 - tu + \dfrac{t^2-1}{3} = 0$．
+この方程式が実数解をもつ条件は、判別式 $D \geqq 0$ である．
+$D = (-t)^2 - 4\left(\dfrac{t^2-1}{3}\right) = \dfrac{3t^2 - 4t^2+4}{3} = \dfrac{4-t^2}{3}$
+$D \geqq 0$ より $4-t^2 \geqq 0 \implies t^2 \leqq 4$．
+よって $t$ の値の範囲は $\boldsymbol{-2 \leqq t \leqq 2}$．
+
+(3) $Z = 2x + 3xy + 2y = 2(x+y)+3xy$ とおく．
+$Z$ を $t$ で表すと $Z(t) = 2t + 3\left(\dfrac{t^2-1}{3}\right) = t^2+2t-1$．
+定義域 $-2 \leqq t \leqq 2$ でこの関数の最大・最小を求める．
+$Z(t) = (t+1)^2-2$ より、頂点は $(-1, -2)$．
+\begin{itemize}
+    \item $t=-1$ のとき最小値 $\boldsymbol{-2}$．\\
+    このとき $x+y=-1, xy=0$ より、$(\boldsymbol{x,y}) = (\boldsymbol{0,-1}), (\boldsymbol{-1,0})$．
+    \item 軸から最も遠い $t=2$ のとき最大値 $\boldsymbol{7}$．\\
+    このとき $x+y=2, xy=1$ より、$(\boldsymbol{x,y}) = (\boldsymbol{1,1})$．
+\end{itemize}
+
+
+\begin{toi}
+$a, b$ を正の定数とする．$x, y$ を $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ を満たす実数とするとき,
+$z = \left(\frac{x}{a}\right)^4 + \left(\frac{y}{b}\right)^4$ のとりうる値の範囲は $\fbox{ ② } \le z \le \fbox{ ③ }$ である．
+\hfill (20 関西大)
+\end{toi}
+\ans 
+$u = \frac{x}{a}, v = \frac{y}{b}$ とおくと、条件式は $u^2+v^2=1$ となる．
+このとき $z = u^4+v^4$ である．
+$z = (u^2+v^2)^2-2u^2v^2 = 1^2 - 2u^2v^2 = 1-2u^2v^2$
+$s=u^2$ とおくと、$v^2 = 1-u^2 = 1-s$．
+$u^2 \geqq 0, v^2 \geqq 0$ より、$s \geqq 0, 1-s \geqq 0$ なので、$0 \leqq s \leqq 1$．
+$z$ を $s$ で表すと、$z(s) = 1-2s(1-s) = 2s^2-2s+1$．
+$0 \leqq s \leqq 1$ の範囲で $z(s)$ の値域を求める．
+$z(s) = 2\left(s-\frac{1}{2}\right)^2+\frac{1}{2}$
+これは頂点が $(\frac{1}{2}, \frac{1}{2})$ で下に凸の放物線である．
+\begin{itemize}
+    \item $s=\frac{1}{2}$ のとき最小値 $\frac{1}{2}$
+    \item $s=0, 1$ のとき最大値 $1$
+\end{itemize}
+よって $z$ のとりうる値の範囲は $\boldsymbol{\frac{1}{2} \leqq z \leqq 1}$．
+$\fbox{ ② }$ は $\frac{1}{2}$, $\fbox{ ③ }$ は $1$．
+
+
+\begin{toi}
+2次関数 $f(x) = ax^2 - 2ax + b$ ($a, b$ は定数) は区間 $0 \le x \le 3$ における最大値が $3$, 最小値が $-5$ である．このとき, $a, b$ の値の組をすべて求めよ．
+\hfill (名城大)
+\end{toi}
+\ans 
+$f(x) = ax^2-2ax+b = a(x-1)^2-a+b$．軸は $x=1$．定義域は $0 \le x \le 3$．
+
+(i) $\boldsymbol{a>0}$ のとき (下に凸)
+最小値は頂点 $x=1$ でとり、$f(1)=-a+b=-5$．
+最大値は軸から最も遠い $x=3$ でとり、$f(3)=a(3-1)^2-a+b=3a+b=3$．
+この連立方程式を解くと、$4a=8 \implies a=2$．$b=-5+a=-3$．
+$a>0$ を満たすので、$(\boldsymbol{a,b}) = (\boldsymbol{2, -3})$ は解である．
+
+(ii) $\boldsymbol{a<0}$ のとき (上に凸)
+最大値は頂点 $x=1$ でとり、$f(1)=-a+b=3$．
+最小値は軸から最も遠い $x=3$ でとり、$f(3)=3a+b=-5$．
+この連立方程式を解くと、$4a=-8 \implies a=-2$．$b=3+a=1$．
+$a<0$ を満たすので、$(\boldsymbol{a,b}) = (\boldsymbol{-2, 1})$ は解である．
+
+(iii) $a=0$ のとき、$f(x)=b$ (定数) となり最大値と最小値が一致するため不適．
+以上より、求める組は $\boldsymbol{(2, -3), (-2, 1)}$．
+
+
+\begin{toi}
+ $a$ を定数とするとき, 2次関数 $y = x^2 - 2ax + 2a^2$ について
+\begin{enumerate}
+    \item[(1)] 区間 $0 \le x \le 2$ におけるこの関数の最大値と最小値を求めよ．
+    \item[(2)] 区間 $0 \le x \le 2$ におけるこの関数の最小値が $20$ であるとき, $a$ の値を求めよ．
+\end{enumerate}
+\hfill (宇都宮大)
+\end{toi}
+\ans 
+$y = x^2 - 2ax + 2a^2 = (x-a)^2+a^2$．軸は $x=a$．定義域は $0 \le x \le 2$．
+
+(1) 軸の位置で場合分けして最大値と最小値を求める．
+\textbf{最小値}
+\begin{itemize}
+    \item $a<0$ のとき、$x=0$ で最小値 $\boldsymbol{2a^2}$
+    \item $0 \le a \le 2$ のとき、$x=a$ で最小値 $\boldsymbol{a^2}$
+    \item $a>2$ のとき、$x=2$ で最小値 $\boldsymbol{2a^2-4a+4}$
+\end{itemize}
+\textbf{最大値} (定義域の中央 $x=1$ と軸 $x=a$ の位置関係で場合分け)
+\begin{itemize}
+    \item $a<1$ のとき、$x=2$ で最大値 $\boldsymbol{2a^2-4a+4}$
+    \item $a=1$ のとき、$x=0,2$ で最大値 $\boldsymbol{2}$
+    \item $a>1$ のとき、$x=0$ で最大値 $\boldsymbol{2a^2}$
+\end{itemize}
+
+(2) (1)の最小値の場合分けを用いて、最小値が $20$ となる $a$ を求める．
+\begin{itemize}
+    \item $a<0$ のとき、$2a^2=20 \implies a^2=10$．$a<0$ より $\boldsymbol{a=-\sqrt{10}}$．
+    \item $0 \le a \le 2$ のとき、$a^2=20 \implies a=\pm\sqrt{20}=\pm2\sqrt{5}$．これらは範囲外なので不適．
+    \item $a>2$ のとき、$2a^2-4a+4=20 \implies a^2-2a-8=0 \implies (a-4)(a+2)=0$．$a>2$ より $\boldsymbol{a=4}$．
+\end{itemize}
+以上より、求める $a$ の値は $\boldsymbol{-\sqrt{10}, 4}$．
+
+\begin{toi}
+ 2次方程式 $mx^2 - x - 2 = 0$ の2つの実数解が, それぞれ以下のようになるための $m$ の条件を求めよ．
+\begin{enumerate}
+    \item[(1)] 2つの解がともに $-1$ より大きい．
+    \item[(2)] 1つの解は $1$ より大きく, 他の解は $1$ より小さい．
+    \item[(3)] 2つの解の絶対値がともに $1$ より小さい．
+\end{enumerate}
+\hfill (岐阜大)
+\end{toi}
+\ans 
+$f(x)=mx^2-x-2$ とおく．2つの実数解をもつので $m \ne 0$．
+判別式 $D=(-1)^2-4(m)(-2)=1+8m \geqq 0 \implies m \geqq -\frac{1}{8}$．
+よって考える $m$ の範囲は $[-\frac{1}{8}, 0) \cup (0, \infty)$．
+軸は $x=\frac{1}{2m}$．
+
+(1) 2つの解がともに $-1$ より大きい．\\
+条件は (i) $D \ge 0$, (ii) 軸 $>-1$, (iii) $m f(-1)>0$．
+(ii) $\frac{1}{2m}>-1 \implies \frac{1+2m}{2m}>0$．よって $m>0$ または $m<-\frac{1}{2}$．
+(iii) $f(-1)=m-1$．$m(m-1)>0$ より $m>1$ または $m<0$．
+共通範囲を求めると、$m \geqq -\frac{1}{8}$ と $m<-\frac{1}{2}$ に共通部分はない．
+$m>0$ の部分では、$m>0, m>1$ の共通部分は $m>1$．よって $\boldsymbol{m>1}$．
+
+(2) 1つの解が $1$ より大きく、他の解が $1$ より小さい．\\
+これは $1$ が解の間にある条件なので、$m f(1)<0$．
+$f(1)=m-3$ なので、$m(m-3)<0$．よって $\boldsymbol{0 < m < 3}$．
+
+(3) 2つの解の絶対値がともに $1$ より小さい $\iff$ 2つの解が $-1$ と $1$ の間にある．\\
+条件は (i) $D \ge 0$, (ii) $-1<$ 軸 $<1$, (iii) $m f(-1)>0$, (iv) $m f(1)>0$．
+(ii) $-1 < \frac{1}{2m} < 1$．$m>0$ のとき $\frac{1}{2} < m$．$m<0$ のとき $m < -\frac{1}{2}$．
+(iii) $m>1$ または $m<0$．
+(iv) $m>3$ または $m<0$．
+共通範囲を求めると、$m \geqq -\frac{1}{8}$ と $m<-\frac{1}{2}$ に共通部分はない．
+$m>0$ の部分では、$m>\frac{1}{2}, m>1, m>3$ の共通部分は $m>3$．よって $\boldsymbol{m>3}$．
+\newpage
+\begin{toi}
+\begin{enumerate}
+    \item[(1)] $a$ は実数の定数とする．2次関数 $f(x) = 2x^2 - 4ax + a + 1$ が $x \ge 0$ においてつねに $f(x) > 0$ を満たすような, $a$ の値の範囲を求めよ．
+    \item[(2)] $0 \le x \le 2$ を満たすすべての実数 $x$ に対して, $x^2 - 2ax + a - 3 \le 0$ が成り立つような定数 $a$ の値の範囲を求めよ．
+\end{enumerate}
+\hfill (秋田大, 千葉工業大)
+\end{toi}
+\ans 
+(1) $f(x)=2x^2-4ax+a+1$ の $x \ge 0$ での最小値が正であればよい．
+軸は $x=a$．
+(i) $a < 0$ のとき：最小値は $f(0)=a+1$．$a+1>0 \implies a>-1$．よって $-1<a<0$．
+(ii) $a \ge 0$ のとき：最小値は頂点 $f(a)=-2a^2+a+1$．
+$-2a^2+a+1>0 \implies 2a^2-a-1<0 \implies (2a+1)(a-1)<0 \implies -\frac{1}{2}<a<1$．
+$a \ge 0$ との共通範囲は $0 \le a < 1$．
+(i), (ii) を合わせて $\boldsymbol{-1 < a < 1}$．
+
+(2) $g(x)=x^2-2ax+a-3$ の $0 \le x \le 2$ での最大値が $0$ 以下であればよい．
+$g(x)$ は下に凸の放物線なので、最大値は定義域の両端のどちらかでとる．
+よって、$g(0) \le 0$ かつ $g(2) \le 0$ であればよい．
+\begin{itemize}
+    \item $g(0) = a-3 \le 0 \implies a \le 3$
+    \item $g(2) = 4-4a+a-3 = 1-3a \le 0 \implies a \ge \frac{1}{3}$
+\end{itemize}
+両方を満たす $a$ の範囲は $\boldsymbol{\frac{1}{3} \le a \le 3}$．
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数列④}{漸化式(応用③)　(解答)}
+\begin{toi}
+次の漸化式で定まる数列$\{a_n\}$の一般項を求めよ．\\
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$a_1=1,~a_{n+1}=2a_n+n-1$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$a_1=0,~a_{n+1}=\frac12 a_n +n$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\ans 
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$\boldsymbol{a_n = 2^n - n}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$\boldsymbol{a_n = 2^{2-n} + 2n - 4}$
+\end{itemize}
+\end{minipage}
+\begin{toi}
+$a_1=1,~a_{n+1}=2a_n-n^2+2n$で定まる数列$\{a_n\}$の一般項を求めよ.
+\end{toi}
+\ans 
+まず，$a_{n+1}+p(n+1)^2+q(n+1)+r=2(a_n+pn^2+qn+r)$を満たす$p,a,r$を求める．これを整理すると
+\[a_{n+1}= 2a_n + pn^2 + (2q-2p)n + (r-p-q)\]
+となるので，与えられた漸化式と係数を比較して$p=-1,~q=0,~r=-1$を得る．よって，
+\[a_{n+1}-(n+1)^2-1=2(a_n-n^2-1)\]
+より，$\{a_n-n^2-1\}$は初項$-1$，公比2の等比数列であるから，$a_n-n^2-1=-2^{n-1}$．\\したがって，
+$$\boldsymbol{a_n = n^2 + 1 - 2^{n-1}}$$
+
+\end{document}

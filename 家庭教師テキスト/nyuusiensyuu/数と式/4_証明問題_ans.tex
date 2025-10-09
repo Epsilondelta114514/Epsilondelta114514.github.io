@@ -1,0 +1,101 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数と式④}{証明問題(解答)}
+
+\begin{toi}
+$a,b,c$ を整数とするとき，次の問に答えよ．
+\begin{itemize}
+    \item [(1)]$a^2$ を $4$ で割ると余りは $0$ または $1$ であることを示せ．
+    \item [(2)]$a^2+b^2$ が $4$ の倍数ならば，$a,b$ はともに偶数であることを示せ．
+\end{itemize}
+\end{toi}
+\ans 
+\begin{itemize}
+    \item[(1)] 4で割った余りを考えるので，$a$を4で割った余りで分類する．
+    \begin{itemize}
+        \item [①]$a=4k$のとき ($k$は整数)\\
+        $a^2=(4k)^2=16k^2=4(4k^2)$より，4で割った余りは0．
+        \item [②]$a=4k+1$のとき ($k$は整数)\\
+        $a^2=(4k+1)^2=16k^2+8k+1=4(4k^2+2k)+1$より，4で割った余りは1．
+        \item [③]$a=4k+2$のとき ($k$は整数)\\
+        $a^2=(4k+2)^2=16k^2+16k+4=4(4k^2+4k+1)$より，4で割った余りは0．
+        \item [④]$a=4k+3$のとき ($k$は整数)\\
+        $a^2=(4k+3)^2=16k^2+24k+9=4(4k^2+6k+2)+1$より，4で割った余りは1．
+    \end{itemize}
+    以上より，$a^2$を4で割った余りは0または1である．
+    \item[(2)]与えられた命題の対偶
+    \[\boldsymbol{「a,bのうち少なくとも一方が奇数~\Rightarrow~a^2+b^2~は4の倍数ではない」}\]
+    を示す．\\
+    　$a$が奇数であると仮定しても一般性は失われない．このとき，(1)より$a^2$を4で割った余りは1である．
+    \begin{itemize}
+        \item[①] $b$が偶数のとき，$b^2$を4で割った余りは0．$a^2+b^2$の余りは$1+0=1$．
+        \item[②] $b$が奇数のとき，$b^2$を4で割った余りは1．$a^2+b^2$の余りは$1+1=2$．
+    \end{itemize}
+    いずれの場合も$a^2+b^2$を4で割った余りは0にならない．よって，$a^2+b^2$は4の倍数ではない．
+    対偶命題が示されたので，元の命題も示された．\hfill(証明終)
+\end{itemize}
+\newpage
+\begin{toi}
+$n$ を奇数とするとき，次の問に答えよ．
+\begin{itemize}
+    \item [(1)]$n^2-1$は8の倍数であることを示せ．
+    \item [(2)]$n^5-n$は3の倍数であることを示せ．
+\end{itemize}
+\hfill[千葉大]
+\end{toi}
+\ans 
+
+\begin{itemize}
+    \item [(1)]$n$ は奇数なので，$n=2k+1$ ($k$ は整数) と表せる．
+この式を $n^2-1$ に代入すると，
+\[n^2-1 = (2k+1)^2-1 = (4k^2+4k+1)-1 = 4k^2+4k = 4k(k+1)\]
+ここで，$k$ と $k+1$ は連続する2つの整数なので， $k(k+1)$ は 偶数．よって，$k(k+1)=2m$ ($m$ は整数) と表せる．
+したがって，
+\[n^2-1 = 4k(k+1) = 4\cdot2m= 8m\]
+$m$ は整数なので，$8m$ は $8$ の倍数である．
+よって，$n$ が奇数のとき $n^2-1$ は $8$ の倍数．
+
+    \item [(2)]まず，$n^5-n$ を因数分解すると，
+\[n^5-n = n(n^4-1) = n(n^2-1)(n^2+1) = (n-1)n(n+1)(n^2+1)\]
+$(n-1)n(n+1)$連続する3つの数の積なので，3の倍数である(実際は6の倍数まで言える)．
+よって，$n^5-n$は3の倍数．
+\begin{rembox}
+ (2)は$n$が偶数でも成り立つ($n$が奇数であることは使っていない)．
+\end{rembox}
+\end{itemize}
+\end{document}

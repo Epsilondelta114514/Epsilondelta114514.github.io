@@ -1,0 +1,239 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+    \printheader{自習用問題①}{複素数・図形}
+    \begin{exque}
+    $0$でない2つの複素数$\alpha,\beta$が$\alpha^2-2\alpha\beta+4\beta^2=0$を満たしている．
+\begin{itemize}
+    \item [(1)]$\displaystyle{\frac{\alpha}{\beta},~\left|\frac{\alpha}{\beta}\right|,~\arg\frac{\alpha}\beta}$を求めよ．
+    \item[(2)]原点を$\mathrm{O}$，複素数$\alpha,\beta$を表す点をそれぞれA,Bとするとき，$\triangle$OABはどのような三角形か．
+\end{itemize}
+    \end{exque}
+    \ascboxG{\textbf{Point.}}複素数の関係式が与えられて，それらが作る図形を求める問題では，$\dfrac{\alpha}{\beta}$などを調べて，それらの複素数の位置関係を調べるとよい．今回の問題は(1)でOAとOBの長さの比となす角を調べている．
+\ans 
+\begin{itemize}
+    \item [(1)]$\alpha^2-2\alpha\beta+4\beta^2=0$の両辺を$\beta$で割ると，
+    \[\left(\frac{\alpha}{\beta}\right)^2-2\left(\frac{\alpha}{\beta}\right)+4=0\]
+    であるから，この2次方程式を解いて，
+    \[\boldsymbol{\dfrac{\alpha}{\beta}=1\pm\sqrt{3}i}\]
+    と求まる．絶対値と偏角は極形式にすればすぐにわかる．
+    \[1\pm\sqrt{3}i=2\left(\frac12+\frac{\sqrt3}2i\right)=2\left(\cos\frac\pi3+i\sin\frac\pi3\right)\]
+    であるから，$\boldsymbol{\left|\dfrac{\alpha}{\beta}\right|=2,~\arg\dfrac{\alpha}\beta=\pm\dfrac\pi3}$
+    \item[(2)](1)より$\dfrac{\mathrm{OA}}{\mathrm{OB}}=\left|\dfrac{\alpha}{\beta}\right|=2$であるから，OA$:$OB$=2:1$．また，$\arg\dfrac\alpha\beta=\pm\dfrac\pi3$より$\angle$AOB=$\dfrac\pi3$である．以上より，$\boldsymbol{\triangle}$\textbf{OABはBを直角とする}$\boldsymbol{\angle$AOB=$\dfrac\pi3}$\textbf{の直角三角形}(図を描けばわかる)である.
+\end{itemize}
+\begin{toi}
+複素数平面上の原点とは異なる点A$(\alpha)$とB$(\beta)$が$\alpha^2+2\beta^2=2\alpha\beta,|\alpha-\beta|=2$を満たしているとする．このとき，$\triangle$OABの面積を求めよ．
+\end{toi}
+    \begin{exque}
+   複素数平面上の相異なる3点A$(\alpha)$とB$(\beta)$とC$(\gamma)$を考える．
+\begin{itemize}
+    \item [(1)]$\alpha=2+2i,~\beta=3+4i,~\gamma=5+3i$のとき，$\angle$CABの大きさを求めよ．
+    \item[(2)]$2\alpha-(1-\sqrt3i)\beta=(1+\sqrt3i)\gamma$を満たすとき，$\triangle$ABCはどのような三角形か．
+\end{itemize}
+    \end{exque}
+    \ascboxG{\textbf{Point.}}3つの複素数A$(\alpha)$とB$(\beta)$とC$(\gamma)$に対して，ABとACがなす角は
+    \[\angle\mathrm{CAB}=\arg(\beta-\alpha)-\arg(\gamma-\alpha)=\arg\frac{\beta-\alpha}{\gamma-\alpha}\]
+    で表される．
+\ans 
+\begin{itemize}
+    \item [(1)]$\displaystyle{\angle\mathrm{CAB}=\arg\frac{\beta-\alpha}{\gamma-\alpha}=\arg\frac{1+2i}{3+i}=\frac{1}{2}+\frac12i=\frac{1}{\sqrt2}\left(\cos\frac\pi4+i\sin\frac\pi4\right)}$より，$\boldsymbol{\angle\mathrm{CAB}=\dfrac\pi4}$
+    \item [(2)]とりあえず展開すると，$2\alpha-\beta+\sqrt3\beta i=\gamma+\sqrt3\gamma i$である．$\alpha-\beta,\gamma-\beta$の形を作るために，両辺から$\beta$を引いて整理すると，
+    \[2(\alpha-\beta)=\gamma-\beta+\sqrt3(\gamma-\beta)i=(\gamma-\beta)(1+\sqrt3i)\]
+    であるから，
+    \[\frac{\alpha-\beta}{\gamma-\beta}=\frac{1+\sqrt3i}{2}=\cos\frac\pi3+i\sin\frac\pi3\]
+    が成り立つ．よって，$\angle$ABC$=\dfrac\pi3$で，さらにBA$:$BC$=1:1$なのでBA$=$BCがわかる．したがって，$\boldsymbol{\triangle}$\textbf{ABCは正三角形である．}
+\end{itemize}
+\begin{toi}
+複素数平面上の相異なる3点A$(\alpha)$とB$(\beta)$とC$(\gamma)$を考える．
+\begin{itemize}
+    \item [(1)]$\alpha=1+i,~\beta=\sqrt3+1+2i,~\gamma=1+3i$のとき，$\angle$BACの大きさを求めよ．
+    \item[(2)]$\alpha=\gamma+\sqrt3i(\gamma-\beta)$を満たすとき，$\triangle$ABCはどのような三角形か．
+\end{itemize}
+\end{toi}
+\begin{toi}
+複素数平面上の相異なる3点A$(\alpha)$とB$(\beta)$とC$(\gamma)$について，$\alpha^2+\beta^2+\gamma^2-
+\alpha\beta-\beta\gamma-\gamma\alpha=0$が成り立っている．このとき，$\triangle$ABCはどのような三角形か．\\[5pt]
+\textbf{Hint.}\\
+条件が$\alpha,\beta,\gamma$に関して対称なので，多分答えは正三角形である．とりあえず，2つの辺の長さの比と角度を求めるために，
+\[□-◯,~\triangle-◯\]
+の形を作るように変形してみよう．
+\end{toi}
+\newpage
+  \printheader{自習用問題②}{複素数・1の$n$乗根}
+  \begin{exque}
+    複素数平面において，単位円に内接する正六角形を考え，頂点を反時計周りに$z_1,\ldots,z_6$とする．　
+    \begin{itemize}
+        \item [(1)]$\alpha=\cos\dfrac\pi3+i\sin\dfrac\pi3$とするとき，$z_2,z_3,\ldots,z_6$を$z_1$と$\alpha$で表せ．
+        \item [(2)]$z_1+z_2+\cdots+z_6$の値を求めよ．
+        \item [(3)]$n$を自然数とするとき，$x^n-1=(x-1)(x^{n-1}+\cdots+x+1)$と因数分解できることを示せ．
+        \item [(4)]$(1-\alpha)(1-\alpha^2)(1-\alpha^3)(1-\alpha^4)(1-\alpha^5)$の値を求めよ．
+    \end{itemize}
+  \end{exque}
+     \ascboxG{\textbf{Point.}}$1$の$n$乗根は
+     \[\boldsymbol{\cos\frac{2\pi}{n}+i\sin\frac{2\pi}{n}}\]
+     と表される．偏角を見れば分かる通り，これは円を$n$等分する複素数である．この問題の$\alpha$は1の6乗根であるから，偏角は...
+       \ans \begin{itemize}
+    \item [(1)]各$z_k$は正六角形の頂点であるから，円周を6等分する．よって，$z_1$を$\dfrac\pi3$ずつ回転させれば他の頂点を表せる．$\alpha= \displaystyle{\cos\frac{\pi}{3}+i\sin\frac{\pi}{3}}$であるので，$z_k=\alpha^{k-1}z_1~(k=2,3,4,5,6)$である．
+    \item [(2)](1)より，$z_1+z_2+\cdots+z_6=z_1+\alpha z_1+\alpha^2z_1+\alpha^3z_1+\alpha^4z_1+\alpha^5z_1$であるから，等比数列の和の公式を用いて，
+    \[z_1+z_2+\cdots+z_6=z_1\frac{z_1(1-\alpha^6)}{1-\alpha}=\boldsymbol{0}\]
+    \item[(3)]等比数列の和の公式より，$1+x+\cdots x^{n-1}=\dfrac{x^n-1}{x-1}$が成り立つので，両辺に$x-1$をかけて
+    \[(x-1)(x^{n-1}+\cdots+x+1)=(x-1)\dfrac{x^n-1}{x-1}=x^n-1\]
+    が成り立つ．
+    \item[(4)]$\alpha$は1の6乗根であるから$\alpha^k$もそうである．よって，因数定理から\[z^6-1=(z-1)(z-\alpha)(z-\alpha^2)(z-\alpha^3)(z-\alpha^4)(z-\alpha^5)\]
+    一方で，(3)より$z^6-1=(z-1)(z^{5}+\cdots+z+1)$であるから，
+    \[(z-1)(z^{5}+\cdots+z+1)=(z-1)(z-\alpha)(z-\alpha^2)(z-\alpha^3)(z-\alpha^4)(z-\alpha^5)\]が成り立つ．
+    両辺を$z-1$で割ると$z$の恒等式
+     \[(z^{5}+\cdots+z+1)=(z-\alpha)(z-\alpha^2)(z-\alpha^3)(z-\alpha^4)(z-\alpha^5)\]
+     が得られるので，ここに$z=1$を代入すれば，
+     \[\boldsymbol{(1-\alpha)(1-\alpha^2)(1-\alpha^3)(1-\alpha^4)(1-\alpha^5)=6}\]
+  \end{itemize}
+  \begin{toi}
+      複素数平面において，単位円に内接する正$n$角形を考え，頂点を反時計周りに$z_1,\ldots,z_n$とする．また，$\alpha=\cos\dfrac{2\pi}n+i\sin\dfrac{2\pi}n$とする．
+    \begin{itemize}
+        \item [(1)]$z_1+z_2+\cdots+z_n$の値を求めよ．
+        \item [(2)]$(1-\alpha)(1-\alpha^2)\cdots(1-\alpha^{n-1})$の値を求めよ．
+    \end{itemize}
+  \end{toi}
+  \newpage
+    \printheader{自習用問題①}{複素数・図形(解答)}
+    \setcounter{toicounter}{0}
+\begin{toi}
+複素数平面上の原点とは異なる点A$(\alpha)$とB$(\beta)$が$\alpha^2+2\beta^2=2\alpha\beta,|\alpha-\beta|=2$を満たしているとする．このとき，$\triangle$OABの面積を求めよ．
+\end{toi}
+\ans
+与えられた関係式 $\alpha^2+2\beta^2=2\alpha\beta$ を変形すると，$\alpha^2-2\alpha\beta+2\beta^2=0$ となる．
+$\beta\neq0$ であるから，両辺を $\beta^2$ で割ると，
+\[\left(\frac{\alpha}{\beta}\right)^2-2\left(\frac{\alpha}{\beta}\right)+2=0\]
+これを $\dfrac{\alpha}{\beta}$ についての2次方程式として解くと，
+\[\frac{\alpha}{\beta}=\frac{2\pm\sqrt{4-8}}{2}=1\pm i\]
+この結果から，点Aと点Bの位置関係がわかる．
+\[\left|\frac{\alpha}{\beta}\right|=|1\pm i|=\sqrt{1^2+(\pm1)^2}=\sqrt2\]
+\[\arg\frac{\alpha}{\beta}=\arg(1\pm i)=\pm\frac\pi4\]
+したがって，$\dfrac{\mathrm{OA}}{\mathrm{OB}}=\sqrt2$ であり，$\angle\mathrm{AOB}=\dfrac\pi4$ である．
+$\triangle$OABに余弦定理を用いると，
+\[\mathrm{AB}^2=\mathrm{OA}^2+\mathrm{OB}^2-2\mathrm{OA}\cdot\mathrm{OB}\cos(\angle\mathrm{AOB})\]
+$|\alpha-\beta|=2$ より $\mathrm{AB}=2$ であり，$\mathrm{OA}=\sqrt2\mathrm{OB}$ であるから，
+\[2^2=(\sqrt2\mathrm{OB})^2+\mathrm{OB}^2-2(\sqrt2\mathrm{OB})\cdot\mathrm{OB}\cos\frac\pi4\]
+\[4=2\mathrm{OB}^2+\mathrm{OB}^2-2\sqrt2\mathrm{OB}^2\cdot\frac{1}{\sqrt2}\]
+\[4=3\mathrm{OB}^2-2\mathrm{OB}^2=\mathrm{OB}^2\]
+よって，$\mathrm{OB}=2$ (長さなので正)となり，$\mathrm{OA}=2\sqrt2$ である．
+$\triangle\mathrm{OAB}$ の面積 $S$ は，
+\[S=\frac12\mathrm{OA}\cdot\mathrm{OB}\sin(\angle\mathrm{AOB})=\frac12\cdot2\sqrt2\cdot2\cdot\sin\frac\pi4=\frac12\cdot2\sqrt2\cdot2\cdot\frac{1}{\sqrt2}=\boldsymbol{2}\]
+と求まる．
+\newpage
+\begin{toi}
+複素数平面上の相異なる3点A$(\alpha)$とB$(\beta)$とC$(\gamma)$を考える．
+\begin{itemize}
+    \item [(1)]$\alpha=1+i,~\beta=\sqrt3+1+2i,~\gamma=1+3i$のとき，$\angle$BACの大きさを求めよ．
+    \item[(2)]$\alpha=\gamma+\sqrt3i(\gamma-\beta)$を満たすとき，$\triangle$ABCはどのような三角形か．
+\end{itemize}
+\end{toi}
+\ans
+\begin{itemize}
+    \item [(1)] $\angle\mathrm{BAC}$ の大きさは $\arg\dfrac{\beta-\alpha}{\gamma-\alpha}$ で与えられる．
+    \[\beta-\alpha=(\sqrt3+1+2i)-(1+i)=\sqrt3+i\]
+    \[\gamma-\alpha=(1+3i)-(1+i)=2i\]
+    よって，
+    \[\frac{\beta-\alpha}{\gamma-\alpha}=\frac{\sqrt3+i}{2i}=\frac{(\sqrt3+i)(-i)}{2i(-i)}=\frac{-\sqrt3i-i^2}{-2i^2}=\frac{1-\sqrt3i}{2}\]
+    この複素数を極形式で表すと，
+    \[\frac{1-\sqrt3i}{2}=\cos\left(-\frac\pi3\right)+i\sin\left(-\frac\pi3\right)\]
+    したがって，$\arg\dfrac{\beta-\alpha}{\gamma-\alpha}=-\dfrac\pi3$ であるから，求める角の大きさは $\boldsymbol{\dfrac\pi3}$ である．
+    \item[(2)] 与えられた式 $\alpha=\gamma+\sqrt3i(\gamma-\beta)$ を辺AB，辺BCに対応する複素数で表すために変形する．
+    \[\alpha-\gamma=\sqrt3i(\gamma-\beta)\]
+    $\beta\neq\gamma$ より $\gamma-\beta\neq0$ なので，両辺を $\gamma-\beta$ で割ると，
+    \[\frac{\alpha-\gamma}{\gamma-\beta}=\sqrt3i\]
+    この式の絶対値と偏角を考えると，
+    \[\left|\frac{\alpha-\gamma}{\gamma-\beta}\right|=|\sqrt3i|=\sqrt3 \implies \frac{|\alpha-\gamma|}{|\gamma-\beta|}=\frac{\mathrm{CA}}{\mathrm{BC}}=\sqrt3\]
+    \[\arg\left(\frac{\alpha-\gamma}{\gamma-\beta}\right)=\arg(\sqrt3i)=\frac\pi2\]
+    偏角はベクトルBCをどれだけ回転させるとベクトルCAになるかを表すので，$\angle$BCA$=\dfrac\pi2$ である．
+    以上より，$\triangle$ABCは $\boldsymbol{\mathrm{CA}:\mathrm{BC}=\sqrt3:1}$ \textbf{，} $\boldsymbol{\angle\mathrm{C}=\dfrac\pi2}$ \textbf{の直角三角形}である．
+\end{itemize}
+
+\newpage
+\begin{toi}
+複素数平面上の相異なる3点A$(\alpha)$とB$(\beta)$とC$(\gamma)$について，$\alpha^2+\beta^2+\gamma^2-
+\alpha\beta-\beta\gamma-\gamma\alpha=0$が成り立っている．このとき，$\triangle$ABCはどのような三角形か．\\[5pt]
+\end{toi}
+\ans
+$\beta-\alpha,\gamma-\alpha$を作る方針で変形する．
+\begin{align*}
+\alpha^2+\beta^2+\gamma^2-
+\alpha\beta-\beta\gamma-\gamma\alpha&=(\beta-\alpha)^2+(\gamma-\alpha)^2+\alpha\beta-\beta\gamma+\gamma\alpha-\alpha^2\\
+&=(\beta-\alpha)^2+(\gamma-\alpha)^2-(\alpha^2-(\beta+\gamma)\alpha+\beta\gamma)\\
+&=(\beta-\alpha)^2+(\gamma-\alpha)^2-(\beta-\alpha)(\gamma-\alpha)
+\end{align*}
+3点A,B,Cは相異なるので，特に$\gamma-\alpha\neq0$である．よって，
+\[(\beta-\alpha)^2+(\gamma-\alpha)^2-(\beta-\alpha)(\gamma-\alpha)=0\]
+の両辺を$(\gamma-\alpha)^2$で割ると，
+\[\left(\frac{\beta-\alpha}{\gamma-\alpha}\right)^2-\left(\frac{\beta-\alpha}{\gamma-\alpha}\right)+1=0\]
+である．これを解くと，\[\frac{\beta-\alpha}{\gamma-\alpha}=\frac{1\pm\sqrt3i}{2}=\cos\left(\pm\frac\pi3\right)+i\sin\left(\pm\frac\pi3\right)\]
+である(複号同順)．これより，$\dfrac{\mathrm{AB}}{\mathrm{AC}}=1$ すなわち $\mathrm{AB}=\mathrm{AC}$ がわかる．また，$\angle$CAB=$\frac\pi3$なので，$\triangle$ABCは$\boldsymbol{\textbf{正三角形}}$である．
+
+\newpage
+      \printheader{自習用問題②}{複素数・1の$n$乗根(解答)}
+    
+      \begin{toi}
+      複素数平面において，単位円に内接する正$n$角形を考え，頂点を反時計周りに$z_1,\ldots,z_n$とする．また，$\alpha=\cos\dfrac{2\pi}n+i\sin\dfrac{2\pi}n$とする．
+    \begin{itemize}
+        \item [(1)]$z_1+z_2+\cdots+z_n$の値を求めよ．
+        \item [(2)]$(1-\alpha)(1-\alpha^2)\cdots(1-\alpha^{n-1})$の値を求めよ．
+    \end{itemize}
+  \end{toi}
+  \ans
+  \begin{itemize}
+      \item [(1)] 正$n$角形の各頂点は，$z_1$ を中心として $\dfrac{2\pi}{n}$ ずつ回転させたものであるから，
+      \[z_k = z_1 \alpha^{k-1} \quad (k=1, 2, \ldots, n)\]
+      と表せる．よって，求める和は初項 $z_1$，公比 $\alpha$ の等比数列の和である．
+      \[z_1+z_2+\cdots+z_n = z_1(1+\alpha+\alpha^2+\cdots+\alpha^{n-1})\]
+      $\alpha\neq1$ ($n\ge2$の場合)であるから，等比数列の和の公式を用いて，
+      \[\sum_{k=1}^{n} z_k = z_1\frac{1-\alpha^n}{1-\alpha}\]
+      ここで，$\alpha=\cos\dfrac{2\pi}n+i\sin\dfrac{2\pi}n$ より，ド・モアブルの定理から $\alpha^n=\cos(2\pi)+i\sin(2\pi)=1$ である．
+      したがって，分子が $1-\alpha^n=0$ となるため，
+      \[z_1+z_2+\cdots+z_n=\boldsymbol{0}\]
+      \item [(2)] 
+      $z^n-1=0$ の解は $1, \alpha, \alpha^2, \ldots, \alpha^{n-1}$ であるから，因数定理より
+      \[z^n-1=(z-1)(z-\alpha)(z-\alpha^2)\cdots(z-\alpha^{n-1})\]
+      と因数分解できる．一方，等比数列の和の公式より
+      \[z^{n-1}+z^{n-2}+\cdots+z+1=\frac{z^n-1}{z-1}\]
+      が成り立つ．よって，$z\neq1$ において，
+      \[z^{n-1}+z^{n-2}+\cdots+z+1=(z-\alpha)(z-\alpha^2)\cdots(z-\alpha^{n-1})\]
+      これは $z$ に関する恒等式であるから，$z=1$ を代入しても成立する．$z=1$ を代入すると，
+      左辺は $\underbrace{1+1+\cdots+1}_{n\text{個}}=n$ となる．
+      右辺は $(1-\alpha)(1-\alpha^2)\cdots(1-\alpha^{n-1})$ となる．
+      したがって，$(1-\alpha)(1-\alpha^2)\cdots(1-\alpha^{n-1})=n$ である．
+  \end{itemize}
+\end{document}

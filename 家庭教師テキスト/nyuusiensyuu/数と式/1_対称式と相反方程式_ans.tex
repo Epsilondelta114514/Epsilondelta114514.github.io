@@ -1,0 +1,174 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数と式①}{対称式と相反方程式(解答)}
+
+\begin{toi}
+\end{toi}$x=\displaystyle{\frac{\sqrt3+1}{\sqrt3-1}},~~y=\displaystyle{\frac{\sqrt3-1}{\sqrt3+1}}$のとき，次の式の値を求めよ．\\[5pt]
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(1)]$x+y,~xy$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(2)]$x^2+y^2$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(3)]$x^3+y^3$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(4)]$x^4+y^4$
+\end{itemize}
+\end{minipage}
+\ans 
+\begin{itemize}
+    \item [(1)] まずは基本対称式$x+y,xy$の値を求める問題である．\begin{align*}
+x &= \frac{\sqrt3+1}{\sqrt3-1}=\frac{(\sqrt3+1)^2}{(\sqrt3-1)(\sqrt3+1)}=\frac{3+2\sqrt3+1}{3-1}=\frac{4+2\sqrt3}{2}=2+\sqrt3 \\
+y &= \frac{\sqrt3-1}{\sqrt3+1}=\frac{(\sqrt3-1)^2}{(\sqrt3+1)(\sqrt3-1)}=\frac{3-2\sqrt3+1}{3-1}=\frac{4-2\sqrt3}{2}=2-\sqrt3
+\end{align*}
+よって，
+\[\boldsymbol{x+y=(2+\sqrt3)+(2-\sqrt3)=4,~~~xy=(2+\sqrt3)(2-\sqrt3)=4-3=1}\]
+    \item [(2)] $x^2+y^2=(x+y)^2-2xy=4^2-2\cdot1=16-2=\boldsymbol{14}$
+    \item [(3)] $x^3+y^3=(x+y)^3-3xy(x+y)=4^3-3\cdot1\cdot4=64-12=\boldsymbol{52}$
+    \item [(4)] $x^4+y^4=(x^2+y^2)^2-2(xy)^2=14^2-2\cdot1^2=196-2=\boldsymbol{194}$
+\end{itemize}
+
+\begin{toi}
+$\displaystyle{x+\frac{1}{x}=\sqrt7}$のとき，次の式の値を求めよ．\\[5pt]
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(1)]$\displaystyle{x^3+\frac{1}{x^3}}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(2)]$\displaystyle{x^4+\frac{1}{x^4}}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(3)]$x^5+\dfrac{1}{x^5}$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\ans
+例題2の結果$x^2+\dfrac{1}{x^2}=\left(x+\dfrac1x\right)^2-2=(\sqrt7)^2-2=5$を用いる．
+\begin{itemize}
+    \item [(1)] $\displaystyle\boldsymbol{x^3+\frac{1}{x^3}}=\left(x+\frac1x\right)^3-3\left(x+\frac1x\right)=(\sqrt7)^3-3\sqrt7=7\sqrt7-3\sqrt7=\boldsymbol{4\sqrt7}$
+    \item [(2)] $\displaystyle\boldsymbol{x^4+\frac{1}{x^4}}=\left(x^2+\frac1{x^2}\right)^2-2=5^2-2=\boldsymbol{23}$
+    \item [(3)] 
+     $\displaystyle{{x^5+\frac{1}{x^5}}=\left(x^2+\frac{1}{x^2}\right)\left(x^3+\frac{1}{x^3}\right)-\left(x+\frac{1}{x}\right) =5\cdot4\sqrt7-\sqrt7=\boldsymbol{19\sqrt7}}$
+\end{itemize}
+\newpage
+\begin{toi}
+    4次方程式$x^4+5x^3+2x^2+5x+1=0$を解け．
+\end{toi}
+\ans 
+$x=0$は解ではないので，両辺を$x^2$で割ると，
+\[x^2+5x+2+\frac5x+\frac{1}{x^2}=\left(x^2+\frac{1}{x^2}\right)+5\left(x+\frac1x\right)+2=0\]
+$X=x+\dfrac1x$とおくと，$x^2+\dfrac{1}{x^2}=X^2-2$なので，
+\[(X^2-2)+5X+2=X^2+5X=X(X+5)=0\]
+これより$X=0$または$X=-5$を得る．
+\begin{itemize}
+    \item $X=x+\dfrac1x=0$のとき，$x^2+1=0$より$x=\pm i$
+    \item $X=x+\dfrac1x=-5$のとき，$x^2+5x+1=0$より$x=\dfrac{-5\pm\sqrt{21}}{2}$
+\end{itemize}
+以上より，求める解は~$\boldsymbol{x=\pm i,~\dfrac{-5\pm\sqrt{21}}{2}}$
+\begin{toi}
+$x=\displaystyle{\frac{1}{2-\sqrt3}},~~y=\displaystyle{2-\sqrt3}$のとき，次の式の値を求めよ．
+\[(1)~x^2+y^2　　　　　　(2)~\frac{y}{x}+\frac{x}{y}\]
+\end{toi}
+\ans 
+まずは基本対称式$x+y,xy$の値を求めよう．
+\[x=\frac{1}{2-\sqrt3}=\frac{2+\sqrt3}{(2-\sqrt3)(2+\sqrt3)}=\frac{2+\sqrt3}{4-3}=2+\sqrt3\]
+なので，基本対称式の値は
+\[x+y=(2+\sqrt3)+(2-\sqrt3)=4,~~~xy=(2+\sqrt3)(2-\sqrt3)=1\]
+\begin{itemize}
+    \item [(1)] $\boldsymbol{x^2+y^2}=(x+y)^2-2xy=4^2-2\cdot1=\boldsymbol{14}$
+    \item [(2)] $\boldsymbol{\dfrac{y}{x}+\dfrac{x}{y}}=\dfrac{x^2+y^2}{xy}=\dfrac{14}{1}=\boldsymbol{14}$
+\end{itemize}
+\newpage
+\begin{toi}
+$\sqrt 3$の整数部分を$a$，少数部分を$b$とするとき，$\dfrac{a}{b}+\dfrac{b}{a}$の値を求めよ．
+\end{toi}
+\ans 
+$1^2=1, 2^2=4$なので$1<\sqrt3<2$である．よって，$a=1,~b=\sqrt3-1$ である．基本対称式$a+b,ab$の値を計算すると，
+\[a+b=\sqrt 3,~ab=\sqrt3-1\]
+である．よって，
+\begin{align*}
+\frac{a}{b}+\frac{b}{a} &= \frac{a^2+b^2}{ab}=\frac{(a+b)^2-2ab}{ab}=\boldsymbol{\frac{3\sqrt3-1}{2}}
+\end{align*}
+\begin{toi}
+$a^2+3b=b^2+3a=8$のとき，次の式の値を求めよ．ただし，$a\neq b$とする．\\
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(1)]$a+b$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(2)]$ab$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(3)]$a^2+b^2$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(4)]$\dfrac{a}{b}+\dfrac{b}{a}$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\ans 
+$a^2+3b=8 \cdots$①, $b^2+3a=8 \cdots$② をうまく使うのがポイント．
+\begin{itemize}
+    \item [(1)] ①$-$②より，$a^2-b^2+3b-3a=0 \implies (a-b)(a+b)-3(a-b)=0$．\\
+    $a\neq b$より$a-b\neq 0$なので，両辺を$a-b$で割って，$a+b-3=0$．よって$\boldsymbol{a+b=3}$．
+    \item [(2)] ①$+$②より，$a^2+b^2+3(a+b)=16$．(1)の結果を代入して $a^2+b^2+3\cdot3=16$．\\
+    よって，$a^2+b^2=7$．一方，$a^2+b^2=(a+b)^2-2ab$なので，$7=3^2-2ab $より$\boldsymbol{ab=1}$．
+    \item [(3)] (2)の計算過程で求まっている．$\boldsymbol{a^2+b^2=7}$．
+    \item [(4)] $\boldsymbol{\dfrac{a}{b}+\dfrac{b}{a}}=\dfrac{a^2+b^2}{ab}=\dfrac{7}{1}=\boldsymbol{7}$．
+\end{itemize}
+\begin{toi}
+4次方程式$x^4-8x^3+17x^2-8x+1=0$を解け．\rightline{[2020~横浜市大　医]}
+\end{toi}
+\ans $x=0$は解ではないので，両辺を$x^2$で割ると，
+\[x^2-8x+17-\frac8x+\frac{1}{x^2}=\left(x^2+\frac{1}{x^2}\right)-8\left(x+\frac1x\right)+17=0\]
+$X=x+\dfrac1x$とおくと，$x^2+\dfrac{1}{x^2}=X^2-2$なので，
+\[(X^2-2)-8X+17=X^2-8X+15=(X-3)(X-5)=0\]
+これより$X=3$または$X=5$である．
+\begin{itemize}
+    \item $X=x+\dfrac1x=3$のとき，$x^2-3x+1=0$より$x=\dfrac{3\pm\sqrt{5}}{2}$
+    \item $X=x+\dfrac1x=5$のとき，$x^2-5x+1=0$より$x=\dfrac{5\pm\sqrt{21}}{2}$
+\end{itemize}
+以上より，求める解は~$\boldsymbol{x=\dfrac{3\pm\sqrt5}{2},~\dfrac{5\pm\sqrt{21}}{2}}$
+\end{document}

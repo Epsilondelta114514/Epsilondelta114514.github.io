@@ -1,0 +1,78 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数列④}{漸化式(応用③)}
+\ascboxA{\textbf{$n$の式が入っているやつ}}
+\begin{exque}
+    $a_1=6,~a_{n+1}=2a_n+4n+3$で定まる数列$\{a_n\}$の一般項を求めよ．
+\end{exque}
+\ascboxG{\textbf{Point.}}
+$\boldsymbol{a_{n+1}=pa_n+qn+r}$は，
+\[\boldsymbol{a_{n+1}+\alpha(n+1)+\beta=p(a_n+\alpha n+\beta)}\]となる$\alpha,\beta$を求めて等比数列に帰着させる\footnote{
+    $a_{n+1}=pa_n+qn^2+rn+s$なら，2次式を用いて
+    \[a_{n+1}+\alpha(n+1)^2+\beta(n+1)+\gamma=p(a_n+\alpha n^2+\beta n+\gamma)\]
+    と変形する．}．
+\ans 
+$a_{n+1}+\alpha(n+1)+\beta=2(a_n+\alpha n+\beta)$が成り立つとするとき，これを整理すると
+\[a_{n+1}=2a_n+\alpha n-\alpha+\beta\]
+となるので，与えられた漸化式と係数を比較すると，
+\[\begin{cases}
+    \alpha&=4\\
+    -\alpha+\beta&=3
+\end{cases}\]
+より，$\alpha=4,\beta=7$である．よって，
+\[a_{n+1}+4(n+1)+7=2(a_n+4n+7)\]
+と変形できるので，数列$\{a_n+4n+7\}$は初項17，公比2の等比数列である．したがって，　$a_n+4n+7=17\cdot2^{n-1}$より，
+\[\boldsymbol{a_n=17\cdot2^{n-1}-4n-7}\]
+\begin{toi}
+次の漸化式で定まる数列$\{a_n\}$の一般項を求めよ．\\
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$a_1=1,~a_{n+1}=2a_n+n-1$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$a_1=0,~a_{n+1}=\frac12 a_n +n$
+\end{itemize}
+\end{minipage}
+
+\end{toi}
+\begin{toi}
+$a_1=1,~a_{n+1}=2a_n-n^2+2n$で定まる数列$\{a_n\}$の一般項を求めよ.
+\end{toi}
+\end{document}

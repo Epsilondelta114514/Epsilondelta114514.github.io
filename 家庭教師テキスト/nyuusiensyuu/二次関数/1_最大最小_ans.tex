@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　2次関数①}{最大・最小(解答)}
+        \begin{toi}
+        $a$ を負の定数とする．2次関数 $f(x) = ax^2 - 2ax + b$ の $-2 \le x \le 2$ における最大値が $12$, 最小値が $-6$ のとき、$a, b$ の値を求めよ．
+\hfill (04 同志社女子大)
+        \end{toi}
+
+        \ans 
+        与えられた関数を平方完成すると\[f(x) = a(x^2 - 2x) + b = a(x - 1)^2 - a + b\]であるから，$a<0$ よりグラフは$(1,-a+b)$を頂点とする上に凸の放物線である．
+ 軸 $x=1$ は定義域$-2 \le x \le 2$ に含まれるので， $f(x)$ は$x=1$ で最大値 $f(1)=-a+b$，$x=-2$ で最小値 $f(-2)=8a+b$をとる．
+最大値が $12$, 最小値が $-6$ であるから,
+\begin{align*}
+    -a+b &= 12 \quad \cdots ① \\
+    8a+b &= -6 \quad \cdots ②
+\end{align*}
+を得る．これを解いて，$\boldsymbol{a=-2, b=10}$．\\
+
+\begin{toi}
+関数 $y = (x^2 -3x)^2 -9(x^2 -3x) ~(1\leqq x\leqq4)$ の最大値と最小値を求めよ．\hfill (05 慶應義塾大)
+\end{toi}
+\ans 
+$t = x^2 - 3x$ とおくと， $y = t^2 - 9t$ と表せる．まず,  $t$ の値の範囲を求めよう．
+\[t = x^2 - 3x = \left(x - \frac{3}{2}\right)^2 - \frac{9}{4}\]
+であるから，$1\leqq x\leqq 4$のとき， $-\dfrac{9}{4} \leqq t \leqq 4$ である．
+よって， $y = t^2 - 9t~\left(-\dfrac{9}{4} \leqq t \leqq 4\right)$ の最大値と最小値を考えればよい．平方完成すると
+\[y = \left(t - \frac{9}{2}\right)^2 - \frac{81}{4}\]
+であるから， $t = -\dfrac{9}{4}\left(x=\dfrac32\right)$ で最大値$\boldsymbol{\dfrac{405}{16}}$, $t=4(x=4)$で最小値は$\boldsymbol{-20}$をとる．
+　\\
+\newpage
+\begin{toi}
+関数 $y =-2\sin^2x + 5\sin x +3~(0\leqq x\leqq 2\pi)$ の最小値を求めよ．
+\end{toi}
+\ans $t = \sin x$ とおくと，$y = -2t^2+5t+3$である．$0 \le x \le 2\pi$ より, $-1 \le t \le 1$ に注意する．平方完成すると
+\begin{align*}
+    y = -2t^2+5t+3=-2\left(t - \frac{5}{4}\right)^2 + \frac{49}{8}
+\end{align*}
+であるから，グラフは $\left( \dfrac{5}{4},\dfrac{49}{8}\right)$を頂点とする上に凸の放物線である．よって，
+$t=-1$で最小値$ -4$をとる．$t=-1$のとき$x=\dfrac32\pi$であるから，結局，$\boldsymbol{x=\dfrac32\pi}$で最小値$\boldsymbol{-4}$をとる．
+　\\
+\begin{toi}
+$0 \le x \le 3$ のとき、関数 $f(x) = 2x^2 - 4ax + a + a^2$ の最小値 $m$ が $0$ となるような定数 $a$ の値をすべて求めよ．
+\hfill (86 東京大)
+\end{toi}
+\ans 
+関数 $f(x)$ を平方完成すると，
+\[f(x) = 2(x^2 - 2ax) + a + a^2 = 2(x - a)^2 - 2a^2 + a + a^2 = 2(x - a)^2 - a^2 + a\]
+より，グラフは$(a, - a^2 + a)$ を頂点とする下に凸の放物線である．
+\begin{itemize}
+    \item [(1)]$a < 0$ のとき\\
+グラフは定義域内で単調増加となるので，$m=f(0)=a^2+a$．
+$m=0$なら $a^2+a=a(a+1)=0$なので，$a<0$ より$\boldsymbol{a=-1}$．
+\item[(2)]${0 \le a \le 3}$ のとき
+頂点が定義域に含まれるので，$m=f(a)=-a^2+a$．
+$m=0$ なら $-a^2+a= -a(a-1)=0$なので，$0 \le a \le 3$ より$\boldsymbol{a=0, 1}$．
+\item[(3)] ${a > 3}$ のとき
+グラフは定義域内で単調減少となるので，$m=f(3)= a^2 - 11a + 18$．$m=0$ なら$a^2 - 11a + 18  (a-2)(a-9)=0$なので，$a>3$ より$\boldsymbol{a=9}$．
+\end{itemize}
+以上より, 求める $a$ の値は $\boldsymbol{a = -1, 0, 1, 9}$．\\
+\newpage
+\begin{toi}
+2次関数$f(x)=ax^2-6ax+b$は，区間$1\leqq x\leqq4$において最大値11，最小値8をとる．このとき，$a>0$ならば，$b=~\fbox{　ア　}$であり，$a<0$ならば，$b=\fbox{　イ　}$である．\hfill{(06 愛知工業大)}
+\end{toi}
+\ans 
+$f(x)$を平方完成すると
+\[f(x) = ax^2-6ax+b = a(x-3)^2-9a+b\]
+より，グラフは$(3,-9a+b)$を頂点とする放物線である．
+\begin{itemize}
+    \item [(1)] ${a>0}$ のとき \\
+グラフは下に凸なので，$x=3$で最小値 $-9a+b=8$，$x=1$で最大値$ -5a+b=11$をとる．これより，$a=\dfrac{3}{4},\boldsymbol{b =\dfrac{59}{4}\cdots~\fbox{　ア　}~
+}$．これは$a>0$を満たしているのでOK.\\
+\item[(2)]${a<0}$ のとき
+グラフは上に凸なので，$x=1$で最小値 $-5a+b=8$，$x=3$で最大値$-9a+b=11$をとる．これより，$a=-\dfrac{3}{4},\boldsymbol{b =\dfrac{17}{4}\cdots~\fbox{　イ　}~
+}$．これは$a<0$を満たしているのでOK.\\
+\end{itemize}
+
+\end{document}

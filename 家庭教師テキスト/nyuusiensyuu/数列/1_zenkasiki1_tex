@@ -1,0 +1,162 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数と式①}{対称式と相反方程式}
+\ascboxA{\textbf{対称式}}
+\noindent $x$と$y$の多項式で，$x$と$y$を入れ替えても同じ式になるものを\textbf{対称式}という：\\[3pt]
+\[x^3+3xy+y^3,~~~x+y,~~~xy,~~~x^2+2xy+y^2\]
+特に，$x+y,~xy$を\textbf{基本対称式}という．\uwave{対称式は，必ず基本対称式の和・差・積で表せる．}
+\begin{exque}
+    \begin{itemize}
+        \item [(1)]$x^3+y^3$を基本対称式$x+y,~xy$で表せ．
+        \item [(2)]$x+y=3,~xy=2$のとき，$x^3+y^3$の値を求めよ．
+    \end{itemize}
+\end{exque}
+\ans 
+\begin{itemize}
+    \item [(1)]$x^3,y^3$を作りたいので，まずは$(x+y)^3$を考えよう．
+    \[(x+y)^3=x^3+3x^2y+3xy^2+y^3=x^3+3xy(x+y)+y^3\]
+    なので，$\boldsymbol{x^3+y^3=(x+y)^3-3xy(x+y)}$と表せる．
+    \item[(2)](1)より$x^3+y^3=(x+y)^3-3xy(x+y)=3^3-3\cdot 2\cdot3=\underline{\boldsymbol{9}}$
+\end{itemize}
+　
+\begin{toi}
+\end{toi}$x=\displaystyle{\frac{\sqrt3+1}{\sqrt3-1}},~~y=\displaystyle{\frac{\sqrt3-1}{\sqrt3+1}}$のとき，次の式の値を求めよ．\\[5pt]
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(1)]$x+y,~xy$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(2)]$x^2+y^2$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(3)]$x^3+y^3$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(4)]$x^4+y^4$
+\end{itemize}
+\end{minipage}
+\begin{exque}
+$\displaystyle{x+\frac{1}{x}=\sqrt7}$のとき，$\displaystyle{x^2+\frac{1}{x^2}}$の値を求めよ．
+\end{exque}
+\ans 
+$x,~\dfrac1x$の対称式と見ればいい．$\boldsymbol{\displaystyle{x^2+\frac1{x^2}=\left(x+\frac1x\right)^2-2x\cdot\frac1x}=7-2=5}$
+\begin{toi}
+$\displaystyle{x+\frac{1}{x}=\sqrt7}$のとき，次の式の値を求めよ．\\[5pt]
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(1)]$\displaystyle{x^3+\frac{1}{x^3}}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(2)]$\displaystyle{x^4+\frac{1}{x^4}}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(3)]$x^5+\dfrac{1}{x^5}$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\ascboxA{\textbf{相反方程式}}
+　
+\begin{exque}
+    4次方程式$x^4+3x^3+2x^2+3x+1=0$を解け．
+\end{exque}
+\ascboxG{\textbf{Point}}\noindent 
+この問題のように，係数が左右対称になっている$n$次方程式を\textbf{相反方程式}という($1,3,2,3,1$)．正攻法で解いてもいいが，対称式の考え方を使うとうまく解ける．
+\ans 
+\noindent $x=0$は解ではないので，両辺を$x^2$で割ると，
+\[x^2+3x+2+3\cdot\frac1x+\frac{1}{x^2}=x^2+\frac{1}{x^2}+3\left(x+\frac1x\right)+2=0\]
+これは$x$と$\dfrac1x$の対称式なので，前の問題のように$X=x+\dfrac1x$で表そう．
+\[x^2+\frac{1}{x^2}+3\left(x+\frac1x\right)+2=\left(x+\dfrac1x\right)^2-2+3\left(x+\dfrac1x\right)+2=X^2+3X=0\]
+これより$X=0,-3$であるから，結局，$x+\dfrac1x=0,-3$，すなわち$x^2+1=0,-3x$を解けばいい．
+\[x^2+1=0~\Longleftrightarrow~x=\pm i\]
+\[x^2+1=-3x~\Longleftrightarrow x^2+3x+1=0~\Longleftrightarrow~x=\frac{-3\pm\sqrt5}{2}\]
+以上より，求める$x$は，
+\[\boldsymbol{x=\pm i ,~\frac{-3\pm\sqrt5}{2}}\]
+\begin{toi}
+    4次方程式$x^4+5x^3+2x^2+5x+1=0$を解け．
+\end{toi}
+　\\
+　\\
+\begin{rembox}
+$\boldsymbol{x^4+2x^2+2x^2+1=0}$は相反方程式ではない．$\boldsymbol{x^4+0x^3+2x^2+2x^2+1=0}$と考える．
+\end{rembox}
+\newpage
+\ascboxA{\textbf{復習問題}}
+\begin{toi}
+$x=\displaystyle{\frac{1}{2-\sqrt3}},~~y=\displaystyle{2-\sqrt3}$のとき，次の式の値を求めよ．
+\[(1)~x^2+y^2　　　　　　(2)~\frac{y}{x}+\frac{x}{y}\]
+\end{toi}
+\begin{toi}
+$\sqrt 3$の整数部分を$a$，少数部分を$b$とするとき，$\dfrac{a}{b}+\dfrac{b}{a}$の値を求めよ．
+\end{toi}
+\begin{toi}
+$a^2+3b=b^2+3a=8$のとき，次の式の値を求めよ．ただし，$a\neq b$とする．\\
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(1)]$ab$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(2)]$a+b$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(3)]$a^2+b^2$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+    \item [(4)]$\dfrac{a}{b}+\dfrac{b}{a}$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\begin{toi}
+4次方程式$x^4-8x^3+17x^2-8x+1=0$を解け．\rightline{[2020~横浜市大　医]}
+\end{toi}
+\end{document}

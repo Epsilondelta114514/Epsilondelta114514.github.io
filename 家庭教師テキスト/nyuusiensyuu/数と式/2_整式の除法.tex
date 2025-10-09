@@ -1,0 +1,108 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数と式②}{整式の除法}
+\begin{exque}
+    整式$f(x)$を$x+2$で割った余りが3，$x-3$で割った余りが$-1$のとき，$f(x)$を$x^2-x-6$で割った余りを求めよ．\hfill[05~立教大]
+\end{exque}
+\ascboxG{\textbf{Point.}}商を$q(x)$，余りを$r(x)$として$\boldsymbol{f(x)=g(x)q(x)+r(x)}$の形で表す．
+\ans 
+$f(x)$を$x+2$で割った余りが$3$であるから，商を$q_1(x)$とすると
+\[f(x)=(x+2)q_1(x)+3~\cdots ①\]
+また，$f(x)$を$x-3$で割った余りは$-1$であるから，商を$q_2(x)$とすると
+\[f(x)=(x-3)q_2(x)-1~\cdots ②\]
+と書ける．$f(x)$を$x^2-x-6$で割った余りは一次式であるから，これを$ax+b$とおく．商を$q(x)$とすると
+\[f(x)=(x^2-x-6)q(x)+ax+b=(x-3)(x+2)q(x)+ax+b~\cdots ③\]
+と表せる．①より$f(-2)=3$，②より$f(3)=-1$なので，③より連立方程式
+\[\begin{dcases}
+-2a+b&=3\\
+3a+b&=-1
+\end{dcases}\]
+を得る．これを解いて，$a=-\dfrac{4}{5},~b=\dfrac75$となるので，求める余りは$\boldsymbol{-\dfrac45 x+\dfrac75}$である．
+\ascboxG{\textbf{補足．}}①，②を書かずに\textbf{因数定理}を用いてもよい．問題文より直ちに$f(-2)=3,~f(3)=-1$がわかる．
+\begin{ascolorbox17}{\textbf{因数定理}}
+整式$f(x)$を$x-a$で割った余りは$f(a)$である．
+\end{ascolorbox17}
+\noindent \textbf{証明．}\\
+$f(x)$を$x-a$で割ったときの商を$q(x)$，余りを$r$とすると，$f(x)=(x-a)q(x)+r$と書ける．これより，$r=f(a)$がしたがう．　　(証明終)\\
+\newpage
+\begin{toi}
+   整式$f(x)$を$x+1$で割ったあまりが1，$x-2$で割った余りが$4$のとき，$f(x)$を$x^2-x-2$で割った余りを求めよ．
+\end{toi}
+\begin{toi}
+$a$ を定数，$n$ を正の整数とする．$x$ の整式$f(x) = x^n + 2x^{n-1} - a$が $x+1$ で割り切れるとき，次の問いに答えよ．
+
+\begin{enumerate}
+  \item[(1)] $a$ の値を求めよ．
+  \item[(2)] $f(x)$ を $x^2 - 1$ で割ったときの余りを求めよ．
+\end{enumerate}
+\hfill[00~佐賀大]
+\end{toi}
+　
+\begin{exque}
+    $ax^3+bx^2-2$が$(x-1)^2$で割り切れるとき，$a,b$の値を求めよ．\hfill[06~早稲田大　改]
+\end{exque}
+\ascboxG{\textbf{Point.}}
+$(x-a)^n$で割る問題の多くは，例題1と同じようにやると条件が足りずに手詰まりとなる．この系統の問題は，\textbf{微分を使って条件式を増やす}と簡単に解ける．
+\ans     $ax^3+bx^2-2$が$(x-1)^2$で割り切れるから，商を$q(x)$とすると
+\[ax^3+bx^2-2=(x-1)^2q(x)~\cdots (\text{A})\]
+と書ける．ひとまず(A)に$x=1$を代入すると，$a+b-2=0~\cdots ①$がわかる．\\
+　①だけだと$a,b$が求まらないので，式がもう1本必要である．そこで，\textbf{(A)の両辺を$x$で微分する}と，
+\[3ax^2+2bx=2(x-1)q(x)+(x-1)^2q'(x)~\cdots(\text{B})\]
+である．(B)に$x=1$を代入すれば，$3a+2b=0~\cdots ②$がわかる．①と②より，$\boldsymbol{a=-4,~b=6}$．
+\begin{toi}
+$x^{10}$を$(x-1)^2$で割った余りを求めよ．
+\end{toi}
+\begin{toi}
+$x^{n}$を$(x-1)^2$で割った余りを求めよ．
+\end{toi}
+\newpage
+\ascboxA{\textbf{復習問題}}
+\begin{toi}
+因数定理の主張を述べ，それを証明せよ．
+\end{toi}
+\begin{toi}
+$(x+1)^{12}$を$x^2-1$で割った余りを求めよ．\hfill[08~日本歯科大]
+\end{toi}
+\begin{toi}
+
+$n$ は $3$ 以上の奇数として，多項式$P(x) = x^n - ax^2 - bx + 2$
+を考える．$P(x)$ が $x^2 - 4$ で割り切れるときは$a = \fbox{{あ}}~, \quad
+b = \fbox{い}$
+であり，$(x+1)^2$ で割り切れるときは
+$a = \fbox{{う}}~, \quad
+b = \fbox{え}$
+である．\hfill[11~慶應義塾大]
+\end{toi}
+\begin{toi}
+整式 $P(x)$ を $(x-1)^2$ で割ったときの余りが $4x-5$ で，$x+2$ で割ったときの余りが $-4$ である．
+\begin{enumerate}
+  \item[(1)] $P(x)$ を $x-1$ で割ったときの余りを求めよ．
+  \item [(2)]$P(x)$ を $(x-1)(x+2)$ で割ったときの余りを求めよ．
+  \item [(3)]$P(x)$ を $(x-1)^2(x+2)$ で割ったときの余りを求めよ．
+\end{enumerate}
+\hfill[山形大]
+\end{toi}
+\end{document}

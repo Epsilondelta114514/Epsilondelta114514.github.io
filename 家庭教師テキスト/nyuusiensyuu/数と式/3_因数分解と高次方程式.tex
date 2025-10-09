@@ -1,0 +1,117 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数と式③}{因数分解・高次方程式}
+\begin{exque}
+$x^4-2x^3-x+2$を因数分解せよ．
+\end{exque}
+\ascboxG{\textbf{Point.}}3次以上の因数分解→強引に「$=0$の解」(根という)を見つけて因数定理を使う．有理数解の候補は
+\[\boldsymbol{\pm\frac{(定数項の約数)}{( 最高次数の係数の約数)}}\]
+の形のみなので，ここから攻めるとよい．
+\ans 
+$x=1$を代入すると$0$になるので，因数定理により，$(x-1)$で割った余りは0である．つまり，$x^4-2x^3-x+2$は$x-1$で割り切れる．実際に割り算をしてみると，
+\[x^4-2x^3-x+2=(x-1)(x^3-x^2-x-2)\]
+である．\\
+　次に，$x^3-x^2-x-2$を因数分解する．$x=2$を代入すると0になるので，上と同様に$x-2$で割り切れる：
+\[x^3-x^2-x-2=(x-2)(x^2+x+1).\]
+$x^2+x+1$は(有理数の範囲では)これ以上因数分解できないので，以上の結果を合わせて
+\[\boldsymbol{x^4-2x^3-x+2=(x-1)(x-2)(x^2+x+1)}.\]
+　
+\begin{rembox}
+2次式が有理数の範囲でこれ以上因数分解できないことは，$=0$の解を探せばすぐに分かる．$\boldsymbol{x^2+x+1=0}$の解は$\boldsymbol{x=\dfrac{-1\pm\sqrt3 i}{2}}$なので，これ以上因数分解するなら
+\[\boldsymbol{x^2+x+1=\left(x-\dfrac{-1+\sqrt3 i}{2}\right)\left(x-\dfrac{-1-\sqrt3 i}{2}\right)}\]
+しかありえない．よって，有理数の範囲ではこれ以上因数分解できないことがわかる．\\
+
+3次以上の場合はそう簡単にいかないので注意．$\boldsymbol{x^4+4=0}$は実数解すら持たないが，
+\[\boldsymbol{x^4+4=(x^2+2)^2-4x^2=(x^2+2x+2)(x^2-2x+2)}\]
+と因数分解できる．
+\end{rembox}
+\begin{toi}
+次の式を因数分解せよ．\\
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$x^3-4x^2-7x+10$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$x^3+2x^2-2x-1$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\begin{exque}
+3次方程式$x^3-4x^2-7x+10=0$を解け．
+\end{exque}
+\ascboxG{\textbf{Point.}}まずは2次以下が出てくるまで因数分解しよう．2次式が更に因数分解するなり解の公式を使うなり自由にやってOK．
+\ans 
+左辺を因数分解すると，$x^3-4x^2-7x+10=(x-1)(x+2)(x-5)$なので，$\boldsymbol{x=1,-2,5}$
+\begin{toi}
+次の方程式を解け．\\[5pt]
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$x^3+2x^2-2x-1=0$
+    \item [(3)]$x^4+3x^2-4=0$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$x^3-5x^2+6x=0$
+    \item [(4)]$x^3+3x^2+3x+1=0$
+\end{itemize}
+\end{minipage}
+\end{toi}
+　\\
+\ascboxA{\textbf{因数分解いろいろ(自習用)}}
+計算の工夫が必要な因数分解の入試問題を集めたので，自習に使ってください．
+\begin{toi}
+次の式を因数分解せよ．
+\begin{itemize}
+    \item [(1)]$(x^2+2x-30)(x^2+2x-8)-135$\hfill(北海学園大)
+    \item [(2)]$(x-4)(x-2)(x+1)(x+3)+24$\hfill(東洋大)
+    \item [(3)]$x(x+1)(x+2)(x+3)+1$\hfill(松山大)
+    \item [(4)]$(x+1)(x+2)(x+3)(x+4)-3$\hfill(九州東海大)
+\end{itemize}
+\end{toi}
+\begin{toi}
+次の式を因数分解せよ．
+\begin{itemize}
+    \item [(1)]$2x^2+5xy+3y^2-3x-5y-2$\hfill(京都産業大)
+    \item [(2)]$2x^2+3xy-2y^2+5y-2$\hfill(京都産業大)
+        \item [(3)]$a^3+a^2-2a-a^2b-ab+2b$\hfill(摂南大)
+\end{itemize}
+\end{toi}
+\end{document}

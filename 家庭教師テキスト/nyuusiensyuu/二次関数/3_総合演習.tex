@@ -1,0 +1,74 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　2次関数③}{総合演習}
+\begin{toi}
+$f(x)=-x^2+2ax-a^2-1~(-1\leqq x\leqq 1)$の最大値を求めよ．
+\end{toi}
+\begin{toi}
+$x, y$ を実数とし, $x^2 - xy + y^2 = 1$ を満たすとする。$t = x + y$ とおくとき, 次の問いに答えよ。
+\begin{enumerate}
+    \item[(1)] $xy$ を $t$ を用いて表せ。
+    \item[(2)] $t$ の値の範囲を求めよ。
+    \item[(3)] $2x + 3xy + 2y$ の最大値および最小値と, そのときの $x, y$ の値を求めよ。
+\end{enumerate}
+\hfill (22 滋賀大)
+\end{toi}
+\begin{toi}
+$a, b$ を正の定数とする。$x, y$ を $\displaystyle \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ を満たす実数とするとき,
+$z = \left(\frac{x}{a}\right)^4 + \left(\frac{y}{b}\right)^4$ のとりうる値の範囲は $\fbox{ ② } \le z \le \fbox{ ③ }$ である。
+\hfill (20 関西大)
+\end{toi}
+\begin{toi}
+2次関数 $f(x) = ax^2 - 2ax + b$ ($a, b$ は定数) は区間 $0 \le x \le 3$ における最大値が $3$, 最小値が $-5$ である。このとき, $a, b$ の値の組をすべて求めよ。
+\hfill (名城大)
+\end{toi}
+\begin{toi}
+ $a$ を定数とするとき, 2次関数 $y = x^2 - 2ax + 2a^2$ について
+\begin{enumerate}
+    \item[(1)] 区間 $0 \le x \le 2$ におけるこの関数の最大値と最小値を求めよ．
+    \item[(2)] 区間 $0 \le x \le 2$ におけるこの関数の最小値が $20$ であるとき, $a$ の値を求めよ．
+\end{enumerate}
+\hfill (宇都宮大)
+\end{toi}
+\begin{toi}
+ 2次方程式 $mx^2 - x - 2 = 0$ の2つの実数解が, それぞれ以下のようになるための $m$ の条件を求めよ．
+\begin{enumerate}
+    \item[(1)] 2つの解がともに $-1$ より大きい．
+    \item[(2)] 1つの解は $1$ より大きく, 他の解は $1$ より小さい．
+    \item[(3)] 2つの解の絶対値がともに $1$ より小さい．
+\end{enumerate}
+\hfill (岐阜大)
+\end{toi}
+\newpage
+\begin{toi}
+\begin{enumerate}
+    \item[(1)] $a$ は実数の定数とする．2次関数 $f(x) = 2x^2 - 4ax + a + 1$ が $x \ge 0$ においてつねに $f(x) > 0$ を満たすような, $a$ の値の範囲を求めよ．
+    \item[(2)] $0 \le x \le 2$ を満たすすべての実数 $x$ に対して, $x^2 - 2ax + a - 3 \le 0$ が成り立つような定数 $a$ の値の範囲を求めよ．
+\end{enumerate}
+\hfill (秋田大, 千葉工業大)
+\end{toi}
+
+\end{document}

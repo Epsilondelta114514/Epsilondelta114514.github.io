@@ -1,0 +1,169 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　数列②}{漸化式(応用①)　(解答)}
+\begin{toi}
+    次の漸化式で定まる数列$\{a_n\},\{b_n\}$の一般項を求めよ．\\[5pt]
+    \begin{minipage}{0.5\linewidth}
+        \begin{itemize}
+            \item [(1)]$\displaystyle{a_1=3,~b_1=2,~\begin{cases}
+      a_{n+1}&=2a_n+b_n\\
+      b_{n+1}&=3a_n+4b_n
+   \end{cases}}$   
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.5\linewidth}
+         \begin{itemize}
+            \item [(2)]$\displaystyle{a_1=1,~b_1=2,~\begin{cases}
+      a_{n+1}&=2a_n-b_n\\
+      b_{n+1}&=a_n+4b_n
+   \end{cases}}$   
+        \end{itemize}
+    \end{minipage}
+\end{toi}
+\ans 
+\begin{itemize}
+    \item [(1)]$a_{n+1}+\alpha b_{n+1}=\beta(a_n+\alpha b_n)\cdots(\ast)$に与えられた漸化式を代入して$a_{n+1},b_{n+1}$を消去すると，
+\[(2a_n+b_n)+\alpha(3a_n+4b_n)=\beta(a_n+\alpha b_n)\]
+これを整理すると，
+\[(3\alpha+2)a_n+(4\alpha+1)b_n=\beta a_n+\alpha\beta b_n\]
+両辺の係数を比較することにより，
+\[\begin{cases}
+  3\alpha+2=\beta\\
+  4\alpha+1=\alpha\beta
+\end{cases}\]
+これを解くと，$\displaystyle{(\alpha,\beta)=\left(-\frac13,~1\right),~(1,~5)}$である．
+\begin{itemize}
+    \item[(i)]$\displaystyle{(\alpha,\beta)=\left(-\frac13,~1\right)}$を$(\ast)$に代入すると，
+\[a_{n+1}-\frac13 b_{n+1}=a_n-\frac13 b_n\]
+なので，$\displaystyle{\left\{a_n-\frac13 b_n\right\}}$は初項$a_1-\dfrac13 b_1=3-\dfrac23=\dfrac73$，公比1の等比数列である．したがって，
+\[a_n-\frac13b_n=\frac73 \quad \therefore 3a_n-b_n=7 \]
+    \item[(ii)]$\displaystyle{(\alpha,\beta)=(1,~5)}$を$(\ast)$に代入すると，
+\[a_{n+1}+ b_{n+1}=5\left(a_n+ b_n\right)\]
+なので，$\displaystyle{\left\{a_n+ b_n\right\}}$は初項$a_1+ b_1=3+2=5$，公比5の等比数列である．したがって，
+\[a_n+b_n=5\cdot5^{n-1}=5^n \]
+\end{itemize}
+以上より
+\[\boldsymbol{a_{n}=\frac{5^n+7}{4},~b_n=\frac{3\cdot5^n-7}{4}}\]
+    \item [(2)] $a_{n+1}+\alpha b_{n+1}=\beta(a_n+\alpha b_n)\cdots(\ast)$に与えられた漸化式を代入して$a_{n+1},b_{n+1}$を消去すると，
+\[(2a_n-b_n)+\alpha(a_n+4b_n)=\beta(a_n+\alpha b_n)\]
+これを整理すると，
+\[(\alpha+2)a_n+(4\alpha-1)b_n=\beta a_n+\alpha\beta b_n\]
+両辺の係数を比較することにより，
+\[\begin{cases}
+  \alpha+2=\beta\\
+  4\alpha-1=\alpha\beta
+\end{cases}\]
+これを解くと，$(\alpha,\beta)=(1,3)$．
+このとき，
+\[a_{n+1}+b_{n+1}=3(a_n+b_n)\]
+となり，数列$\{a_n+b_n\}$は初項$3$，公比3の等比数列なので，
+\[a_n+b_n=3\cdot3^{n-1}=3^n\]
+これより$b_n=3^n-a_n$．これを$a_{n+1}=2a_n-b_n$に代入すると，
+\[a_{n+1}=2a_n-(3^n-a_n) = a_{n+1}=3a_n-3^n\]
+これは指数関数型の漸化式なので簡単に解けて，$a_n=3^n c_n=3^n\cdot\dfrac{2-n}{3}=(2-n)3^{n-1}$である．これより
+\[b_n=3^n-a_n=(n+1)3^{n-1}．\]
+以上より，\[\boldsymbol{a_n=(2-n)3^{n-1},~b_n=(n+1)3^{n-1}}\]
+\end{itemize}
+\begin{toi}
+  $a_1=2$,~$a_{n+1}=\dfrac{3a_n}{1-5a_n}$で定まる数列$\{a_n\}$の一般項を求めよ．
+\end{toi}
+\ans 
+初項と漸化式の形から$a_n\neq0$である．与えられた漸化式の両辺の逆数をとると，
+\[\frac{1}{a_{n+1}} = \frac{1}{3a_n}-\frac53\]
+であるから，$b_n=\dfrac1{a_n}$とおくと$b_{n+1} = \dfrac13b_n-\dfrac53$．これより$b_n=\dfrac{6-5\cdot 3^{n-1}}{2\cdot3^{n-1}}$であるから，
+\[\boldsymbol{a_n = \frac{1}{b_n}  = \frac{2\cdot3^{n-1}}{6-5\cdot3^{n-1}}}\]
+\begin{toi}
+次の漸化式で定まる数列$\{a_n\}$の一般項を求めよ．\\[5pt]
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$a_1=2,~a_{n+1}=\dfrac{3a_n+2}{a_n+4}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$a_1=5,~a_{n+1}=\dfrac{4a_n-9}{a_n-2}$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\ans 
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]
+$\displaystyle{\boldsymbol{a_n =  \frac{4\cdot5^{n-1}+2^n}{4\cdot5^{n-1}-2^{n-1}}}}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+\item[(2)]$\displaystyle{\boldsymbol{a_n =  \frac{6n-1}{2n-1}}}$
+\end{itemize}
+\end{minipage}
+
+\begin{toi}
+    次の漸化式で定まる数列$\{a_n\},\{b_n\}$の一般項を求めよ．\\[5pt]
+    \begin{minipage}{0.5\linewidth}
+        \begin{itemize}
+            \item [(1)]$\displaystyle{a_1=2,~b_1=-1,~\begin{cases}
+      a_{n+1}&=3a_n+b_n\\
+      b_{n+1}&=2a_n+2b_n
+   \end{cases}}$   
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.5\linewidth}
+         \begin{itemize}
+            \item [(2)]$\displaystyle{a_1=3,~b_1=2,~\begin{cases}
+      a_{n+1}&=3a_n+4b_n\\
+      b_{n+1}&=2a_n+3b_n
+   \end{cases}}$   
+        \end{itemize}
+    \end{minipage}
+\end{toi}
+\ans 
+\begin{itemize}
+    \item [(1)]$\boldsymbol{a_n=4^{n-1}+1,~b_n=4^{n-1}-2}$
+    \item [(2)]$\boldsymbol{a_n=\dfrac{(3+2\sqrt{2})^n+(3-2\sqrt{2})^n}{2},~b_n=\dfrac{(3+2\sqrt{2})^n-(3-2\sqrt{2})^n}{2\sqrt{2}}}$
+\end{itemize}
+\begin{toi}
+  $a_1=\dfrac12$,~$a_{n+1}=\dfrac{a_n}{4a_n-3}$で定まる数列$\{a_n\}$の一般項を求めよ．
+\end{toi}
+\ans $\displaystyle{\boldsymbol{a_n = \frac{1}{(-3)^{n-1}+1}}}$
+\begin{toi}
+  $a_1=\dfrac13$,~$a_{n+1}=\dfrac{1}{3-2a_n}$で定まる数列$\{a_n\}$の一般項を求めよ．
+\end{toi}
+\ans 
+$\displaystyle{\boldsymbol{a_n = \frac{2^n-1}{2^{n+1}-1}}}$
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習　2次関数②}{2変数関数の最大・最小}
+\begin{exque}
+$x>0,~y>0,~x+y=1$のとき，$f(x,y)=\displaystyle{\left(2+\frac1x\right)\left(2+\frac1y\right)}$の最小値を求めよ．
+\end{exque}
+\ascboxG{\textbf{Point.}}2変数関数の基本は，文字を消して1変数関数に帰着させることである．難関大ではたまに出るので経験があると安心．
+\ans
+$x+y=1$に注意して展開すると， 
+\[f(x,y)=\displaystyle{\left(2+\frac1x\right)\left(2+\frac1y\right)=4+\frac2x+\frac2y+\frac1{xy}}=4+\frac{2(x+y)+1}{xy}=4+\frac{2\cdot 1+1}{xy}=4+\frac{3}{xy}\]
+である．$y=1-x$より$y$を消去すると，
+\[f(x,y)=4+\frac3{x(1-x)}\]
+$f(x,y)$が最小になるのは，$x(1-x)$が最大になるときである．$\displaystyle{x(1-x)=-x^2+x=-\left(x-\frac12\right)^2+\dfrac14}$なので，$x=\dfrac12$のときに$f(x,y)$は$\boldsymbol{最大値16}$をとる．
+\begin{toi}
+$x+y=1,~0\leqq x\leqq 2$のとき，$x-2y^2$の最大値と最小値を求めよ．\hfill[07 関西大]
+\end{toi}
+\begin{exque}
+    $x^2-2xy+2y^2-2y+4x+6$の最小値とそのときの$x,y$を求めよ．\hfill[14 摂南大]
+\end{exque}
+\ascboxG{\textbf{Point.}}
+文字を消すための式が足りないときは，ひとまず平方完成をしてみるとよい．
+\ans 
+まずは$x$の関数として平方完成をして，次に残りを$y$の関数として平方完成すると．
+\begin{align*}
+x^2+2(2-y)x+2y^2-2y+6&=(x+(2-y))^2-(y^2-4y+4)+2y^2-2y+6\\
+&=(x-y+2)^2+y^2+2y+2\\
+&=(x-y+2)^2+(y+1)^2+1\\
+\end{align*} 
+と変形できるので，$x-y+2=0,~y+1=0$のときに最小値1をとる．つまり，$\boldsymbol{x=-3,y=-1}$\textbf{で最小値1}．
+\begin{toi}
+    $x^2-8xy+17y^2+6x-30y+10$の最小値とそのときの$x,y$を求めよ．\hfill[15 北海学園大]
+\end{toi}
+　\\
+\ascboxA{\textbf{復習問題}}
+\noindent
+\begin{toi}
+ $x+y=4,~x\geqq0,~y\geqq0$を満たすとき，$x^2y^2+x^2+y^2+xy$の最大値と最小値を求めよ．
+\end{toi}
+\begin{toi}
+実数$x,y$は$2x+y=2,~x\geqq0,~y\geqq0$を満たすとする．
+\begin{itemize}
+    \item [(1)]$xy$の最大値と最小値を求めよ．
+    \item [(2)]$x^2y^2+4x^2+y^2+2xy$の最大値と最小値を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+　$x^2-4xy+5y^2+2x-2y+7$の最小値とそのときの$x,y$を求めよ．
+\end{toi}
+\end{document}
