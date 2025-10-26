@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>過去問演習 - Text Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html" class="header-link">Text Portal</a></h1>
+    </header>
+   <nav>
+    <ul>
+        <li><a href="math.html">数学</a></li>
+        <li><a href="science.html">理科</a></li>
+                        <li><a href="kakomon.html">過去問演習</a></li>
+        <li><a href="questions.html">質問</a></li>
+    </ul>
+</nav>
+
+    <div class="page-container">
+        <div class="left-column">
+            <h2>過去問演習</h2>
+            
+            <div class="update-info">
+                <h4>更新情報</h4>
+                <p>2025/10/26: 星薬科大学(一般,2025年)の手書き解答をアップロード</p>
+                <p>2025/10/26: ページを作成．</p>
+            </div>
+
+            <div id="text-list-container">
+    <h3>過去問解答(てきとう)</h3>
+                   <div class="exam-year-item-container">
+                    <div class="exam-year-header">
+                        <h4>星薬科大学(一般，2025年)</h4>
+                        <div>
+                            <a href="家庭教師テキスト/kakomon/hoshiippan2025.pdf" class="exam-button file-link">表示</a>
+                             <a href="家庭教師テキスト/kakomon/hoshiippan2025.pdf" class="exam-button file-link" download>DL</a>
+                                    </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+     <div class="right-column">
+            <div id="pdf-placeholder">
+                <p>「表示」ボタンをクリックするとPDFが表示されます．</p>
+            </div>
+            <iframe id="pdf-viewer" frameborder="0"></iframe>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const listContainer = document.getElementById('text-list-container');
+            const pdfViewer = document.getElementById('pdf-viewer');
+            const pdfPlaceholder = document.getElementById('pdf-placeholder');
+
+            listContainer.addEventListener('click', function (event) {
+                // 「表示」ボタン(file-linkクラスを持つ要素)がクリックされたかチェック
+                if (event.target.classList.contains('file-link')) {
+
+                    // ★★★ ここからが変更部分 ★★★
+                    // 画面幅が768pxより大きい（PC）場合のみ、プレビュー機能を動かす
+                    if (window.innerWidth > 768) {
+                        event.preventDefault(); // リンクの通常動作をキャンセル
+
+                        const clickedItem = event.target.closest('.exam-year-item-container');
+                        if (!clickedItem) return;
+
+                        // すべての項目のアクティブ状態を解除
+                        document.querySelectorAll('.exam-year-item-container.active').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        // クリックされた項目をアクティブにする
+                        clickedItem.classList.add('active');
+
+                        // PDFを表示
+                        const pdfUrl = event.target.href;
+                        pdfPlaceholder.style.display = 'none';
+                        pdfViewer.style.display = 'block';
+                        pdfViewer.src = pdfUrl;
+                    }
+                    // ★★★ 変更部分ここまで ★★★
+                    // スマホの場合は event.preventDefault() が実行されないため、
+                    // リンクは通常の動作（新しいタブでPDFを開く）をします。
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

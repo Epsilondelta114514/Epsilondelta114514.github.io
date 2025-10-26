@@ -1,0 +1,134 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{単元別演習}{10月25日の問題}
+
+\begin{toi}
+     $a_1=10,~a_{n+1}=a_n^2$で定まる数列$\{a_n\}$の一般項を求めよ．
+\end{toi}
+\begin{toi}
+    数列$\{a_n\}$に対して，$S_n=\displaystyle{\sum_{k=1}^n a_k}$とすると，
+    $S_n=\dfrac{3}{2}a_n+3-4n$
+    が成り立つとする．
+    \begin{itemize}
+        \item [(1)]$a_1$を求めよ．
+        \item [(2)]$a_{n+1}$と$a_n$の漸化式を作れ．
+        \item [(3)]$a_n$を求めよ．
+    \end{itemize}
+\end{toi}
+\begin{toi}
+\noindent 正の実数$a$についての関数$f(a)$を$\displaystyle{f(a)=\int_{-1}^1 |x^2-a^2|dx}$により定める．
+\begin{itemize}
+    \item [(1)]$f(a)$を求めよ．
+    \item [(2)]$f(a)$の最小値を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+\noindent 1次式$f_n(x)=a_nx+b_n~(n=1,2,\ldots)$が
+\[f_1(x)=x+1,~~~~x^2f_{n+1}(x)=x^3+x^2+\int_0^{x}tf_n(t)dt~(n=1,2,\ldots)\]
+を満たすとする．
+\begin{itemize}
+    \item [(1)]数列$\{a_n\},~\{b_n\}$が満たす漸化式を求めよ．
+        \item [(2)]$f_n(x)$を求めよ．
+\end{itemize}
+\end{toi}
+
+\begin{toi}
+\noindent 放物線$\mathrm{C}~:~y=x^2$とその上の点$(a,a^2)$~$(0<a\leqq 1)$における接線を$l$とするとき，次の問いに答えよ．
+\begin{itemize}
+    \item[(1)]$l$の方程式を求めよ．
+    \item[(2)]直線$x=0,~x=1,~$放物線Cと接線$l$とで囲まれた部分で，$y\geqq0$を満たす部分の面積$S(a)$を求めよ．
+    \item[(3)]$S(a)$の最小値を求めよ．   
+\end{itemize}
+\end{toi}
+
+\newpage
+\printheader{単元別演習}{10月25日の宿題}
+\setcounter{toicounter}{0}
+\begin{toi}
+整式 $P(x)$ を $(x-1)^2$ で割ったときの余りが $4x-5$ で，$x+2$ で割ったときの余りが $-4$ である．
+\begin{enumerate}
+  \item[(1)] $P(x)$ を $x-1$ で割ったときの余りを求めよ．
+  \item [(2)]$P(x)$ を $(x-1)(x+2)$ で割ったときの余りを求めよ．
+  \item [(3)]$P(x)$ を $(x-1)^2(x+2)$ で割ったときの余りを求めよ．
+\end{enumerate}
+\hfill[山形大]
+\end{toi}
+
+\begin{toi}
+正四面体ABCDの頂点を移動する点Pがある．点Pは1秒ごとに隣の3頂点のいずれかに等しい確率$\dfrac a3$で移るか，もとの頂点に確率$1-a$でとどまる．はじめ頂点Aにいた点Pが，$n$秒後に頂点Aにいる確率を$p_n$とする．ただし，$0<a<1$とし，$n$は自然数とする．
+\begin{itemize}
+    \item [(1)]数列$\{p_n\}$の漸化式を求めよ．
+    \item [(2)]確率$p_n$を求めよ．
+\end{itemize}
+\hfill(北海道大)
+\end{toi}
+
+\newpage
+\noindent \textbf{問1の解答例}\\[5pt]
+$P(x)=(x-1)^2q_1(x)+4x-5 \cdots$①，$P(x)=(x+2)q_2(x)-4 \cdots$②とおく．
+\begin{enumerate}
+  \item[(1)] 因数定理より$x-1$で割った余りは$P(1)=4\cdot1-5=\boldsymbol{-1}$．
+  \item [(2)] $P(x)$を$(x-1)(x+2)$で割った余りを$ax+b$とおく．
+  $P(1)=-1, P(-2)=-4$なので，
+  \[\begin{cases}
+  a+b=-1 \\ -2a+b=-4
+  \end{cases}\]
+  これを解いて$a=1, b=-2$．よって余りは $\boldsymbol{x-2}$．
+  \item[(3)] $P(x)$を$(x-1)^2(x+2)$で割った余りは2次以下の式なので，$r(x)$とおく．
+  \[P(x)=(x-1)^2(x+2)q(x)+r(x)\]
+  この式より，$P(x)$を$(x-1)^2$で割った余りは，$r(x)$を$(x-1)^2$で割った余りと等しい．
+  ①よりこの余りは$4x-5$なので，$r(x)$は定数$a$を用いて
+  \[r(x)=a(x-1)^2+4x-5\]
+  と書ける．よって，
+  \[P(x)=(x-1)^2(x+2)q(x)+a(x-1)^2+4x-5\]
+  ここに$x=-2$を代入すると，②より$P(-2)=-4$なので，
+  \[-4=P(-2)=9a-13\]
+これより$a=1$なので，求める余りは $1\cdot(x-1)^2+4x-5 =\boldsymbol{x^2+2x-4}$．
+\end{enumerate}
+\textbf{問2の解答例}
+\begin{itemize}
+    \item [(1)]図形の対称性から，$n$秒後にPがB,C,Dにいる確率はそれぞれ等しいので，これを$q_n$とおく．このとき，$p_n+3q_n=1$に注意しておく．$n+1$秒後にPがAにいるのは，
+\begin{itemize}
+    \item $n$秒後にAにいて，その場にとどまる．
+    \item $n$秒後にB,C,Dのいずれかにいて，$n+1$秒後にAに移る．
+\end{itemize}
+のいずれかである．確率は順に$p_n(1-a_n),~3q_n\cdot \dfrac a3=aq_n$であるから，求める漸化式は
+\[\boldsymbol{p_{n+1}=p_n(1-a_n)+aq_n=\left(1-\frac{4a}3\right)p_n+\frac a3．}\]
+    \item [(2)]上で導いた漸化式を解けば，\[\boldsymbol{p_n=\frac14+\frac34\left(1-\frac{4a}{3}\right)^n}\]
+\end{itemize}
+\end{document}

@@ -1,0 +1,10 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\begin{document}
+\begin{toi}
+
+\end{toi}
+    \end{document}
