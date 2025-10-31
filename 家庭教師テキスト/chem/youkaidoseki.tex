@@ -1,0 +1,72 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{第8章　化学平衡}{溶解度積   }
+　\\
+難溶性の塩\ce{A_mB_n}は，溶液中で次のような平衡状態にある．
+\[\ce{A_mB_n(\text{固}) <=> $m$ A^{n+} + $n$B^{m-}}\]
+このとき，水溶液中の各イオンのモル濃度$[\text{A}^{n+}],~[\text{B}^{m-}]$について次が成り立つ．
+\[K_{\text{sp}}=[\text{A}^{n+}]^m[\text{B}^{m-}]^n=\textbf{(一定)}\]
+この$K_{\text{sp}}$を\underline{\textbf{溶解度積}}という．固体はモル濃度が1であるとみなせるので，
+\[K_{\text{sp}}=\frac{[\text{A}^{n+}]^m[\text{B}^{m-}]^n}{[\ce{A_mB_n}]}\]
+と思えば，これは単なる平衡定数である．要するに，「溶解度積というのは，溶解平衡の平衡定数」ということである．よって，平衡定数の性質から，溶解度積も温度のみに依存することがわかる．
+\ascboxB{\textbf{溶解度積の例}}
+\begin{itemize}
+    \item [(1)]\ce{AgCl <=> Ag+ + Cl-}なので，$K_{sp}=[\ce{Ag+}][\ce{Cl-}]$である．
+    \item [(2)]\ce{Fe(OH)3 <=> Fe3+ + 3OH-}なので，$K_{sp}=[\ce{Fe3+}][\ce{OH-}]^3$である．
+\end{itemize}
+\ascboxG{\textbf{溶解度積の使い方}}
+溶解度積を使うと，沈殿が生じるかどうかを判定することができる．簡単のため，塩化銀で考える．まず，\underline{\textbf{塩化銀がすべて溶解していると仮定して}}$[\ce{Ag+}][\ce{Cl}-]$を計算する．もし，
+\[[\ce{Ag+}][\ce{Cl-}]<K_\text{sp}\]
+であるならば，塩化銀はすべて溶解しているということになる．なぜなら，もし沈殿が生じているならば溶解平衡が成り立ち，$[\ce{Ag+}][\ce{Cl-}]=K_\text{sp}$となるからである．\\
+　一方で，\[[\ce{Ag+}][\ce{Cl-}]> K_\text{sp}\]であるならば，塩化銀はすべて溶解しているという仮定が間違っていることになる．なぜなら，溶解する途中で$[\ce{Ag+}][\ce{Cl-}]=K_\text{sp}$となる瞬間が必ずあり，それ以降は溶解平衡になるからである(それ以上溶けない)．
+\begin{ascolorbox11}{\textbf{まとめ}}
+反応\ce{A_mB_n(\text{固}) <=> $m$ A^{n+} + $n$B^{m-}}において，
+\begin{itemize}
+    \item $[\ce{Ag+}][\ce{Cl-}]< K_\text{sp}$なら沈殿は生じない．
+    \item $[\ce{Ag+}][\ce{Cl-}]> K_\text{sp}$なら溶解平衡の状態にあり，実際は$[\ce{Ag+}][\ce{Cl-}]= K_\text{sp}$となっている．
+\end{itemize}
+\end{ascolorbox11}
+\begin{exque}
+塩化銀は水１Lに対して，25$~^\circ$Cで$1.9$mg溶ける．
+\begin{itemize}
+    \item [(1)]25$~^\circ$における塩化銀の飽和水溶液中の\ce{Ag+}のモル濃度を求めよ．
+    \item [(2)]25$~^\circ$における塩化銀の溶解度積を求めよ．
+    \item [(3)]$1.0\times 10^{-3}$mol/Lの硝酸銀水溶液100mLに塩化ナトリウムを少しずつ加えたとき，沈殿が生じるのは何mgより多く加えたときか．ただし，塩化ナトリウムを加えたことによる水溶液の体積変化は無視できるものとする．また，この操作は25$~^\circ$の条件下で行われたとする．
+\end{itemize}
+\end{exque}\newpage
+\begin{toi}\noindent 
+クロム酸銀\ce{Ag2CrO4}が水1Lに対して25$~^\circ$Cで$3.32\times 10^{-3}$g溶けるとして，クロム酸銀の溶解度積を求めよ．
+\end{toi}
+
+\begin{toi}
+\noindent 塩化銀\ce{AgCl}の溶解度積を$1.0\times 10^{-10}\text{mol}^2/\text{L}^2$，クロム酸銀\ce{Ag2CrO4}の溶解度積を$1.0\times 10^{-12}\text{mol}^3/\text{L}^3$，$\sqrt5=2.24$とする．
+\begin{itemize}
+    \item [(1)] pH$=5.0$の塩酸100mlに塩化銀は何g溶けるか．ただし，塩化銀を溶解させたことによる体積変化は無視できるものとする．
+    \item [(2)]塩化物イオンとクロム酸イオンをそれぞれ$0.010$mol/L含む混合溶液100mLに，$0.010$mol/Lの硝酸銀水溶液を滴下したとき，最初に生じる沈殿の化学式を記せ．\\(ヒント：生じうる沈殿は2種類ある．)
+    \item [(3)](2)の沈殿は，硝酸銀水溶液を何mL以上加えたときに生じるか．
+\end{itemize}
+\end{toi}
+\end{document}

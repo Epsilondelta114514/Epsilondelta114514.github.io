@@ -1,0 +1,43 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{11月1日}{前回の復習}
+\begin{toi}
+$a>0$を定数とし，曲線$C_1:y=x^2,~C_2:y=x^2-2ax+a^2+2a$を考える．
+\begin{itemize}
+    \item [(1)]$C_1,C_2$の共通接線$l$の方程式を求めよ．
+    \item [(2)]$C_1,C_2,l$および$y$軸とで囲まれた部分の面積を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+曲線$C:y=x^3-2x$を考える．
+\begin{itemize}
+    \item [(1)]点$(0,2)$を通り，曲線$C$に接する直線$l$の方程式を求めよ．
+    \item [(2)]$C$と$l$とで囲まれた部分の面積を求めよ．
+\end{itemize}
+\end{toi}
+
+
+\end{document}
