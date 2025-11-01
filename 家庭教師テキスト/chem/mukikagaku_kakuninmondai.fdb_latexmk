@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1761833370.34771 "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/mukikagaku_kakuninmondai.tex" "mukikagaku_kakuninmondai.pdf" "mukikagaku_kakuninmondai" 1761833372.72448 0
-  "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/mukikagaku_kakuninmondai.tex" 1761833362.91943 4867 79fa09ddabc253c758c95fa3e5bc0927 ""
+["lualatex"] 1761990396.00114 "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/mukikagaku_kakuninmondai.tex" "mukikagaku_kakuninmondai.pdf" "mukikagaku_kakuninmondai" 1761990398.18675 0
+  "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/mukikagaku_kakuninmondai.tex" 1761990389.08907 4858 cf608a3dd7a5b1dd2fcae2794bb15206 ""
   "/Users/seigosasaki/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/haranoajigothic-medium.luc" 1761184139.48153 1943012 4230755a7ac3b71bdd91013fd41ae528 ""
   "/Users/seigosasaki/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/haranoajimincho-regular.luc" 1761184137.79174 2011333 eac6ca39cc1a71222f175e479eb0fc47 ""
   "/Users/seigosasaki/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmmono9-regular.luc" 1761184137.92205 81875 5770eaada341be7c3327eb36573a2a7c ""
@@ -324,8 +324,8 @@
   "/usr/local/texlive/2025/texmf-dist/tex/platex/pxrubrica/pxrubrica.sty" 1677790853 81970 095cfc9d6c9ba052e1bdca7dc85ae95c ""
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1761149995 5528139 daf1353d2d3d7fed9df2ebbf1b26218e ""
   "/usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt" 1761150150 5630186 d60579349febce3dccafa05d019c7d76 ""
-  "mukikagaku_kakuninmondai.aux" 1761833372.47403 884 4eac165479d3687b0463e0268c800cab "lualatex"
-  "mukikagaku_kakuninmondai.tex" 1761833362.91943 4867 79fa09ddabc253c758c95fa3e5bc0927 ""
+  "mukikagaku_kakuninmondai.aux" 1761990397.96864 884 4eac165479d3687b0463e0268c800cab "lualatex"
+  "mukikagaku_kakuninmondai.tex" 1761990389.08907 4858 cf608a3dd7a5b1dd2fcae2794bb15206 ""
   (generated)
   "mukikagaku_kakuninmondai.aux"
   "mukikagaku_kakuninmondai.log"

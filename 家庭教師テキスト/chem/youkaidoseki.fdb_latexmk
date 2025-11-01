@@ -1,6 +1,6 @@
 # Fdb version 4
-["lualatex"] 1761917557.89757 "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem/youkaidoseki.tex" "youkaidoseki.pdf" "youkaidoseki" 1761917560.98721 0
-  "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem/youkaidoseki.tex" 1761917536.98033 4799 73f97458d79063f5d4fade9b9aae0ad7 ""
+["lualatex"] 1761918164.33394 "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem/youkaidoseki.tex" "youkaidoseki.pdf" "youkaidoseki" 1761918167.4163 0
+  "/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem/youkaidoseki.tex" 1761918148.23198 4800 c6cdabd0b25aca6ac385b910252acc1d ""
   "/Users/seigosasaki/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/haranoajigothic-medium.luc" 1761184139.48153 1943012 4230755a7ac3b71bdd91013fd41ae528 ""
   "/Users/seigosasaki/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/haranoajimincho-regular.luc" 1761184137.79174 2011333 eac6ca39cc1a71222f175e479eb0fc47 ""
   "/Users/seigosasaki/Library/texlive/2025/texmf-var/luatex-cache/generic/fonts/otl/lmmono9-regular.luc" 1761184137.92205 81875 5770eaada341be7c3327eb36573a2a7c ""
@@ -340,8 +340,8 @@
   "/usr/local/texlive/2025/texmf-dist/tex/platex/pxrubrica/pxrubrica.sty" 1677790853 81970 095cfc9d6c9ba052e1bdca7dc85ae95c ""
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1761149995 5528139 daf1353d2d3d7fed9df2ebbf1b26218e ""
   "/usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt" 1761150150 5630186 d60579349febce3dccafa05d019c7d76 ""
-  "youkaidoseki.aux" 1761917560.68746 279 68fe73605b6bfe45835f90e4ed8ca1de "lualatex"
-  "youkaidoseki.tex" 1761917536.98033 4799 73f97458d79063f5d4fade9b9aae0ad7 ""
+  "youkaidoseki.aux" 1761918167.08195 279 68fe73605b6bfe45835f90e4ed8ca1de "lualatex"
+  "youkaidoseki.tex" 1761918148.23198 4800 c6cdabd0b25aca6ac385b910252acc1d ""
   (generated)
   "youkaidoseki.aux"
   "youkaidoseki.log"

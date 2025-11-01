@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.10.23)  30 OCT 2025 23:09
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2025.10.23)  1 NOV 2025 18:46
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/mukikagaku_kakuninmondai.tex
@@ -1582,12 +1582,12 @@ Here is how much of LuaTeX's memory you used:
  125244,1648299 words of node,token memory allocated
  1102 words of node memory still in use:
    11 hlist, 2 vlist, 5 rule, 2 glue, 4 kern, 1 glyph, 203 attribute, 61 glue_spec, 30 attribute_list, 2 write, 14 user_defined nodes
-   avail lists: 1:10,2:17840,3:332,4:392,5:60,6:36,7:2278,8:42,9:1035,10:13
+   avail lists: 1:10,2:17656,3:332,4:392,5:60,6:36,7:2284,8:42,9:1041,10:13
  57621 multiletter control sequences out of 65536+600000
  59 fonts using 59863151 bytes
  132i,9n,135p,1901b,1035s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/haranoaji/HaranoAjiGothic-Medium.otf></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmsans12-regular.otf>
-Output written on mukikagaku_kakuninmondai.pdf (4 pages, 66626 bytes).
+Output written on mukikagaku_kakuninmondai.pdf (4 pages, 68123 bytes).
 
 PDF statistics: 68 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream
