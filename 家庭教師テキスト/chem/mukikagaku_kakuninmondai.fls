@@ -1,6 +1,6 @@
-PWD /Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト
+PWD /Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem
 INPUT /usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT /Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/mukikagaku_kakuninmondai.tex
+INPUT /Users/seigosasaki/Desktop/GitHub/Epsilondelta114514.github.io/家庭教師テキスト/chem/mukikagaku_kakuninmondai.tex
 OUTPUT mukikagaku_kakuninmondai.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/ltluatex.lua
