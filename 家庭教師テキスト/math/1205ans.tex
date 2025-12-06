@@ -1,0 +1,227 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (    \textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{12月5日~12月6日}{積分法②解答}
+　\\
+\noindent \underline{{\large{\textbf{1．基本的な計算問題}}}}
+\begin{ans}
+\begin{itemize}
+    \item[(0)]加法定理より
+    \begin{align*}
+    \sin(\alpha+\beta)&=\sin\alpha\cos\beta+\cos\alpha\sin\beta\\
+    \sin(\alpha-\beta)&=\sin\alpha\cos\beta-\cos\alpha\sin\beta
+    \end{align*}
+    この2式の辺々を加えると，$\sin(\alpha+\beta)+\sin(\alpha-\beta)=2\sin\alpha\cos\beta$となる．両辺を2で割ることで示された．
+    \item [(1)]積和の公式より
+    \[\int_0^{\pi}\frac{1}{2}(\sin8x+\sin2x)dx=\frac{1}{2}\left[-\frac{1}{8}\cos8x-\frac{1}{2}\cos2x\right]_0^{\pi}=\underline{\boldsymbol{0}}\]
+    \item [(2)]積和の公式より$\sin mx\cos nx=\frac{1}{2}\{\sin(m+n)x+\sin(m-n)x\}$である．
+    \[\int_0^\pi\sin(m+n)xdx=\left[-\frac{\cos(m+n)x}{m+n}\right]_0^\pi=\frac{1-(-1)^{m+n}}{m+n}\]
+    であるから，
+    (i) $m+n$が偶数のとき（$m,n$の偶奇が一致するとき），積分値は$\underline{\boldsymbol{0}}$．\\
+    (ii) $m+n$が奇数のとき（$m,n$の偶奇が異なるとき），
+    \begin{align*}
+    \frac{1}{2}\left(\frac{2}{m+n}+\frac{2}{m-n}\right)=\frac{m-n+m+n}{m^2-n^2}=\underline{\boldsymbol{\frac{2m}{m^2-n^2}}}
+    \end{align*}
+    \item [(3)]積和の公式より
+    \[\int_0^{\pi}\frac{1}{2}(\cos 3x+\cos x)dx=\frac{1}{2}\left[\frac{1}{3}\sin 3x+\sin x\right]_0^{\pi}=\underline{\boldsymbol{0}}\]
+\end{itemize}
+\end{ans}
+\begin{ans}
+\begin{itemize}
+    \item [(1)]$x=\frac{\pi}{2}-t$と置換すると，$dx=-dt$であり，積分区間は$\frac{\pi}{2}\to 0$となる．
+    \[I_n=\int_{\frac{\pi}{2}}^0 \sin^n\left(\frac{\pi}{2}-t\right)(-dt)=\int_0^{\frac{\pi}{2}}\cos^n tdt=J_n\]
+    により示された．
+    \item [(2)]$I_0=\int_0^{\frac\pi2}1dx=\underline{\boldsymbol{\frac{\pi}{2}}}$，~~$I_1=\int_0^{\frac\pi2}\sin xdx=[-\cos x]_0^{\frac\pi2}=\underline{\boldsymbol{1}}$
+    \item [(3)]部分積分法を用いる．
+    \begin{align*}
+        I_n&=\int_0^{\frac\pi2}\sin^{n-1}x\cdot(-\cos x)'dx\\
+        &=[\sin^{n-1}x(-\cos x)]_0^{\frac\pi2}-\int_0^{\frac\pi2}(n-1)\sin^{n-2}x\cos x\cdot(-\cos x)dx\\
+        &=0+(n-1)\int_0^{\frac\pi2}\sin^{n-2}x(1-\sin^2x)dx\\
+        &=(n-1)I_{n-2}-(n-1)I_n
+    \end{align*}
+    これより，$nI_n=(n-1)I_{n-2}$すなわち$I_n=\frac{n-1}{n}I_{n-2}$が成り立つ．
+    \item [(4)](3)の結果を繰り返し用いると
+    \[I_n=\frac{n-1}{n}I_{n-2}=\frac{n-1}{n}\cdot\frac{n-3}{n-2}I_{n-4}=\cdots=\frac{n-1}{n}\cdots\frac{1}{2}I_0\]
+    これに(2)の$I_0=\frac{\pi}{2}$を代入して示される．
+    \item [(5)](3)の結果と(2)の$I_1=1$より
+    \[I_n=\underline{\boldsymbol{\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdots\frac{2}{3}\cdot 1}}\]
+\end{itemize}
+\end{ans}
+\noindent \underline{{\large{\textbf{2．定積分で表された関数}}}}
+\begin{ans}
+\begin{itemize}
+    \item [(1)]関数$F(x)=\int_a^x f(t)dt$とすると，微分の定義より
+    \[\frac{d}{dx}F(x)=\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac{1}{h}\int_x^{x+h}f(t)dt\]
+    平均値の定理より$\int_x^{x+h}f(t)dt=h f(c)$ ($x<c<x+h$)を満たす$c$が存在する．$h\to 0$のとき$c\to x$であり，$f(x)$の連続性より$f(c)\to f(x)$となるため，右辺は$f(x)$に収束する．
+    \item [(2)]
+    (A) $\underline{\boldsymbol{\frac{\sin x}{1+e^x}}}$ \\
+    (B) $\frac{d}{dx}\left(-\int_0^x e^{-t^2}dt\right)=\underline{\boldsymbol{-e^{-x^2}}}$ \\
+    (C) $F(t)'=\log t$とすると，与式は$F(x^2)-F(2x)$である．合成関数の微分法より
+    \[\log(x^2)\cdot(x^2)'-\log(2x)\cdot(2x)'=2x\cdot 2\log x-2(\log 2+\log x)=\underline{\boldsymbol{(4x-2)\log x-2\log 2}}\]
+    (D) $\int_0^x xe^tdt-\int_0^x te^tdt=x(e^x-1)-[(t-1)e^t]_0^x=xe^x-x-(xe^x-e^x+1)=\underline{\boldsymbol{e^x-1-x}}$\\
+    (※別解：そのまま微分して $1\cdot\int_0^x e^tdt+x e^x-xe^x = e^x-1$)
+\end{itemize}
+\end{ans}
+\begin{ans}
+与式の両辺を$x$で微分すると
+\[f(x)=\underline{\boldsymbol{2x+4}}\]
+また，与式の$x$に$a$を代入すると左辺は0になるので
+\[0=a^2+4a+3=(a+1)(a+3) \quad \therefore a=\underline{\boldsymbol{-1,-3}}\]
+\end{ans}
+
+\begin{ans}
+    \begin{itemize}
+        \item [(1)]定積分部分は定数となるので$k=\int_0^1 f(t)dt$とおくと，$f(x)=e^x-k$．これを定積分の式に代入して，
+        \[k=\int_0^1(e^t-k)dt=[e^t-kt]_0^1=e-k-1 \iff 2k=e-1\]
+        よって$k=\frac{e-1}{2}$となり，$f(x)=\underline{\boldsymbol{e^x-\frac{e-1}{2}}}$．
+        \item [(2)]$f(x)=3+2e^{-x}\int_0^1e^tf(t)dt$と変形できる．$k=\int_0^1e^tf(t)dt$とおくと$f(x)=3+2ke^{-x}$．
+        \[k=\int_0^1e^t(3+2ke^{-t})dt=\int_0^1(3e^t+2k)dt=[3e^t+2kt]_0^1=3e+2k-3\]
+        よって$k=-3e+3$．
+        これを戻して$f(x)=3+2(3-3e)e^{-x}=\underline{\boldsymbol{3+6(1-e)e^{-x}}}$．
+    \end{itemize}
+\end{ans}
+\noindent \underline{{\large{\textbf{3．定積分の最大・最小}}}}
+\begin{ans}
+$f'(x)=e^x\cos x$．$0\leqq x\leqq 2\pi$において$f'(x)=0$となるのは$x=\frac{\pi}{2}, \frac{3}{2}\pi$．
+増減表を書くと$x=\frac{\pi}{2}$で極大かつ最大となる．
+\[f\left(\frac{\pi}{2}\right)=\int_0^{\frac\pi2}e^t\cos tdt=\left[\frac{e^t(\sin t+\cos t)}{2}\right]_0^{\frac\pi2}=\frac{e^{\frac\pi2}}{2}-\frac{1}{2}=\underline{\boldsymbol{\frac{e^{\frac\pi2}-1}{2}}}\]
+（そのときの$x$は$\underline{\boldsymbol{x=\frac{\pi}{2}}}$）
+\end{ans}
+\begin{ans}
+\begin{itemize}
+    \item [(1)]展開して整理すると，$f(x)=\int_{-\pi}^\pi \sin^2 tdt -2x\int_{-\pi}^\pi t\sin tdt +x^2\int_{-\pi}^\pi t^2dt$．
+    偶関数・奇関数の性質を利用すると，
+    \begin{align*}
+        \int_{-\pi}^\pi \sin^2 tdt &= 2\int_0^\pi \frac{1-\cos 2t}{2}dt = \pi\\
+        \int_{-\pi}^\pi t\sin tdt &= 2\int_0^\pi t\sin tdt = 2[-t\cos t+\sin t]_0^\pi = 2\pi\\
+        \int_{-\pi}^\pi t^2dt &= 2\left[\frac{t^3}{3}\right]_0^\pi = \frac{2}{3}\pi^3
+    \end{align*}
+    よって，$f(x)=\underline{\boldsymbol{\frac{2}{3}\pi^3 x^2 -4\pi x +\pi}}$．
+    \item [(2)]$f(x)$は下に凸な放物線である．平方完成すると
+    \[f(x)=\frac{2}{3}\pi^3\left(x-\frac{3}{\pi^2}\right)^2+\pi-\frac{2}{3}\pi^3\cdot\frac{9}{\pi^4}=\frac{2}{3}\pi^3\left(x-\frac{3}{\pi^2}\right)^2+\pi-\frac{6}{\pi}\]
+    よって最小値は$\underline{\boldsymbol{\pi-\frac{6}{\pi}}}$．
+\end{itemize}
+\end{ans}
+\begin{ans}
+$\log x=a \iff x=e^a$で被積分関数の符号が変わる．
+\begin{align*}
+f(a)&=\int_0^{e^a}(a-\log x)dx+\int_{e^a}^e(\log x-a)dx\\
+&=[ax-(x\log x-x)]_0^{e^a} + [x\log x-x-ax]_{e^a}^e\\
+&=(ae^a - (ae^a-e^a)) + (e\cdot 1-e-ae) - (ae^a-e^a-ae^a)\\
+&=e^a - ae + e^a = 2e^a - ae
+\end{align*}
+$f'(a)=2e^a-e$より，$f'(a)=0 \iff e^a=\frac{e}{2} \iff a=1-\log 2$．
+このとき極小かつ最小となる．
+最小値は$2\cdot\frac{e}{2}-e(1-\log 2) = \underline{\boldsymbol{e\log 2}}$ （そのときの$a=\underline{\boldsymbol{1-\log 2}}$）．
+\end{ans}
+\begin{ans}
+\begin{itemize}
+\item[(1)]展開して積分を実行する．奇数次項の積分は0になることに注意する．
+\begin{align*}
+I&=\int_{-1}^1(e^{-2x}+p^2x^2+q^2-2pxe^{-x}-2qe^{-x}+2pqx)dx\\
+&=\left[-\frac{e^{-2x}}{2}\right]_{-1}^1 + p^2\left[\frac{x^3}{3}\right]_{-1}^1 + 2q^2 -2p\int_{-1}^1xe^{-x}dx -2q\int_{-1}^1e^{-x}dx\\
+&=\frac{e^2-e^{-2}}{2} + \frac{2}{3}p^2 + 2q^2 -2p\left(-\frac{2}{e}\right) -2q\left(e-\frac{1}{e}\right)\\
+&=\underline{\boldsymbol{\frac{e^2-e^{-2}}{2} + \frac{4}{e}p - 2\left(e-\frac{1}{e}\right)q + \frac{2}{3}p^2 + 2q^2}}
+\end{align*}
+（※$\int_{-1}^1 xe^{-x}dx=[-xe^{-x}-e^{-x}]_{-1}^1=(-e^{-1}-e^{-1})-(e-e)=-\frac{2}{e}$を用いた）
+\item [(2)](1)の結果を平方完成する．
+\[I = \frac{2}{3}\left(p+\frac{3}{e}\right)^2 + 2\left(q-\frac{e-e^{-1}}{2}\right)^2 + (\text{定数})\]
+よって，$I$を最小にするのは
+$p=\underline{\boldsymbol{-\frac{3}{e}}}~,~q=\underline{\boldsymbol{\frac{e-e^{-1}}{2}}}$
+\end{itemize}
+\end{ans}
+\noindent \underline{{\large{\textbf{4．定積分と不等式}}}}
+\begin{ans}
+\begin{itemize}
+    \item [(1)]$f(x)=e^x-x^2$とおく．$f'(x)=e^x-2x$，$f''(x)=e^x-2$．
+    $x\geqq 1$において$e^x\geqq e > 2$より$f''(x)>0$．よって$f'(x)$は単調増加．
+    $f'(1)=e-2>0$より，$x\geqq 1$で$f'(x)>0$．よって$f(x)$も単調増加．
+    $f(1)=e-1>0$であるから，常に$f(x)>0$．すなわち$e^x>x^2$が成り立つ．
+    \item [(2)]直接計算する．
+    \[\int_0^x te^{-t}dt = [-te^{-t}]_0^x + \int_0^x e^{-t}dt = -xe^{-x} -e^{-x} + 1\]
+    $x\to \infty$のとき，$xe^{-x}\to 0, e^{-x}\to 0$であるから，極限値は$\underline{\boldsymbol{1}}$．
+\end{itemize}
+\end{ans}
+\begin{ans}
+\begin{itemize}
+    \item [(1)]$f(x)=2\sqrt{x}-\log x$とおく．$f'(x)=\frac{1}{\sqrt{x}}-\frac{1}{x}=\frac{\sqrt{x}-1}{x}$．
+    $x=1$で極小値$f(1)=2>0$をとる．よって$x>0$で常に正である．
+    \item [(2)]
+    \[\int_1^x \frac{\log t}{t^2}dt = \left[-\frac{\log t}{t}\right]_1^x + \int_1^x \frac{1}{t^2}dt = -\frac{\log x}{x} - \frac{1}{x} + 1\]
+    (1)より$0<\frac{\log x}{x}<\frac{2}{\sqrt{x}}$であり，はさみうちの原理から$x\to\infty$で$\frac{\log x}{x}\to 0$．
+    よって極限値は$\underline{\boldsymbol{1}}$．
+\end{itemize}
+\end{ans}
+\newpage
+\noindent \underline{{\large{\textbf{5．区分求積法}}}}
+\begin{rembox}
+    \textbf{定積分と極限(区分求積法)}
+    \[\boldsymbol{\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^nf\left(\frac kn\right)=\int_0^1 f(x)dx}\]
+\end{rembox}
+\begin{ans}
+\begin{itemize}
+    \item [(1)]与式$=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n \left(\frac{k}{n}\right)^2 e^{\frac{k}{n}}$
+    \[=\int_0^1 x^2e^x dx = [x^2e^x]_0^1 - \int_0^1 2xe^x dx = e - 2[xe^x-e^x]_0^1 = e - 2(e-e+1) = \underline{\boldsymbol{e-2}}\]
+     \item [(2)]与式$=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n \frac{2(k/n)}{1+(k/n)^2}$
+     \[=\int_0^1 \frac{2x}{1+x^2}dx = [\log(1+x^2)]_0^1 = \underline{\boldsymbol{\log 2}}\]
+          \item [(3)]与式$=\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n\frac{1}{1+\frac{k}{n}}$
+          \[=\int_0^1 \frac{1}{1+x}dx = [\log(1+x)]_0^1 = \underline{\boldsymbol{\log 2}}\]
+\end{itemize}
+\end{ans}
+
+\begin{ans}
+\begin{itemize}
+    \item [(1)]$r$回とも$k$以下の番号が出る確率は$\left(\frac{k}{n}\right)^r$．
+    最大値が$k$となる確率は，（すべて$k$以下）$-$（すべて$k-1$以下）で求められるから，
+    \[\underline{\boldsymbol{\left(\frac{k}{n}\right)^r-\left(\frac{k-1}{n}\right)^r}}\]
+    \item [(2)]
+    \begin{align*}
+    E &= \sum_{k=1}^n k \left\{ \left(\frac{k}{n}\right)^2-\left(\frac{k-1}{n}\right)^2 \right\} = \frac{1}{n^2}\sum_{k=1}^n k(2k-1) \\
+    &= \frac{1}{n^2}\left( 2\cdot\frac{n(n+1)(2n+1)}{6} - \frac{n(n+1)}{2} \right) \\
+    &= \frac{n+1}{n}\left( \frac{2n+1}{3} - \frac{1}{2} \right) = \underline{\boldsymbol{\frac{(n+1)(4n-1)}{6n}}}
+    \end{align*}
+    \item [(3)]
+    \begin{align*}
+    \frac{E_n}{n} &= \frac{1}{n}\sum_{k=1}^n k \left( P(X\leqq k) - P(X\leqq k-1) \right) \\
+    &= \frac{1}{n}\left( nP(X\leqq n) - \sum_{k=0}^{n-1} P(X\leqq k) \right) \quad (\text{アーベルの変形})\\
+    &= 1 - \frac{1}{n}\sum_{k=1}^{n-1} \left(\frac{k}{n}\right)^r
+    \end{align*}
+    よって，$n\to\infty$のとき
+    \[1 - \int_0^1 x^r dx = 1 - \frac{1}{r+1} = \underline{\boldsymbol{\frac{r}{r+1}}}\]
+\end{itemize}
+\end{ans}
+\end{document}

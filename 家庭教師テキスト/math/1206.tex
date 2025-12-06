@@ -1,0 +1,136 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newtcolorbox{rembox}[1][]{enhanced,
+    before skip=2mm,after skip=3mm,fontupper=\gtfamily\sffamily,
+    boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+    colback=yellow!50,
+    colframe=yellow!20!black,
+    sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+    underlay={
+        \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+        \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{12月5日~12月6日}{積分法②}
+　\\
+\noindent \underline{{\large{\textbf{1．基本的な計算問題}}}}
+\begin{toi}
+\begin{itemize}
+    \item[(0)]三角関数の和積の公式$\displaystyle{\sin\alpha\cos\beta=\frac{\sin(\alpha+\beta)+\sin(\alpha-\beta)}{2}}$を示せ．
+    \item [(1)]$\displaystyle{\int_0^{\pi}\sin5x\cos3x}dx$を求めよ．
+    \item [(2)]$\displaystyle{\int_0^{\pi}\sin mx\cos nx}dx$を求めよ．
+        \item [(3)]$\displaystyle{\int_0^{\pi}\cos x\cos2x}dx$を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+$\displaystyle{I_n=\int_0^{\frac\pi2}\sin^n xdx,~J_n=\int_0^{\frac\pi2}\cos^n xdx~~~~(n=0,1,\ldots)}$を考える．ただし，$\sin^0x=1$とする．
+\begin{itemize}
+    \item [(1)]$I_n=J_n$を示せ．
+    \item [(2)]$I_0,~I_1$を求めよ．
+    \item [(3)]$I_n=\displaystyle{\frac{n-1}{n}I_{n-2}}$を示せ．
+    \item [(4)]$n$が偶数のとき，
+    \[I_n=\frac{n-1}{n}\cdot\frac{n-3}{n-2}\cdot\frac{n-5}{n-4}\cdots\frac{3}{4}\cdot\frac{1}{2}\cdot\frac{\pi}{2}\]
+    を示せ．
+    \item [(5)]$n$が3以上の奇数のとき，$I_n$を求めよ．
+\end{itemize}
+\end{toi}
+\noindent \underline{{\large{\textbf{2．定積分で表された関数}}}}
+\begin{toi}
+\begin{itemize}
+    \item [(1)]$a$を定数とする．連続な関数$f(x)$に対して，
+    \[\frac{d}{dt}\int_a^x f(t)dt=f(x)\]
+    が成り立つことを示せ．
+    \item [(2)]次の関数を$x$で微分せよ．
+    \[(\text A)~\int_0^x \frac{\sin t}{1+e^t}dt\quad(\text{B})~\int_x^{0} e^{-t^2}dt\quad(\text C)~\int_{2x}^{ x^2}\log tdt\quad(\text D)~\int_{0}^{ x}(x-t)e^tdt\]
+\end{itemize}
+\end{toi}
+\begin{toi}
+$\displaystyle{\int_a^x f(x)dx}=x^2+4x+3$を満たす関数$f(x)$と定数$a$を求めよ．
+\end{toi}
+
+\begin{toi}
+    \begin{itemize}
+        \item [(1)]$\displaystyle{f(x)=e^x-\int_0^1 f(t)dt}$を満たす関数$f(x)$を求めよ．
+        \item [(2)]$\displaystyle{f(x)=3+2\int_0^1e^{t-x}f(t)dt}$を満たす関数$f(x)$を求めよ．
+    \end{itemize}
+\end{toi}
+\noindent \underline{{\large{\textbf{3．定積分の最大・最小}}}}
+\begin{toi}
+$0\leqq x\leqq2\pi$とする．関数$f(x)=\displaystyle{\int_0^x e^t\cos tdt}$の最大値とそのときの$x$を求めよ．
+\end{toi}
+\begin{toi}
+$f(x)= \displaystyle{\int_{-\pi}^\pi (\sin t-xt)^2dt}$について，次の問いに答えよ．
+\begin{itemize}
+    \item [(1)]$f(x)$を計算せよ．
+    \item [(2)]$f(x)$の最小値を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+$f(a)=\displaystyle{\int_0^e| \log x-a|}$の最小値とそのときの$a$を求めよ．
+\end{toi}
+\begin{toi}
+\begin{itemize}
+\item[(1)]$\displaystyle{I=\int_{-1}^1(e^{-x}-px-q)^2dx}$を計算せよ．
+\item [(2)]$I$を最小にする$p,q$を求めよ．
+\end{itemize}
+\end{toi}
+\noindent \underline{{\large{\textbf{4．定積分と不等式}}}}
+\begin{toi}
+\begin{itemize}
+    \item [(1)]$x\geqq 1$において，$x^2<e^x$が成り立つことを示せ．
+    \item [(2)]$\displaystyle{\lim_{x\to\infty }\int_0^x te^{-t}dt}$を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+\begin{itemize}
+    \item [(1)]$x>0$において，$\log x<2\sqrt x$が成り立つことを示せ．
+    \item [(2)]$\displaystyle{\lim_{x\to\infty }\int_1^x\frac{\log t}{t^2}dt}$を求めよ．
+\end{itemize}
+\end{toi}
+\newpage
+\noindent \underline{{\large{\textbf{5．区分求積法}}}}
+\begin{rembox}
+    \textbf{定積分と極限(区分求積法)}
+    \[\boldsymbol{\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^nf\left(\frac kn\right)=\int_0^1 f(x)dx}\]
+\end{rembox}
+\begin{toi}
+\begin{itemize}
+    \item [(1)]$\displaystyle{\lim_{n\to\infty }\left(\frac{1}{n^3}e^{\frac{1}{n}}+\frac{2^2}{n^3}e^{\frac{2}{n}}+\cdots+\frac{n^2}{n^3}e^{\frac{n}{n}}\right)}$を求めよ．
+     \item [(2)]$\displaystyle{\lim_{n\to\infty }\left(\frac{2}{n^2+1}+\frac{4}{n^2+2^2}+\cdots+\frac{2n}{n^2+n^2}\right)}$を求めよ．
+          \item [(3)]$\displaystyle{\lim_{n\to\infty }\sum_{k=1}^n\frac{1}{n+k}}$を求めよ．
+\end{itemize}
+\end{toi}
+
+\begin{toi}
+袋の中に1から$n$までの番号が書かれた$n$個の玉が入っている．この袋から玉を1つ取り出し，番号を調べてもとに戻す操作を$r$回繰り返すとき，取り出された玉の番号の最大値を$X$とする．
+\begin{itemize}
+    \item [(1)]$k=1,2\ldots,n$とする．$X=k$となる確率を求めよ．
+    \item [(2)]$r=2$のとき，$X$の期待値を求めよ．
+    \item [(3)]$X$の期待値を$E_n$とおくとき，$\displaystyle{\lim_{n\to\infty}\frac{E_n}{n}}$を$r$を用いて表わせ．
+\end{itemize}
+\end{toi}
+\end{document}

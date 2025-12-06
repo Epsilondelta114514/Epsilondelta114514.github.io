@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{base}
+\title{}
+\author{}
+\date{}
+\newcommand{\printheader}[2]{
+\begin{tikzpicture}[remember picture, overlay]
+\node[yshift=-2.5cm, anchor=north] at (current page.north) {
+\begin{tikzpicture}
+\fill[gray!20] (0,0) rectangle (\textwidth, 2cm);
+\fill[gray!80] (0,0) rectangle (0.2cm, 2cm);
+\draw[gray!80, thick] (0,0) -- (	\textwidth, 0);
+\node[anchor=west, text width=\textwidth-1cm, inner xsep=1cm] at (0, 1.25cm) {
+\parbox[b]{\linewidth}{
+{\color{gray!50!black}\bfseries #1} \par
+\vspace{0.2em}
+{\huge\bfseries #2}
+}
+};
+\end{tikzpicture}
+};
+\end{tikzpicture}
+\vspace{0.5cm}
+}
+\begin{document}
+\printheader{11月30日}{積分法・数列と極限①}
+\begin{toi}
+\begin{itemize}
+    \item[(1)] $\tan\dfrac x2=t$とおくとき，$\sin x,\cos x,\tan x$を$t$で表せ．
+    \item[(2)]$\displaystyle{\int \frac1{3\sin x +4\cos x}dx}$を計算せよ． 
+\end{itemize}
+\end{toi}
+\begin{toi}
+次の定積分を計算せよ．\\[5pt]
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(1)]$\displaystyle{\int_1^9 \sqrt xe^{\sqrt x}dx}$\\
+    \item [(3)]$\displaystyle{\int_1^e x(\log x)^2dx}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{itemize}
+    \item [(2)]$\displaystyle{\int_\alpha^\beta (x-\alpha)(x-\beta)^2dx}$\\
+     \item [(4)]$\displaystyle{\int_0^\pi  x^2\sin x dx}$
+\end{itemize}
+\end{minipage}
+\end{toi}
+\begin{toi}
+1回の思考で事象Aが起こる確率が$p~(0<p<1)$であるとする．この思考を$n$回行うときにAが奇数回をこる確率を$a_n$とする．
+\begin{itemize}
+    \item [(1)]$a_n$を$n$と$p$で表せ．
+    \item [(2)]$\displaystyle{\lim_{n\to\infty}a_n}$を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+$\displaystyle{I_n=\int_1^e (\log x)^n}dx$とする．
+\begin{itemize}
+    \item [(1)]$I_1$を求めよ．
+    \item [(2)]$I_{n+1}$を$I_{n}$で表せ．
+    \item [(3)]$I_4$を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+\begin{itemize}
+    \item [(1)]$\dfrac{1}{(2k-1)(2k+1)}$を部分分数に分解せよ．
+    \item [(2)]
+    $\displaystyle{\lim_{n\to\infty }\left\{n\sum_{k=n}^{2n}\frac{1}{(2k-1)(2k+1)}\right\}}$を求めよ．
+\end{itemize}
+\end{toi}
+\begin{toi}
+次の極限を求めよ．\\[5pt]
+\begin{minipage}{0.33\linewidth}
+\begin{itemize}
+    \item [(1)]$\displaystyle{\lim_{n\to\infty }\dfrac{\left[\dfrac n3\right]}{n}}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+    \begin{itemize}
+       \item [(2)]$\displaystyle{\lim_{n\to\infty }\frac{[\sqrt n]}{\sqrt n}}$
+    \end{itemize}
+
+\end{minipage}
+\begin{minipage}{0.33\linewidth}
+    \begin{itemize}
+       \item [(3)]$\displaystyle{\lim_{n\to\infty }\frac{[10^n\pi]}{10^n}}$
+    \end{itemize}
+\end{minipage}
+\end{toi}
+
+\begin{toi}
+$a=1+h~(h>0)$とおくとき，次の問いに答えよ．
+\begin{itemize}
+    \item [(1)]$(1+h)^n\geqq 1+nh+\dfrac{n(n-1)}{2}h^2$を示せ．
+    \item [(2)]$\lim_{n\to\infty }\dfrac{n}{a^n}=0$を示せ．
+\end{itemize}
+\end{toi}
+\end{document}
