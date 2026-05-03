@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲーム用 マルチタイマー</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #e2e2e2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px 10px;
+        }
+        
+        /* 音量調整スライダーのデザイン */
+        .global-controls {
+            margin-bottom: 20px;
+            background-color: #0f3460;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .global-controls label {
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        input[type="range"] {
+            cursor: pointer;
+            width: 130px;
+            accent-color: #e94560;
+        }
+
+        .timers-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .timer-card {
+            background-color: #16213e;
+            border: 2px solid #0f3460;
+            border-radius: 12px;
+            padding: 15px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+            transition: border-color 0.3s;
+        }
+        .timer-card.warning-state {
+            border-color: #e94560;
+            box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+        }
+        .timer-name-display {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4cd137;
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            word-wrap: break-word;
+        }
+        .time-display {
+            font-size: 3.5rem;
+            font-family: monospace;
+            font-weight: bold;
+            margin: 5px 0 15px 0;
+            color: #fff;
+        }
+        .timer-card.warning-state .time-display {
+            color: #e94560;
+        }
+        
+        /* 独立したSTARTとLAPボタンのレイアウト */
+        .timer-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .timer-buttons button {
+            flex: 1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.2s, transform 0.1s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .timer-buttons button:active {
+            transform: scale(0.96);
+        }
+        .start-btn { background-color: #4cd137; } /* 緑 */
+        .lap-btn { background-color: #e94560; }   /* 赤 */
+
+        .controls {
+            background-color: #0f3460;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .controls label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+        .controls input {
+            background-color: #1a1a2e;
+            border: 1px solid #333;
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            width: 90px;
+            font-family: inherit;
+        }
+        .controls input[type="text"].key-input {
+            width: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: #e94560;
+            border: none;
+        }
+
+        /* タイマー追加ボタン */
+        .add-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 300px;
+            transition: 0.2s;
+        }
+        .add-btn:active { transform: scale(0.98); }
+
+        .instructions {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="global-controls">
+        <label>
+            全体音量
+            <input type="range" id="master-volume" min="0" max="1" step="0.01" value="0.1">
+        </label>
+    </div>
+
+    <div class="timers-container" id="timers-wrapper">
+        <!-- タイマー1 -->
+        <div class="timer-card" id="timer-0">
+            <div class="timer-name-display">タイマー 1</div>
+            <div class="time-display">0.0</div>
+            <div class="timer-buttons">
+                <button class="start-btn">START</button>
+                <button class="lap-btn">LAP</button>
+            </div>
+            <div class="controls">
+                <label>名前: <input type="text" class="name-in" value="タイマー 1"></label>
+                <label>周期(秒): <input type="number" class="period-in" value="60"></label>
+                <label>警告(秒前): <input type="number" class="warning-in" value="10"></label>
+                <label>操作キー: <input type="text" class="key-in" value="q" maxlength="1"></label>
+            </div>
+        </div>
+
+        <!-- タイマー2 (初期非表示) -->
+        <div class="timer-card" id="timer-1" style="display: none;">
+            <div class="timer-name-display">タイマー 2</div>
+            <div class="time-display">0.0</div>
+            <div class="timer-buttons">
+                <button class="start-btn">START</button>
+                <button class="lap-btn">LAP</button>
+            </div>
+            <div class="controls">
+                <label>名前: <input type="text" class="name-in" value="タイマー 2"></label>
+                <label>周期(秒): <input type="number" class="period-in" value="120"></label>
+                <label>警告(秒前): <input type="number" class="warning-in" value="15"></label>
+                <label>操作キー: <input type="text" class="key-in" value="w" maxlength="1"></label>
+            </div>
+        </div>
+
+        <!-- タイマー3 (初期非表示) -->
+        <div class="timer-card" id="timer-2" style="display: none;">
+            <div class="timer-name-display">タイマー 3</div>
+            <div class="time-display">0.0</div>
+            <div class="timer-buttons">
+                <button class="start-btn">START</button>
+                <button class="lap-btn">LAP</button>
+            </div>
+            <div class="controls">
+                <label>名前: <input type="text" class="name-in" value="タイマー 3"></label>
+                <label>周期(秒): <input type="number" class="period-in" value="300"></label>
+                <label>警告(秒前): <input type="number" class="warning-in" value="30"></label>
+                <label>操作キー: <input type="text" class="key-in" value="e" maxlength="1"></label>
+            </div>
+        </div>
+    </div>
+
+    <!-- タイマー追加ボタン -->
+    <button id="add-timer-btn" class="add-btn">＋ タイマーを追加</button>
+
+    <div class="instructions" id="instruction-text">
+        【スマホ】最初にSTARTを押し、ギミックが来たらLAPをタップ<br>
+        【PC】設定した「操作キー」を押すと一発でLAP(リセット)されます<br><br>
+        0秒を過ぎると自動でループせず、そのままマイナスへカウントされ続けます。
+    </div>
+
+    <script>
+        let audioCtx;
+        let visibleTimers = 1; // 初期表示は1つ
+
+        const timers = [
+            { active: false, startTime: 0, name: "タイマー 1", period: 60, warning: 10, key: "q", hasWarned: false },
+            { active: false, startTime: 0, name: "タイマー 2", period: 120, warning: 15, key: "w", hasWarned: false },
+            { active: false, startTime: 0, name: "タイマー 3", period: 300, warning: 30, key: "e", hasWarned: false }
+        ];
+
+        function playWarningBeep() {
+            if (!audioCtx) return;
+            
+            const volume = parseFloat(document.getElementById('master-volume').value);
+            if (volume === 0) return;
+
+            for (let i = 0; i < 2; i++) {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime + (i * 0.15));
+                
+                gain.gain.setValueAtTime(volume, audioCtx.currentTime + (i * 0.15));
+                
+                const fadeOutTarget = Math.max(0.001, volume * 0.01);
+                gain.gain.exponentialRampToValueAtTime(fadeOutTarget, audioCtx.currentTime + (i * 0.15) + 0.1);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(audioCtx.currentTime + (i * 0.15));
+                osc.stop(audioCtx.currentTime + (i * 0.15) + 0.1);
+            }
+        }
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // タイマー追加ボタンの処理
+        document.getElementById('add-timer-btn').addEventListener('click', () => {
+            if (visibleTimers < 3) {
+                document.getElementById(`timer-${visibleTimers}`).style.display = 'block';
+                visibleTimers++;
+                // 3つ出したら追加ボタンを隠す
+                if (visibleTimers >= 3) {
+                    document.getElementById('add-timer-btn').style.display = 'none';
+                }
+            }
+        });
+
+        timers.forEach((t, i) => {
+            const card = document.getElementById(`timer-${i}`);
+            const nameDisp = card.querySelector('.timer-name-display');
+            const timeDisp = card.querySelector('.time-display');
+            const startBtn = card.querySelector('.start-btn');
+            const lapBtn = card.querySelector('.lap-btn');
+            
+            timeDisp.textContent = t.period.toFixed(1);
+
+            // START / STOP ボタンの処理
+            startBtn.addEventListener('click', () => {
+                initAudio();
+                if (!t.active) {
+                    // スタート処理
+                    t.active = true;
+                    t.startTime = Date.now();
+                    t.hasWarned = false;
+                    startBtn.textContent = 'STOP';
+                    startBtn.style.backgroundColor = '#f39c12'; // オレンジ色に
+                } else {
+                    // ストップ処理
+                    t.active = false;
+                    timeDisp.textContent = t.period.toFixed(1); // 初期値に戻す
+                    startBtn.textContent = 'START';
+                    startBtn.style.backgroundColor = '#4cd137'; // 緑色に戻す
+                    card.classList.remove('warning-state');
+                }
+            });
+
+            // LAP ボタンの処理
+            lapBtn.addEventListener('click', () => {
+                initAudio();
+                t.active = true;
+                t.startTime = Date.now();
+                t.hasWarned = false;
+                
+                // もしSTOP状態からLAPを押されたら、STARTボタンを「STOP」表記に合わせる
+                startBtn.textContent = 'STOP';
+                startBtn.style.backgroundColor = '#f39c12';
+            });
+
+            card.querySelector('.name-in').addEventListener('input', (e) => {
+                t.name = e.target.value;
+                nameDisp.textContent = t.name || '名称未設定';
+            });
+            card.querySelector('.period-in').addEventListener('input', (e) => {
+                t.period = parseFloat(e.target.value) || 0;
+                if (!t.active) timeDisp.textContent = t.period.toFixed(1);
+            });
+            card.querySelector('.warning-in').addEventListener('input', (e) => {
+                t.warning = parseFloat(e.target.value) || 0;
+            });
+            card.querySelector('.key-in').addEventListener('input', (e) => {
+                t.key = e.target.value.toLowerCase();
+            });
+        });
+
+        // PC用キーボード操作処理 (キー操作はLAPと同じ挙動)
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT') return;
+
+            initAudio();
+
+            const pressedKey = e.key.toLowerCase();
+            timers.forEach((t, i) => {
+                if (t.key === pressedKey) {
+                    t.active = true;
+                    t.startTime = Date.now();
+                    t.hasWarned = false; 
+                    
+                    // STARTボタンの表示状態を同期する
+                    const card = document.getElementById(`timer-${i}`);
+                    const startBtn = card.querySelector('.start-btn');
+                    startBtn.textContent = 'STOP';
+                    startBtn.style.backgroundColor = '#f39c12';
+                }
+            });
+        });
+
+        function updateTimers() {
+            const now = Date.now();
+
+            timers.forEach((t, i) => {
+                const card = document.getElementById(`timer-${i}`);
+                const disp = card.querySelector('.time-display');
+
+                if (!t.active) return;
+
+                const elapsed = (now - t.startTime) / 1000;
+                let remaining = t.period - elapsed;
+
+                disp.textContent = remaining.toFixed(1);
+
+                if (remaining <= t.warning) {
+                    card.classList.add('warning-state');
+                    if (!t.hasWarned) {
+                        playWarningBeep();
+                        t.hasWarned = true;
+                    }
+                } else {
+                    card.classList.remove('warning-state');
+                }
+            });
+
+            requestAnimationFrame(updateTimers);
+        }
+
+        requestAnimationFrame(updateTimers);
+    </script>
+</body>
+</html>
